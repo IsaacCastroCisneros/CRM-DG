@@ -7,7 +7,7 @@ interface props
     active?:string|undefined,
     isHover:boolean|undefined,
     styles?:string|undefined,
-    type?:'down-to-up'|undefined
+    type?:'down-to-up'|'left-to-rite'|undefined
 }
 
 export default function HoverMsg(props:props) 
@@ -19,6 +19,12 @@ export default function HoverMsg(props:props)
     initial='translate-y-[-60%] opacity-0';
     active='translate-y-[-100%] opacity-1';
     styles='top-0 translate-x-[-50%] left-[50%]';
+  }
+  if(type==='left-to-rite')
+  {
+    initial='translate-x-[-60%] opacity-0';
+    active='translate-x-[100%] opacity-1';
+    styles='right-0 top-[50%] translate-y-[-50%]';
   }
 
   return (

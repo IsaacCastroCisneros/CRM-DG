@@ -1,11 +1,12 @@
 'use client'
 
+import HoverMsg from '@/components/HoverMsg/HoverMsg';
 import optionList from '@/components/NavbarUltimate/interfaces/optionList';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { Dispatch,SetStateAction,useRef } from 'react';
+import { Dispatch,SetStateAction,useRef, useState } from 'react';
 interface props
 {
   label:string;
@@ -32,6 +33,7 @@ export default function NavbarOption(props:props)
   }=props
    
   const container=useRef<HTMLDivElement>(null)
+  const[isHover,setIsHover]=useState(false)
 
 
   function getH()
@@ -44,7 +46,9 @@ export default function NavbarOption(props:props)
 
    return (
      <li
-       className={`overflow-hidden transition-all duration-200`}
+       className={`transition-all duration-200`}
+       onMouseEnter={()=>setIsHover(true)}
+       onMouseLeave={()=>setIsHover(false)}
        style={{
          height: `${30 + (show.show && isShow ? getH() : 0)}px`,
        }}
@@ -63,6 +67,7 @@ export default function NavbarOption(props:props)
              })
            }
          >
+           <HoverMsg label={label} isHover={isHover} type='left-to-rite' />
            <div
              className={`bg-myWhite w-[5px] absolute left-0 h-[100%] navbar-pipe ${
              show.pipeBar===label ? "block" : "hidden" 
