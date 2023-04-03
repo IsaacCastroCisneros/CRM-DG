@@ -37,8 +37,8 @@ function MyForm()
         >
           <Form className="flex flex-col gap-[.8rem] mb-[2rem]">
             <MyFlexContainer>
-              <FormOption label="dni" readonly={true} value={"lel"} />
-              <FormOption label="telefono" readonly={true} value={"lel"} />
+              <FormOption label="dni" readonly={true}  />
+              <FormOption label="telefono" readonly={true}  />
             </MyFlexContainer>
             <MyFlexContainer>
               <FormOption
@@ -57,27 +57,25 @@ function MyForm()
               readonly={true}
               value={"lel"}
             />
-            <FormOption label="Referencia:" readonly={true} value={"lel"} />
+            <FormOption label="Referencia:" readonly={true}  />
             <MyFlexContainer>
-              <FormOption label="departamento:" readonly={true} value={"lel"} />
-              <FormOption label="provincia:" readonly={true} value={"lel"} />
-              <FormOption label="distrito:" readonly={true} value={"lel"} />
+              <FormOption label="departamento:" readonly={true}  />
+              <FormOption label="provincia:" readonly={true}  />
+              <FormOption label="distrito:" readonly={true}  />
             </MyFlexContainer>
             <MyFlexContainer>
               <FormOption
                 label="Comprobante de Pago:"
                 readonly={true}
-                value={"lel"}
               />
-              <FormOption label="Celular:" readonly={true} value={"lel"} />
+              <FormOption label="Celular:" readonly={true}  />
               <FormOption
                 label="*Activo:"
                 readonly={true}
-                value={"lel"}
                 stylesInput={"!bg-[#5aa95a] !text-[#fff]"}
               />
             </MyFlexContainer>
-            <FormOption label="clave:" readonly={true} value={"lel"} />
+            <FormOption label="clave:" readonly={true}/>
           </Form>
         </Formik>
         {
