@@ -1,6 +1,8 @@
 import MyBlock from '@/components/MyBlock/MyBlock'
 import React from 'react'
-import ListaCuotas from './components/ListaCuotas/ListaCuotas'
+import dynamic from 'next/dynamic'
+
+const ListaCuotas = dynamic(() => import("./components/ListaCuotas/ListaCuotas"), { ssr: false })
 
 export default function page() 
 {
