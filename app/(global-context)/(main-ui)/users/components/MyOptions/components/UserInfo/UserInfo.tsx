@@ -44,18 +44,15 @@ function MyForm()
               <FormOption
                 label="Fecha de nacimiento: (Año-Mes-Día)"
                 readonly={true}
-                value={"lel"}
               />
               <FormOption
                 label="entidad donde labora"
                 readonly={true}
-                value={"lel"}
               />
             </MyFlexContainer>
             <FormOption
               label="Dirección de envío:"
               readonly={true}
-              value={"lel"}
             />
             <FormOption label="Referencia:" readonly={true}  />
             <MyFlexContainer>
