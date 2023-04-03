@@ -29,7 +29,9 @@ export default function Navbar()
     const values=
     {
       user,
-      setUser
+      setUser,
+      setShowPopup:()=>null,
+      showPopup:{show:false,popup:<></>}  
     }
 
     return (

@@ -2,13 +2,13 @@ import jsPDFInvoiceTemplate, { OutputType, jsPDF } from "jspdf-invoice-template"
 
 
 
-export default function pdfMaker(values)
+export default function pdfMaker(value:any)
 {
 /*   const doc = new jsPDF();
   doc.text(str, 10, 100);
   doc.save("a4.pdf"); */
  //returns number of pages created
- var props = {
+ /* var props = {
     outputType: OutputType.Save,
     returnJsPDFDocObject: true,
     fileName: "Invoice 2021",
@@ -45,7 +45,7 @@ export default function pdfMaker(values)
     },
     contact: {
       label: "Invoice issued for:",
-      name: values.alumno,
+      name: value.alumno,
       address: "Albania, Tirane, Astir",
       phone: "(+355) 069 22 22 222",
       email: "client@website.al",
@@ -128,7 +128,8 @@ export default function pdfMaker(values)
     pageLabel: "Page ",
   };
 
- const pdfObject = jsPDFInvoiceTemplate(props)
+ jsPDFInvoiceTemplate(props) */
+ return null
   
 }
 

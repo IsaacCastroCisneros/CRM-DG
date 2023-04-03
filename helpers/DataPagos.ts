@@ -1,4 +1,4 @@
-import { DataPagosd } from "@/app/dashboard/pagos/interface/InterfacePago";
+import  DataPagosd  from "@/interfaces/DataPagosd";
 
 
 export const DataPagos:Array<DataPagosd> = [

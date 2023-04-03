@@ -1,4 +1,4 @@
-import { DataPros } from '../app/dashboard/prospectos/interface/InterfaceProps';
+import {DataPros} from '@/interfaces/prospectos/prospectosProps';
 
 export const DatosProspectos:any = [
   {

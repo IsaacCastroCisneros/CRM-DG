@@ -28,10 +28,12 @@ export default function NavBar2()
 {
   const{user,setUser}=useContext<appContextValues>(appContext)
 
-  const values=
-  {
-    user,setUser
-  }
+  const values = {
+    user,
+    setUser,
+    setShowPopup: () => null,
+    showPopup: { show: false, popup: <></> },
+  };
 
   return (
     <navBar2Context.Provider value={values}>
