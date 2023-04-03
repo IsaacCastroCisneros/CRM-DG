@@ -17,7 +17,9 @@ export const navBar2Context=React.createContext<appContextValues>({user:
    tipo:'',
    token:'',
   },
-  setUser:()=>null  
+  setUser:()=>null,
+  setShowPopup:()=>null,
+  showPopup:{show:false,popup:<></>}  
 });
 
 

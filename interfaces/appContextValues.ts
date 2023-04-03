@@ -5,6 +5,6 @@ export default interface appContextValues
 {
     user:user|undefined;
     setUser:React.Dispatch<React.SetStateAction<user | undefined>>;
-    showPopup:popup;
-    setShowPopup:React.Dispatch<React.SetStateAction<popup>>
+    showPopup?:popup;
+    setShowPopup?:React.Dispatch<React.SetStateAction<popup>>
 }

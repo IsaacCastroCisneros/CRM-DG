@@ -17,7 +17,9 @@ export const navbarContext = React.createContext<appContextValues>(
      tipo:'',
      token:'',
     },
-    setUser:()=>null  
+    setUser:()=>null,
+    setShowPopup:()=>null,
+    showPopup:{show:false,popup:<></>}   
   })
 
 export default function Navbar() 
