@@ -8,9 +8,8 @@ import '../../styles/globals.css'
 import "react-datepicker/dist/react-datepicker.css";
 import '@flaticon/flaticon-uicons/css/all/all.css'
 import Head from './head';
-import dynamic from 'next/dynamic';
+import MyMainContent from './components/MyMainContent/MyMainContent';
 
-const MyMainContent = dynamic(() => import("./components/MyMainContent/MyMainContent"), { ssr: false })
 
 export default async function RootLayout({
     children,
