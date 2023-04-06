@@ -1,14 +1,11 @@
 'use client'
-import React,{useState} from 'react'
+import React from 'react'
 import NavbarOptionList from './components/NavbarOptionList/NavbarOptionList';
-import HoverMsg from '../HoverMsg/HoverMsg';
 
 export default function NavbarUltimate() 
 {
-
   return (
-    <nav className="bg-primary fixed text-myWhite h-[100%]"
-      >
+    <nav className="bg-primary fixed text-myWhite h-[100%]">
       <div className="w-[5rem] px-[1rem] mb-[4.5rem] pt-[44px] desktop:mx-auto">
         <img src="/img/logo-veritcal.png" className="w-[100%]" alt="" />
       </div>

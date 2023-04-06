@@ -1,16 +1,18 @@
 'use client'
 
-import { appContext } from '@/context/AppContenxt'
 import user from '@/interfaces/user';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faChevronRight, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import postRequest from '@/helpers/postRequest';
 import React, { Dispatch, SetStateAction, useContext, useState } from 'react'
+import { signOut, useSession } from 'next-auth/react';
 
 export default function UserMenuUltimate() 
 {
-  const{user,setUser}=useContext(appContext)  
+    const{data:session}=useSession()
+
+    const user:any =  session?.user 
 
   return (
     <>
@@ -28,12 +30,7 @@ export default function UserMenuUltimate()
           <button
            className='text-myBlack'
            onClick={() => {
-            const form = new FormData();
-            form.append("token", user ? user.token : "");
-            postRequest(form, "logout").then((res) => console.log(res));
-            if (user) {
-              setUser({ ...user, isLogin: false });
-            }
+             signOut()
           }}
            >
              <FontAwesomeIcon size='xl' icon={faRightFromBracket} />
@@ -59,14 +56,6 @@ function UserOptionMenu({user,setUser}:{user:user,setUser:Dispatch<SetStateActio
       {
         label: "sign out",
         icon: faRightFromBracket,
-        func: () => {
-          const form = new FormData();
-          form.append("token", user ? user.token : "");
-          postRequest(form, "logout").then((res) => console.log(res));
-          if (user) {
-            setUser({ ...user, isLogin: false });
-          }
-        },
       },
     ];
     

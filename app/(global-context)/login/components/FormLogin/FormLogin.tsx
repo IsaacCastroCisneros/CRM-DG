@@ -10,6 +10,7 @@ import useMyErrList from '@/hooks/useMyErrList';
 import {login as loginValidation} from '@/helpers/validations'
 import MyInput from '@/components/MyInput/MyInput'
 import { useRouter } from 'next/navigation';
+import { signIn, useSession} from "next-auth/react"
 
 export default function FormLogin({
   setErrMsg,
@@ -23,62 +24,68 @@ export default function FormLogin({
   const [errList] = useMyErrList(formData, loginValidation);
   const [load, setLoad] = useState<boolean>(false);
   const router = useRouter();
-
   const { setUser} = useContext(appContext);
 
-  function submittingForm(e:any) 
+  async function submittingForm(e:any) 
   {
     e.preventDefault();
 
     if (errList !== "ok") return;
 
-    const form = new FormData();
+   const form = new FormData();
     form.append("correo", formData.email);
     form.append("clave", formData.password);
 
+    
+
     setLoad(true);
-    postRequest(form, "login").then((res) => {
+    postRequest(form, "login").then(async(res) => {
       setLoad(false);
       if (res === false||res.tipo!=='ADMI') return setErrMsg(true);
       setIsWrapping(true)
-      res.isLogin=true
-      setUser(res);
-      router.push("/");
+      await signIn("credentials", {
+        user: JSON.stringify(res),
+        redirect: true,
+        callbackUrl: "/",
+      });
+      
     });
   }
 
   return (
-    <form className={`flex flex-col gap-[2rem]`} onSubmit={submittingForm}>
-      <MyInput
-        placeHolder={"Email"}
-        value={formData.email}
-        icon={faEnvelope}
-        err={errList?.email}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setFormData((prev) => {
-            return { ...prev, email: e.target.value };
-          });
-        }}
-      />
-      <MyInput
-        placeHolder={"Password"}
-        value={formData.password}
-        icon={faLock}
-        err={errList?.password}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setFormData((prev) => {
-            return { ...prev, password: e.target.value };
-          });
-        }}
-        type={'password'}
-      />
-      <MyAssButton
-        type={"submit"}
-        label={"LOGIN"}
-        isLoad={load}
-        disabled={errList !== "ok"}
-      />
-    </form>
+    <>
+      <form className={`flex flex-col gap-[2rem]`} onSubmit={submittingForm}>
+        <MyInput
+          placeHolder={"Email"}
+          value={formData.email}
+          icon={faEnvelope}
+          err={errList?.email}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setFormData((prev) => {
+              return { ...prev, email: e.target.value };
+            });
+          }}
+        />
+        <MyInput
+          placeHolder={"Password"}
+          value={formData.password}
+          icon={faLock}
+          err={errList?.password}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setFormData((prev) => {
+              return { ...prev, password: e.target.value };
+            });
+          }}
+          type={"password"}
+        />
+        <MyAssButton
+          type={"submit"}
+          label={"LOGIN"}
+          isLoad={load}
+          disabled={errList !== "ok"}
+        />
+      </form>
+    </>
   );
 }
 

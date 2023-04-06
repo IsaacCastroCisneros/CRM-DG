@@ -6,5 +6,4 @@ export default interface user
   nombre:string;
   tipo:string;
   token:string;
-  isLogin?:boolean
 }

@@ -27,21 +27,7 @@ export default function UserDropDown({show}:{show:boolean})
       icon:faLifeRing,
       label:'Mis Cursos',
       path:'/'
-    },
-    {
-      icon:faRightFromBracket,
-      label:'Cerrar Sesion',
-      isLink:false,
-      onClick:()=>{
-        const form = new FormData();
-        form.append("token", user ? user.token : "");
-        postRequest(form, "logout").then((res) => console.log(res));
-        if(user)
-        {
-          setUser({...user,isLogin:false})
-        }
-      }  
-    },
+    }
   ]
 
   return (

@@ -1,12 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { unstable_getServerSession } from "next-auth/next"
+import { authOptions } from "pages/api/auth/[...nextauth]"
 
-type Data = {
-  name: string
-}
 
-export default function handler(
+
+export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
-  res.status(200).json({ name: 'heeeey' })
+  const session = await unstable_getServerSession(req,res,authOptions)
+  res.status(200).json(session)
 }

@@ -17,7 +17,6 @@ export const appContext=React.createContext<appContextValues>(
       nombre:'',
       tipo:'',
       token:'',
-      isLogin:false
      },
      setUser:()=>null,
      showPopup:{show:false,popup:<></>},
@@ -31,7 +30,7 @@ export default function AppContenxt({children}:{children:any})
   const[showPopup,setShowPopup]=useState<popup>({show:false,popup:<></>})
   const router = useRouter()
 
-  useEffect(()=>
+  /* useEffect(()=>
   {
     const user = localStorage.getItem('myUserCRM')
     if(user===null)return router.push('/login') 
@@ -57,7 +56,7 @@ export default function AppContenxt({children}:{children:any})
        return
     }
   },[user])
-
+ */
 
   const values:appContextValues = 
   {

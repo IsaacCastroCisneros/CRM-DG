@@ -5,6 +5,7 @@ import { ModalProspecto } from './components/ModalProspecto';
 import Link from 'next/link';
 
 const TableProspectosId = dynamic(() => import("./components/TableprospectosId"), { ssr: false })
+
 export default function ProspectosId({ params }: any) {
     const { id } = params
     const router = useRouter();
