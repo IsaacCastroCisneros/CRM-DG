@@ -10,28 +10,32 @@ import registroEnvio from './interface/registroEnvio'
 const columns =
 [
   {
+    name:'Certificado',
+    cell:(row:any)=>row.certificado
+  },
+/*   {
     name:'DNI',
     selector: (row:any) => row.dni,
   },
   {
     name:'Correo',
     selector: (row:any) => row.correo,
-  },
-  {
-    name:'Usuario',
-    selector:(row:any)=><img src={row.user} className="w-[3rem] h-[3rem] rounded-[100%] block"/>,
-  },
+  }, */
   {
     name:'Nombre',
     selector: (row:any) => row.nombre,
   },
   {
+    name:'Usuario',
+    selector:(row:any)=><img src={row.user} className="w-[3rem] h-[3rem] rounded-[100%] block"/>,
+  },
+ /*  {
     name:'Telefono',
     selector: (row:any) => row.telefono,
-  },
+  }, */
   {
     name:'Estado',
-    cell:(row:any)=><StatusEnvio exist={row.registroEnvio}/>
+    cell:(row:any)=><StatusEnvio exist={row.status}/>
   },
   {
     name:'Opciones',
@@ -45,7 +49,9 @@ interface user {
   user: string;
   nombre: string;
   telefono: string;
-  registroEnvio?:Array<registroEnvio>;
+  registroEnvio:Array<registroEnvio>;
+  status:boolean;
+  certificado:string
 }
 
 const data:Array<user>=
@@ -63,7 +69,9 @@ const data:Array<user>=
       distrito:'lel',
       provincia:'lel',
       departamento:'leeel'
-    }]
+    }],
+    certificado:'nombre',
+    status:false
   },
   {
     dni:'999999',
@@ -78,7 +86,9 @@ const data:Array<user>=
       distrito:'lel',
       provincia:'lel',
       departamento:'leeel'
-    }]
+    }],
+    certificado:'nombre',
+    status:true
   },
   {
     dni:'888888',
@@ -86,7 +96,17 @@ const data:Array<user>=
     user:'https://media.gettyimages.com/id/88500538/es/foto/bottle-nosed-dolphin-jumping.jpg?s=612x612&w=gi&k=20&c=G8OypwOt8tPATL6L-h8eBga8VxdodqbRyeQvz417TYA=',
     nombre:'fdfd',
     telefono:'5555555',
-    registroEnvio:[]
+    registroEnvio:[
+      {
+        direccion:'yooo',
+        referencia:'lel',
+        distrito:'lel',
+        provincia:'lel',
+        departamento:'leeel'
+      }
+    ],
+    certificado:'nombre',
+    status:true
   }
 ]
 

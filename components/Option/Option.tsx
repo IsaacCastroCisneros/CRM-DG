@@ -11,7 +11,7 @@ interface props
   onClick?:()=>void,
   styles?:string,
   label:string
-  type?:string,
+  type?:'info'|'edit'|'delete'|'more'|'ver',
   href?:string
 }
 

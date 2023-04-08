@@ -25,8 +25,8 @@ export default function MyOptions({user}:{user:any})
       <Options>
         <>
           <Option
-            type="edit"
-            label="Editar"
+            type="ver"
+            label="ver"
             onClick={() =>
               setShowPopup({ show: true, popup: <EditDataEnvio user={user} /> })
             }
