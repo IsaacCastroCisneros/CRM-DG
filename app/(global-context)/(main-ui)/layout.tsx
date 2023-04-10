@@ -12,23 +12,23 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
- /*  const session = await getServerSession(authOptions) */
+  const session = await getServerSession(authOptions)
 
-  /* if(session)
-  { */
-    return (
-      <>
-        <MyPopUp />
-        <header className="w-[5rem] h-[100%] relative z-[999]">
-           <NavbarUltimate />
-        </header>
-        <main className="flex-1 overflow-hidden relative z-[9]">
-           <HeaderNav />
-          <div className="py-[1.2rem] px-[2.5rem] pt-[2rem]">{children}</div>
-        </main>
-      </>
-    );
- /*  } */
+  return (
+    <>
+      <MyPopUp />
+      <header className="w-[5rem] h-[100%] relative z-[999]">
+         <NavbarUltimate />
+      </header>
+      <main className="flex-1 overflow-hidden relative z-[9]">
+         <HeaderNav />
+        <div className="py-[1.2rem] px-[2.5rem] pt-[2rem]">{children}</div>
+      </main>
+    </>
+  );
+/*   if(session)
+  {
+  }
 
-/*   return redirect('/login') */
+  return redirect('/login') */
 }
