@@ -32,7 +32,7 @@ function Option({label}:{label:string})
   return (
     <li>
       <Link
-        href={"/email/lel"}
+        href={"/dashboard/email/lel"}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
         className="relative flex shadow-[0px_0px_.3rem_0px_#c2c2c2] px-[.6rem] py-[.5rem] rounded-[.5rem] max-w-[100%] w-[15rem] items-center justify-between hover:text-myBlack transition-all duration-[200ms]"

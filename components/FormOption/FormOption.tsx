@@ -4,7 +4,7 @@ import React,{useContext, useState} from 'react'
 import {Field} from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faUpload } from '@fortawesome/free-solid-svg-icons';
-import { pagosNewFormContext } from '../../app/(global-context)/(main-ui)/pagos/new/components/PagosNewForm/PagosNewForm';
+import { pagosNewFormContext } from '@/app/(global-context)/(main-ui)/dashboard/pagos/new/components/PagosNewForm/PagosNewForm';
 import onlyNumFunc from '@/helpers/onlyNumFunc';
 import onlyTextFunc from '@/helpers/onlyTextFunc';
 

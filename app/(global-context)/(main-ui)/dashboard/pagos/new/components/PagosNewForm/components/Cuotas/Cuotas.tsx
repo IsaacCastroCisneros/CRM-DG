@@ -2,7 +2,7 @@ import { faCheck, faDollar, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import MyButtonThin from '../../../MyButtonThin/MyButtonThin'
-import FormOption from '../../../../../../../../../components/FormOption/FormOption'
+import FormOption from '@/components/FormOption/FormOption'
 
 export default function Cuotas() 
 {

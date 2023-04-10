@@ -8,44 +8,44 @@ import { usePathname } from 'next/navigation';
 export default function NavbarOptionList() 
 {
   const path = usePathname()
-  const[show,setShow]=useState({show:false,isSelected:0,pipeBar:path==='/'?'dashboard':path?.split('/')[1]})
+  const[show,setShow]=useState({show:false,isSelected:0,pipeBar:path==='/dashboard'?'dashboard':path?.split('/')[2]})
 
   const optionList =
   [
     {
-      href:'/',
+      href:'/dashboard',
       label:"dashboard",
       icon:faHouse,
     },
     {
-      href:'/prospectos',
+      href:'/dashboard/prospectos',
       label:"prospectos",
       icon:faFolder,
       list:[
         {
           label:'Prospectos',
-          href:'/prospectos'
+          href:'/dashboard/prospectos'
         },
         {
           label:'Elegir Criterio de Busqueda',
-          href:'/prospectos/search'
+          href:'/dashboard/prospectos/search'
         }
       ]
     },
     {
-      href:'/certificados',
+      href:'/dashboard/certificados',
       label:"certificados",
       icon:faChartPie,
       list:
       [
         {
           label:"Nuevo Certificado",
-          href:"/certificados/new"
+          href:"/dashboard/certificados/new"
         }
       ]
     },
     {
-      href:'/pagos',
+      href:'/dashboard/pagos',
       label:"pagos",
       icon:faDollar,
       list:
@@ -57,22 +57,22 @@ export default function NavbarOptionList()
       ]
     },
     {
-      href:'/envios',
+      href:'/dashboard/envios',
       label:"Envios",
       icon:faPaperPlane,
     },
     {
-      href:'/pendientes',
+      href:'/dashboard/pendientes',
       label:"pendientes",
       icon:faRotateRight,
     },
     {
-      href:'/users',
+      href:'/dashboard/users',
       label:"usuarios",
       icon:faUser,
     },
     {
-      href:'/email',
+      href:'/dashboard/email',
       label:"email",
       icon:faEnvelope,
     },

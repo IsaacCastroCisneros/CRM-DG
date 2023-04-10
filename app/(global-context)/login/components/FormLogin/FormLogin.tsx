@@ -46,7 +46,7 @@ export default function FormLogin({
       await signIn("credentials", {
         user: JSON.stringify(res),
         redirect: true,
-        callbackUrl: "/",
+        callbackUrl: "/dashboard",
       });
       
     });

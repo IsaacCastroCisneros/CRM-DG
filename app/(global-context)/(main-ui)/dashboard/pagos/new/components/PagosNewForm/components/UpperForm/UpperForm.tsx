@@ -1,5 +1,5 @@
 import React from 'react'
-import FormOption from '../../../../../../../../../components/FormOption/FormOption'
+import FormOption from '@/components/FormOption/FormOption'
 import { Form} from 'formik';
 
 export default function UpperForm()

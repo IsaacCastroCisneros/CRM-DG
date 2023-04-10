@@ -3,7 +3,7 @@ import { faSheetPlastic } from '@fortawesome/free-solid-svg-icons';
 import React, { useContext } from 'react'
 import MyButtonThin from '../../../MyButtonThin/MyButtonThin';
 import { pagosNewFormContext } from '../../PagosNewForm';
-import FormOption from '../../../../../../../../../components/FormOption/FormOption'
+import FormOption from '@/components/FormOption/FormOption'
 
 
 export default function BottomForm() 

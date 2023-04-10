@@ -11,7 +11,7 @@ export default function Pagos() {
             Listado de Pagos
           </h1>
           <Link
-            href={"/pagos/new"}
+            href={"/dashboard/pagos/new"}
             className="bg-[#00CCF2] text-white rounded-full py-2 px-3 font-medium"
           >
             + Agregar Nuevo

@@ -16,7 +16,7 @@ export default function ProspectosId({ params }: any) {
                 <h1 className='Montserrat font-black text-2xl'>Prospectos Curso SIAF Básico</h1>
                 <div className='flex gap-3 flex-wrap'>
                     <ModalProspecto />
-                    <Link href={'/prospectos/id/creacionmasivo'} className='border border-[#00CCF2] py-2 px-3 rounded-full text-[#00CCF2] font-medium'>Agregar Masivo</Link>
+                    <Link href={'/dashboard/prospectos/id/creacionmasivo'} className='border border-[#00CCF2] py-2 px-3 rounded-full text-[#00CCF2] font-medium'>Agregar Masivo</Link>
                 </div>  
             </div>
             <TableProspectosId id={id} />

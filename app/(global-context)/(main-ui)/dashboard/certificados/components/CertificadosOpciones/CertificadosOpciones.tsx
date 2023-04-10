@@ -11,7 +11,7 @@ export default function CertificadosOpciones({row}:{row:any})
   return (
     <Options>
       <>
-        <Option type="ver" label="ver" href={`/certificados/${row.Id}`} />
+        <Option type="ver" label="ver" href={`/dashboard/certificados/${row.Id}`} />
         <Option
           type="delete"
           label="eliminar"
