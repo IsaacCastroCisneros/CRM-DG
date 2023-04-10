@@ -1,5 +1,5 @@
 'use client'
-import { SessionProvider,signIn,useSession } from 'next-auth/react';
+import { SessionProvider} from 'next-auth/react';
 
 export default function MyMainContent({children}:{children:JSX.Element|null}) 
 {
