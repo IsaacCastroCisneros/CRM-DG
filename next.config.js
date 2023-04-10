@@ -7,7 +7,7 @@ const nextConfig = {
   images:{
     domains: ["images.unsplash.com"]
   },
- /*  async redirects() {
+  async redirects() {
     return [
       {
         source: '/',
@@ -15,7 +15,7 @@ const nextConfig = {
         permanent: true,
       },
     ]
-  }, */
+  },
 }
 
 module.exports = nextConfig
