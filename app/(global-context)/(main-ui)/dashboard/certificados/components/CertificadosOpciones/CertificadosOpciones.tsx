@@ -3,6 +3,7 @@ import Options from '@/components/Options/Options'
 import { appContext } from '@/context/AppContenxt';
 import React, { useContext } from 'react'
 import EliminarCertificado from './components/EliminarCertificado';
+import Link from 'next/link';
 
 export default function CertificadosOpciones({row}:{row:any}) 
 {
@@ -12,6 +13,7 @@ export default function CertificadosOpciones({row}:{row:any})
     <Options>
       <>
         <Option type="ver" label="ver" href={`/dashboard/certificados/${row.Id}`} />
+        <Link href={`/dashboard/certificados/${row.Id}`}>fdfdfdfdf</Link>
         <Option
           type="delete"
           label="eliminar"
