@@ -1,5 +1,5 @@
 import React from 'react'
-import { SyncLoader } from 'react-spinners'
+import { ClipLoader } from 'react-spinners'
 
 interface props
 {
@@ -11,11 +11,11 @@ interface props
 
 export default function Spinner({styles,isButtonLoad=false,color='#fff',size=15}:props) 
 {
-  const buttonLoad = ' !absolute !left-0 !top-[50%] translate-y-[-50%]'
+  const buttonLoad = '!absolute !left-0 !top-[50%] translate-y-[-50%]'
 
   return (
-    <div className={`flex w-[100%] justify-center${isButtonLoad ? buttonLoad:''} ${styles}`}>
-        <SyncLoader color={color} size={size} />
+    <div className={`flex w-[100%] justify-center ${isButtonLoad ? buttonLoad:''} ${styles}`}>
+        <ClipLoader color={color} size={size} />
     </div>
   )
 }

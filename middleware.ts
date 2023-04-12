@@ -1,5 +1,5 @@
-export { default } from "next-auth/middleware"
+/* export { default } from "next-auth/middleware"
 import { redirect } from 'next/navigation';
 
-export const config = { matcher: ["/dashboard/:path*"] }
+export const config = { matcher: ["/dashboard/:path*"] } */
 

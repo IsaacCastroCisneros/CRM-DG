@@ -42,16 +42,16 @@ export default function NavbarOption(props:props)
   }
 
 
-  let isShow = id===show.isSelected
+/*   let isShow = id===show.isSelected */
 
    return (
      <li
        className={`transition-all duration-200`}
        onMouseEnter={()=>setIsHover(true)}
        onMouseLeave={()=>setIsHover(false)}
-       style={{
+   /*     style={{
          height: `${30 + (show.show && isShow ? getH() : 0)}px`,
-       }}
+       }} */
      >
        <div ref={container}>
          <Link
@@ -73,8 +73,8 @@ export default function NavbarOption(props:props)
              show.pipeBar===label ? "block" : "hidden" 
              }`}
            ></div>
-           <div className="w-[5rem] flex justify-center">
-             <FontAwesomeIcon size="2xl" icon={icon} />
+           <div className="w-[5rem] mob:w-[3rem] flex justify-center">
+             <FontAwesomeIcon className='text-[30px] mob:text-[18.75px]' icon={icon}/>
            </div>
          </Link>
         {/*  {list && (
