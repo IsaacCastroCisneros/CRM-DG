@@ -11,6 +11,8 @@ export default async function RootLayout({
 
     return (
       <>
+        <Link href={'/lel'}>rrrr</Link>
+        <Link href={'/login'}>rrrrñññ</Link>
         <MyPopUp />
         <header className="w-[5rem] mob:w-[3rem] h-[100%] relative z-[999]">
            <NavbarUltimate />
@@ -23,4 +25,3 @@ export default async function RootLayout({
     );
 
 }
-
