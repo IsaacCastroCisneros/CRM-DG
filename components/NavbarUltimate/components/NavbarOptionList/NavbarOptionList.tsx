@@ -4,6 +4,7 @@ import React,{useState} from 'react'
 import NavbarOption from './components/NavbarOption';
 import { faHouse,faFolder,faChartPie,faDollar, faPaperPlane, faRotateRight, faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export default function NavbarOptionList() 
 {
@@ -94,6 +95,7 @@ export default function NavbarOptionList()
             );
           })
       }
+      <Link href="/dashboard/lel">leeeel</Link>
     </>
   );
 }
