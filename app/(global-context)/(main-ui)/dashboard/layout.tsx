@@ -12,6 +12,7 @@ export default async function RootLayout({
     return (
       <>
         <MyPopUp />
+        {/* fd */}
         <header className="w-[5rem] mob:w-[3rem] h-[100%] relative z-[999]">
            <NavbarUltimate />
         </header>
@@ -23,3 +24,4 @@ export default async function RootLayout({
     );
 
 }
+
