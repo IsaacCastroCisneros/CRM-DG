@@ -5,16 +5,16 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faChevronRight, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Dispatch, SetStateAction, useState } from 'react'
-/* import { signOut, useSession } from 'next-auth/react'; */
+import { signOut, useSession } from 'next-auth/react';
 import { MoonLoader as Spinner } from 'react-spinners'
 
 export default function UserMenuUltimate() 
 {
-   /*  const{data:session,status}=useSession()
+    const{data:session,status}=useSession()
 
-    const user:any =  session?.user  */
+    const user:any =  session?.user 
 
-  return  null  /* (
+  return (
     <>
       {user && status === "authenticated" && (
         <div className="flex items-center px-[20.8px] gap-[1rem]">
@@ -36,7 +36,7 @@ export default function UserMenuUltimate()
         status==='loading'&&!user&&<div className='mr-[1rem]'><Spinner color='#2D62ED' size={30} /></div>
       }
     </>
-  ); */
+  );
 }
 
 interface optionList
