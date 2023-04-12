@@ -22,12 +22,12 @@ export default async function RootLayout({
     return (
       <MyMainContent>
         <>
-          {/* <Link href={"/lel"} >hmmm</Link>
-          <Link href="/lel" >yooo</Link>
-          <Link href="/login" >login</Link> */}
           <html lang="en" className="bg-myWhite">
             <Head></Head>
             <body className="flex my-container">
+              <Link href={"/lel"}>hmmm</Link>
+              <Link href="/lel">yooo</Link>
+              <Link href="/login">login</Link>
               <AppContenxt>{children}</AppContenxt>
             </body>
           </html>
