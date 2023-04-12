@@ -1,6 +1,7 @@
 import HeaderNav from '@/components/HeaderNav/HeaderNav';
 import NavbarUltimate from '@/components/NavbarUltimate/NavbarUltimate';
 import MyPopUp from './components/MyPopUp';
+import Link from 'next/link';
 
 export default async function RootLayout({
   children,
@@ -10,6 +11,8 @@ export default async function RootLayout({
 
     return (
       <>
+        <Link href={'/lel'}>rrrr</Link>
+        <Link href={'/login'}>rrrr</Link>
         <MyPopUp />
         <header className="w-[5rem] mob:w-[3rem] h-[100%] relative z-[999]">
            <NavbarUltimate />
