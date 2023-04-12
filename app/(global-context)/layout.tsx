@@ -25,7 +25,6 @@ export default async function RootLayout({
           <html lang="en" className="bg-myWhite">
             <Head></Head>
             <body className="flex my-container">
-              <Link href={'/dashboard/lel'}>ffffff</Link>
               <AppContenxt>{children}</AppContenxt>
             </body>
           </html>
