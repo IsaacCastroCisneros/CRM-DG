@@ -95,9 +95,6 @@ export default function NavbarOptionList()
             );
           })
       }
-      <Link href="/dashboard/lel/fff">leeeel</Link>
-      <Link href="/dashboard/lel">lelid</Link>
-      <Link href="/login">fff</Link>
     </>
   );
 }
