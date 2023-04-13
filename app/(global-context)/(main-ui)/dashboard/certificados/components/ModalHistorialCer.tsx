@@ -4,7 +4,8 @@ import { BtnHistorial } from "@/components/BtnHistorial/BtnHistorial";
 import useOnClickOutside from "@/hooks/useOnClickOutside";
 import { useState, useRef } from 'react';
 
-export const ModalHistorialCer = () => {
+export const ModalHistorialCer = () => 
+{
     const [show, setShow] = useState(true)
     const [modal, setModal] = useState<boolean>(false)
     const handleClickOutsideFn = () => {
@@ -12,6 +13,7 @@ export const ModalHistorialCer = () => {
     }
     const myRefElement1 = useRef(null);
     useOnClickOutside(myRefElement1, handleClickOutsideFn);
+
     return (
         <>
 
@@ -27,7 +29,6 @@ export const ModalHistorialCer = () => {
                     <p className='font-black text-lg'>Historia del certificado</p>
                     <div className='mt-5'>
                         <div className={`overflow-hidden transition-all duration-[150ms] ${show ? "h-[51px]" : "h-96"}`} >
-
                             <button className="bg-[#f5f5f5] w-[100%] text-left p-[1rem] flex justify-between border rounded-t-lg font-black items-center" onClick={() => setShow(!show)}>
                                 <strong>
                                     <span className=" text-[#363535]">Maria Valle</span>
@@ -37,12 +38,9 @@ export const ModalHistorialCer = () => {
                                     <i className={`fa-solid ${!show ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                                 </div>
                             </button>
-
-
                             <div className='py-7 px-5 border rounded-b-lg'>
                                Estado en tramite
                             </div>
-
                         </div>
                     </div>
                 </div>
