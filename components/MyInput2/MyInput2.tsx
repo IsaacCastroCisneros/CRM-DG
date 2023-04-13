@@ -46,7 +46,7 @@ export default function MyInput2(props:props)
               onChange(e) 
               return
             }
-            if(e.target.value.length>limit)e.target.value=e.target.value.substring(0,(e.target.value.length-1))
+            if(Number(e.target.value.length)>Number(limit))e.target.value=e.target.value.substring(0,(e.target.value.length-1))
             onChange(e)
           }}
         type={type}
