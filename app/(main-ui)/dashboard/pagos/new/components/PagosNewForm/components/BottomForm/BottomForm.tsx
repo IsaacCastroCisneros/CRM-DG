@@ -1,4 +1,3 @@
-import pdfMaker from '@/helpers/pdfMaker';
 import { faSheetPlastic } from '@fortawesome/free-solid-svg-icons';
 import React, { useContext } from 'react'
 import MyButtonThin from '../../../MyButtonThin/MyButtonThin';
