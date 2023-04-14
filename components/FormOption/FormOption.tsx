@@ -4,7 +4,7 @@ import React,{useContext, useState} from 'react'
 import {Field} from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faUpload } from '@fortawesome/free-solid-svg-icons';
-import { pagosNewFormContext } from '@/app/(global-context)/(main-ui)/dashboard/pagos/new/components/PagosNewForm/PagosNewForm';
+import { pagosNewFormContext } from '@/context/pagosNewFormContext';
 import onlyNumFunc from '@/helpers/onlyNumFunc';
 import onlyTextFunc from '@/helpers/onlyTextFunc';
 
@@ -39,7 +39,8 @@ export default function FormOption(props:props)
 
     const[showPassword,setShowPassword]=useState({show:type==='password',shoPassword:false,type})
 
-    const myStyles = 'relative px-[.4rem] py-[.2rem] h-[30.8px] w-[100%] cursor-auto border-inputBorder border-[1px] focus:border-primary outline-none rounded-[.3rem]'
+    const myStyles = 'relative px-[.4rem] py-[.2rem] h-[30.8px] w-[100%] cursor-auto border-inputBorder border-[1px] focus:border-primary outline-none rounded-[.3rem]';
+
     const myName = name ||
     label?.toLowerCase()?.split('').map(entry=>
       { 
