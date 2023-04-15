@@ -163,7 +163,7 @@ export default function TableProspectos() {
         },
         {
             name: 'Acciones',
-            cell: row => <Link href={`/dashboard/prospectos/${row.id}`}><Image src='/img/Gif/view.gif' alt='Logo' width={45} height={45} /> </Link>
+            cell: row => <Link href={`/dashboard/prospectos/${row.id}`}><Image src='/img/gif/view.gif' alt='Logo' width={45} height={45} /> </Link>
 
         }
     ];
