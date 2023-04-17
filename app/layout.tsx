@@ -9,7 +9,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import '@flaticon/flaticon-uicons/css/all/all.css'
 import Head from './head';
 import MyMainContent from './components/MyMainContent/MyMainContent';
-import Link from 'next/link';
 
 
 export default async function RootLayout({
