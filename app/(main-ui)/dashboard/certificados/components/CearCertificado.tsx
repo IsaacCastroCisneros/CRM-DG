@@ -2,7 +2,9 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { FormCertificado } from './FormCertificado'
 
-export const CearCertificado = () => {
+
+export const CearCertificado = () => 
+{
     const [isOpen, setIsOpen] = useState<boolean>(false)
     return (
         <>
