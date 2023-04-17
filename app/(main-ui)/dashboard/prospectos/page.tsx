@@ -3,6 +3,7 @@
 import MyBlock from '@/components/MyBlock/MyBlock'
 import TheDataTable from '@/components/TheDataTable/TheDataTable';
 import React from 'react'
+import TableProspectos from './components/TableProspectos';
 
 export default function page() 
 {
@@ -150,7 +151,7 @@ export default function page()
 
   return (
     <MyBlock title='Prospectos'>
-       <>lul</>
+       <TableProspectos/>
     </MyBlock>
   )
 }
