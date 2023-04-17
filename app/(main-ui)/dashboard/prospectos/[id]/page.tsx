@@ -1,11 +1,9 @@
 "use client"
 
 import { useRouter } from 'next/navigation';
-import dynamic from 'next/dynamic';
 import { ModalProspecto } from './components/ModalProspecto';
 import Link from 'next/link';
 
-const TableProspectosId = dynamic(() => import("./components/TableprospectosId"), { ssr: false })
 
 export default function ProspectosId({ params }: any) {
     const { id } = params
@@ -20,7 +18,7 @@ export default function ProspectosId({ params }: any) {
                     <Link href={'/dashboard/prospectos/id/creacionmasivo'} className='border border-[#00CCF2] py-2 px-3 rounded-full text-[#00CCF2] font-medium'>Agregar Masivo</Link>
                 </div>  
             </div>
-            <TableProspectosId id={id} />
+            <>lelee</>
         </>
     )
 }
