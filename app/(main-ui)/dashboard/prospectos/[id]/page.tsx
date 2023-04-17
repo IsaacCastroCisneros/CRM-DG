@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { ModalProspecto } from './components/ModalProspecto';
 import Link from 'next/link';
+import TableProspectosId from './components/TableprospectosId';
 
 
 export default function ProspectosId({ params }: any) {
@@ -18,7 +19,7 @@ export default function ProspectosId({ params }: any) {
                     <Link href={'/dashboard/prospectos/id/creacionmasivo'} className='border border-[#00CCF2] py-2 px-3 rounded-full text-[#00CCF2] font-medium'>Agregar Masivo</Link>
                 </div>  
             </div>
-            <>lelee</>
+            <TableProspectosId id={id} />
         </>
     )
 }
