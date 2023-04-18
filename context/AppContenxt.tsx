@@ -3,13 +3,8 @@
 import React, { useState } from 'react'
 import appContextValues from '@/interfaces/appContextValues';
 import popup from '@/interfaces/popup';
+import appContext from './appContext';
 
-export const appContext=React.createContext<appContextValues>(
-  {
-     showPopup:{show:false,popup:<></>},
-     setShowPopup:()=>null
-  }
-)
 
 const AppContenxt=({children}:{children:any})=> 
 {
