@@ -107,7 +107,8 @@ const columns: TableColumn<DataPagosd>[] = [
     }
 
 ];
-export default function TablePagos(){
+const TablePagos=()=>
+{
     const [setFilterText, , , , filteredItems] = useFiltrosTable(DataPagos)
     const [pending] = useLoading(filteredItems)
     return (
@@ -124,3 +125,5 @@ export default function TablePagos(){
         </>
     )
 }
+
+export default TablePagos

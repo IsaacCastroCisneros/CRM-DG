@@ -5,7 +5,7 @@ import React,{Dispatch, SetStateAction, useState} from 'react'
 import ErrMsg from '../FormLogin/components/ErrMsg';
 import FormLogin from '../FormLogin/FormLogin';
 
-export default function MyLogin() 
+const MyLogin=()=> 
 {
   const [errMsg, setErrMsg] = useState<boolean>(false);
   const[isWrapping,setIsWrapping]=useState<boolean>(false)
@@ -33,7 +33,7 @@ interface props
   errMsg:boolean
 }
 
-function FullForm({setErrMsg, setIsWrapping, errMsg}:props) 
+const FullForm=({setErrMsg, setIsWrapping, errMsg}:props)=> 
 {
   return (
     <div className="max-w-[384px]">
@@ -61,3 +61,4 @@ function FullForm({setErrMsg, setIsWrapping, errMsg}:props)
   );
 }
   
+export default MyLogin

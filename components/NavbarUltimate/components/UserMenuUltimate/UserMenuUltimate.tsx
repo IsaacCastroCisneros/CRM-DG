@@ -8,7 +8,7 @@ import React, { Dispatch, SetStateAction, useState } from 'react'
 import { signOut, useSession } from 'next-auth/react';
 import { MoonLoader as Spinner } from 'react-spinners'
 
-export default function UserMenuUltimate() 
+const UserMenuUltimate=()=> 
 {
     const{data:session,status}=useSession()
 
@@ -46,7 +46,7 @@ interface optionList
     func?:()=>void
 }
 
-function UserOptionMenu({user,setUser}:{user:user,setUser:Dispatch<SetStateAction<user | undefined>>})
+const UserOptionMenu=({user,setUser}:{user:user,setUser:Dispatch<SetStateAction<user | undefined>>})=>
 {
     const[show,setShow]=useState<boolean>(false)
 
@@ -85,7 +85,7 @@ function UserOptionMenu({user,setUser}:{user:user,setUser:Dispatch<SetStateActio
     );
 }
 
-function UserOption(props:optionList)
+const UserOption=(props:optionList)=>
 {
   const{label}=props
     
@@ -97,3 +97,5 @@ function UserOption(props:optionList)
     </li>
   );
 }
+
+export default UserMenuUltimate

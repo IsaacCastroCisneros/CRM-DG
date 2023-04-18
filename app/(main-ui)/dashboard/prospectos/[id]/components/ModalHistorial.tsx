@@ -1,4 +1,5 @@
 "use client"
+
 import { BtnHistorial } from "@/components/BtnHistorial/BtnHistorial"
 import useOnClickOutside from "@/hooks/useOnClickOutside";
 import { useState, useRef } from 'react';

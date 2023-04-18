@@ -3,7 +3,6 @@
 import HoverMsg from '@/components/HoverMsg/HoverMsg';
 import optionList from '@/components/NavbarUltimate/interfaces/optionList';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { Dispatch,SetStateAction,useRef, useState } from 'react';
@@ -15,11 +14,11 @@ interface props
   isHome?:boolean;
   id:number;
   show:{show:boolean,isSelected:number,pipeBar:string|undefined};
-  setShow:Dispatch<SetStateAction<{ show: boolean; isSelected: number;pipeBar:string|undefined}>>;
+  setShow:Dispatch<SetStateAction<{ show: boolean; isSelected: number;pipeBar:any}>>;
   list?:Array<optionList> 
 }
 
-export default function NavbarOption(props:props)
+const NavbarOption=(props:props)=>
 {  
   const
   {
@@ -96,3 +95,5 @@ export default function NavbarOption(props:props)
      </li>
    );
 }
+
+export default NavbarOption

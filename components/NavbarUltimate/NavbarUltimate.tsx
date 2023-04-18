@@ -1,8 +1,9 @@
 'use client'
+
 import React from 'react'
 import NavbarOptionList from './components/NavbarOptionList/NavbarOptionList';
 
-export default function NavbarUltimate() 
+const NavbarUltimate=()=> 
 {
   return (
     <nav className="bg-primary fixed text-myWhite h-[100%]">
@@ -16,4 +17,5 @@ export default function NavbarUltimate()
   );
 }
 
+export default NavbarUltimate
 

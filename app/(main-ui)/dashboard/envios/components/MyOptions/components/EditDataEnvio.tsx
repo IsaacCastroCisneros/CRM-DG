@@ -6,13 +6,14 @@ import registroEnvio from '../../../interface/registroEnvio'
 
 
 
-export default function EditDataEnvio({user}:{user:any}) {
+const EditDataEnvio=({user}:{user:any})=> 
+{
   return (
     <RegularPopup title={`Datos de envio del usuario ${user.nombre}`} content={<MyForm user={user} registroEnvio={user.registroEnvio[0]} />} />
   )
 }
 
-function MyForm({registroEnvio,user}:{registroEnvio:registroEnvio,user:any})
+const MyForm=({registroEnvio,user}:{registroEnvio:registroEnvio,user:any})=>
 {
     return (
       <>
@@ -42,7 +43,7 @@ function MyForm({registroEnvio,user}:{registroEnvio:registroEnvio,user:any})
     );
 }
 
-function Field({data,label}:{data:string,label:string})
+const Field=({data,label}:{data:string,label:string})=>
 {
   return(
     <div className='flex'>
@@ -51,3 +52,5 @@ function Field({data,label}:{data:string,label:string})
     </div>
   )
 }
+
+export default EditDataEnvio

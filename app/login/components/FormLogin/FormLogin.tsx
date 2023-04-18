@@ -10,13 +10,13 @@ import {login as loginValidation} from '@/helpers/validations'
 import MyInput from '@/components/MyInput/MyInput'
 import { signIn } from "next-auth/react"
 
-export default function FormLogin({
+const FormLogin=({
   setErrMsg,
   setIsWrapping,
 }: {
   setErrMsg: React.Dispatch<React.SetStateAction<boolean>>;
   setIsWrapping: React.Dispatch<React.SetStateAction<boolean>>;
-}) 
+})=> 
 {
   const [formData, setFormData] = useState<login>({ email: "", password: "" });
   const [errList] = useMyErrList(formData, loginValidation);
@@ -85,6 +85,6 @@ export default function FormLogin({
   );
 }
 
-
+export default FormLogin
 
 

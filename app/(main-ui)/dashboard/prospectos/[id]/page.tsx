@@ -6,7 +6,8 @@ import Link from 'next/link';
 import TableProspectosId from './components/TableprospectosId';
 
 
-export default function ProspectosId({ params }: any) {
+const ProspectosId=({ params }: any)=> 
+{
     const { id } = params
     const router = useRouter();
     return (
@@ -23,3 +24,5 @@ export default function ProspectosId({ params }: any) {
         </>
     )
 }
+
+export default ProspectosId

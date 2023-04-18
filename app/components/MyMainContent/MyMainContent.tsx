@@ -1,7 +1,7 @@
 'use client'
 import { SessionProvider} from 'next-auth/react';
 
-export default function MyMainContent({children}:{children:JSX.Element|null}) 
+const MyMainContent=({children}:{children:JSX.Element|null})=> 
 {
   return (
     <SessionProvider>
@@ -12,7 +12,9 @@ export default function MyMainContent({children}:{children:JSX.Element|null})
   )
 }
 
-function MyContent({children}:{children:JSX.Element|null})
+const MyContent=({children}:{children:JSX.Element|null})=>
 {
   return <>{children}</>;
 }
+
+export default MyMainContent

@@ -22,7 +22,7 @@ interface props
     onlyText?:boolean
 }
 
-export default function FormOption(props:props)
+const FormOption=(props:props)=>
 {
     const
     {
@@ -113,7 +113,8 @@ interface isFileInside
   isIn:boolean;
   name:string
 }
-function FileField({myStyles,name}:{myStyles:string,name:string|undefined})
+
+const FileField=({myStyles,name}:{myStyles:string,name:string|undefined})=>
 {
   const[isFocus,setIsFocus]=useState<boolean>(false)
   const[isFileInside,setIsFileInside]=useState<isFileInside>({isIn:false,name:''})
@@ -152,7 +153,7 @@ function FileField({myStyles,name}:{myStyles:string,name:string|undefined})
   );
 }
 
-function gettingImg(e:any,setIsOk:React.Dispatch<React.SetStateAction<boolean>>,setIsFileInside:React.Dispatch<React.SetStateAction<isFileInside>>)
+const gettingImg=(e:any,setIsOk:React.Dispatch<React.SetStateAction<boolean>>,setIsFileInside:React.Dispatch<React.SetStateAction<isFileInside>>)=>
 {
    const isType= ['image/png','image/jpeg'].some(typ=>typ===e.target.files[0].type)
 
@@ -164,3 +165,5 @@ function gettingImg(e:any,setIsOk:React.Dispatch<React.SetStateAction<boolean>>,
    }  
    setIsOk(false)
 }
+
+export default FormOption

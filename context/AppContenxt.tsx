@@ -11,7 +11,7 @@ export const appContext=React.createContext<appContextValues>(
   }
 )
 
-export default function AppContenxt({children}:{children:any}) 
+const AppContenxt=({children}:{children:any})=> 
 {
   const[showPopup,setShowPopup]=useState<popup>({show:false,popup:<></>})
 
@@ -34,3 +34,5 @@ export default function AppContenxt({children}:{children:any})
   )
 }
 
+
+export default AppContenxt

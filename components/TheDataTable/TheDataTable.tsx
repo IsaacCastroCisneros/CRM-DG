@@ -14,7 +14,7 @@ interface props
   myFilter?:{value:string,property:string}
 }
 
-export default function TheDataTable(props:props) 
+const TheDataTable=(props:props)=> 
 {
   const
   {
@@ -78,3 +78,4 @@ export default function TheDataTable(props:props)
   );
 }
 
+export default TheDataTable

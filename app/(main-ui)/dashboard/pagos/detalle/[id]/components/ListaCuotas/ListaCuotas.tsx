@@ -5,7 +5,7 @@ import cuotas from './interfaces/cuoatas';
 import MyRowItem from './components/MyRowItem/MyRowItem';
 import MyRow from './components/MyRow/MyRow';
 
-export default function ListaCuotas() 
+const ListaCuotas=()=> 
 {
   const cuotas:Array<cuotas>=
   [
@@ -74,9 +74,7 @@ export default function ListaCuotas()
 }
 
 
-
-
-
+export default ListaCuotas
 
 
 

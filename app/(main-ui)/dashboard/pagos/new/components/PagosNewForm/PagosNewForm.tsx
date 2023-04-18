@@ -15,7 +15,7 @@ interface values
 
 export const pagosNewFormContext = React.createContext<values>({isOk:false,setIsOk:()=>null})
 
-export default function PagosNewForm() 
+const PagosNewForm=()=> 
 {
   const[isOk,setIsOk]=useState<boolean>(false)
 
@@ -54,5 +54,5 @@ export default function PagosNewForm()
 }
 
 
-
+export default PagosNewForm
 

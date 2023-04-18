@@ -14,7 +14,7 @@ interface props
   limit?:number|string|false
 }
 
-export default function MyInput2(props:props) 
+const MyInput2=(props:props)=> 
 {
   const[focus,setFocus]=useState<boolean>(false)
 
@@ -68,3 +68,4 @@ export default function MyInput2(props:props)
   );
 }
 
+export default MyInput2

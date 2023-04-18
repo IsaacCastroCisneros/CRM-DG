@@ -1,5 +1,7 @@
 "use client"
-export default function DetalleCertificado({ params }: any) {
+
+const DetalleCertificado=({ params }: any)=> 
+{
     const { id } = params
     return (
         <>

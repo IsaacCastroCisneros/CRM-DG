@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import HoverMsg from '@/components/HoverMsg/HoverMsg';
 
-export default function page() 
+const page=()=> 
 {
    return (
        <>
@@ -24,7 +24,7 @@ export default function page()
     
 }
 
-function Option({label}:{label:string})
+const Option=({label}:{label:string})=>
 {
   const[isHover,setIsHover]=useState(false)  
 
@@ -51,3 +51,5 @@ function Option({label}:{label:string})
     </li>
   );
 }
+
+export default page

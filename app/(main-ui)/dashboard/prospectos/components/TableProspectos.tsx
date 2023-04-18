@@ -131,7 +131,8 @@ export const DatosProspectos:any = [
     }
   ]
 
-export default function TableProspectos() {
+const TableProspectos=()=> 
+{
     const router = useRouter();
     const columns: TableColumn<DataPros>[] = [
 
@@ -181,3 +182,6 @@ export default function TableProspectos() {
         </>
     )
 }
+
+export default TableProspectos
+

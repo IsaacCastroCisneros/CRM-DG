@@ -8,7 +8,7 @@ import MyButton from './components/MyButton/MyButton'
 import DetallePrograma from './components/DetallePrograma/DetallePrograma'
 import ActualizarPago from './components/ActualizarPago/ActualizarPago'
 
-export default function EditForm({setShowPopup}:{setShowPopup:React.Dispatch<React.SetStateAction<popup>>}) 
+const EditForm=({setShowPopup}:{setShowPopup:React.Dispatch<React.SetStateAction<popup>>})=> 
 {
   const[show,setShow]=useState<'actualizar'|'detalles'>('actualizar')
 
@@ -43,3 +43,4 @@ export default function EditForm({setShowPopup}:{setShowPopup:React.Dispatch<Rea
   );
 }
 
+export default EditForm

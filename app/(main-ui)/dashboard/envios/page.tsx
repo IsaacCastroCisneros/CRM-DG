@@ -110,7 +110,7 @@ const data:Array<user>=
   }
 ]
 
-export default function page() 
+const page=()=> 
 {
 
   return (

@@ -95,7 +95,7 @@ const data =
   }
 ]
 
-export default function Page() 
+const Page=()=> 
 {
   const[myFilter,setMyFilter]=useState({value:'',property:''})
   const{setShowPopup}=useContext(appContext)
@@ -118,7 +118,7 @@ export default function Page()
   );
 }
 
-
+export default Page
 
 
 

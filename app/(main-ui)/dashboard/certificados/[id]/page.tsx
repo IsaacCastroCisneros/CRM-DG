@@ -3,7 +3,8 @@ import dynamic from 'next/dynamic';
 import TableEdit from './components/TableEdit';
 
 
-export default function EditCertificado({ params }: any) {
+const EditCertificado=({ params }: any)=> 
+{
     const { id } = params
     return(
         <>
@@ -12,3 +13,5 @@ export default function EditCertificado({ params }: any) {
         </>
     )
 }
+
+export default EditCertificado

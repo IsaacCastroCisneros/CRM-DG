@@ -1,11 +1,10 @@
 'use client'
 
 import MyBlock from '@/components/MyBlock/MyBlock'
-import TheDataTable from '@/components/TheDataTable/TheDataTable';
 import React from 'react'
 import TableProspectos from './components/TableProspectos';
 
-export default function page() 
+const page=()=> 
 {
     const columns = [
       {
@@ -155,3 +154,5 @@ export default function page()
     </MyBlock>
   )
 }
+
+export default page

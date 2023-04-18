@@ -6,7 +6,7 @@ import { faHouse,faFolder,faChartPie,faDollar, faPaperPlane, faRotateRight, faUs
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
-export default function NavbarOptionList() 
+const NavbarOptionList=()=> 
 {
   const path = usePathname()
   const[show,setShow]=useState({show:false,isSelected:0,pipeBar:path==='/dashboard'?'dashboard':path?.split('/')[2]})
@@ -98,3 +98,5 @@ export default function NavbarOptionList()
     </>
   );
 }
+
+export default NavbarOptionList

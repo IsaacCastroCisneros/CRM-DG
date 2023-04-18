@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import registroEnvio from '../../interface/registroEnvio'
 
-export default function StatusEnvio({exist}:{exist:Array<registroEnvio>}) 
+const StatusEnvio=({exist}:{exist:Array<registroEnvio>})=> 
 {
   const[show,setShow]=useState<boolean>(false)
 
@@ -24,3 +24,5 @@ export default function StatusEnvio({exist}:{exist:Array<registroEnvio>})
     </div>
   )
 }
+
+export default StatusEnvio

@@ -89,7 +89,9 @@ const columns: TableColumn<AlumnosPros>[] =
             cell: row => <ConvertirAlumno />
         }
     ];
-export default function TableProspectosId({ id }: any) {
+
+const TableProspectosId=({ id }: any)=> 
+{
 
     const [setFilterText, , , , filteredItems] = useFiltrosTable(DatosProspectos[id].alumnos)
     const [pending] = useLoading(DatosProspectos[id].alumnos)
@@ -112,3 +114,5 @@ export default function TableProspectosId({ id }: any) {
 
     )
 }
+
+export default TableProspectosId

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from 'react';
 
 
-export default function Creacionmasivo({ params }: any) 
+const Creacionmasivo=({ params }: any)=> 
 {
     const dataArmad: any = []
     const [valores, setValores] = useState<any[]>([])
@@ -108,3 +108,5 @@ export default function Creacionmasivo({ params }: any)
       </>
     );
 }
+
+export default Creacionmasivo

@@ -1,8 +1,9 @@
 'use client';
+
 import { CearCertificado } from './components/CearCertificado';
 import { TableCertificados } from './components/TableCertificados';
 
-export default function Certificados() {
+const Certificados=()=> {
     return (
         <>
             <div className='flex justify-between items-center'>
@@ -13,3 +14,5 @@ export default function Certificados() {
         </>
     )
 }
+
+export default Certificados

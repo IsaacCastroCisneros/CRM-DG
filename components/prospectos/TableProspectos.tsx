@@ -68,7 +68,7 @@ const columns: TableColumn<DataRow>[] = [
 
 
 ];
-export default function TableProspectos() {
+const TableProspectos=()=> {
 
 
     const [filterText, setFilterText] = useState('');
@@ -93,3 +93,5 @@ export default function TableProspectos() {
         </>
     )
 }
+
+export default TableProspectos

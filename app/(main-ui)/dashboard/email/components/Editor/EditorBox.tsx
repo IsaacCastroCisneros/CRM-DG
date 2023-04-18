@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import NewButton from '@/components/NewButton/NewButton';
 
-export default function EditorBox() 
+const EditorBox=()=> 
 {
     const editorRef = useRef<any>(null);
    
@@ -57,3 +57,5 @@ export default function EditorBox()
       </>
     );
 }
+
+export default EditorBox
