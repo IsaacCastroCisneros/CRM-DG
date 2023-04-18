@@ -1,4 +1,4 @@
-import { appContext } from '@/context/AppContenxt'
+import appContext from '@/context/appContext'
 import React,{useContext} from 'react'
 import NewButton from '../NewButton/NewButton'
 

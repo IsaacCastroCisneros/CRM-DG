@@ -1,4 +1,4 @@
-import { appContext } from '@/context/AppContenxt'
+import appContext from '@/context/appContext'
 import React,{ReactElement, useContext} from 'react'
 
 export default function Options({children}:{children:ReactElement})

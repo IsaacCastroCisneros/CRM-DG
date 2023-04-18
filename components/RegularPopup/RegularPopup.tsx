@@ -1,4 +1,4 @@
-import { appContext } from '@/context/AppContenxt'
+import appContext from '@/context/appContext'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { ReactNode, useContext } from 'react'
