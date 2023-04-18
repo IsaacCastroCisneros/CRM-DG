@@ -1,6 +1,6 @@
 import Option from '@/components/Option/Option'
 import Options from '@/components/Options/Options'
-import { appContext } from '@/context/AppContenxt';
+import appContext from '@/context/appContext';
 import React, { useContext } from 'react'
 import EliminarCertificado from './components/EliminarCertificado';
 

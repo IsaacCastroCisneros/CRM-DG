@@ -1,7 +1,7 @@
 'use client'
 
 import Popup from '@/components/Popup/Popup'
-import { appContext } from '@/context/AppContenxt'
+import appContext from '@/context/appContext'
 import React, { useContext } from 'react'
 
 const MyPopUp=()=> 

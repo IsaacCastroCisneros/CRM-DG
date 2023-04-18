@@ -2,7 +2,7 @@
 
 import DeleteAlert from '@/components/DeleteAlert/DeleteAlert'
 import RegularPopup from '@/components/RegularPopup/RegularPopup'
-import React, { useContext } from 'react'
+import React from 'react'
 
 const DeleteUser=({nombre}:{nombre:string})=> 
 {

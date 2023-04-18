@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import Options from '@/components/Options/Options';
 import Option from '@/components/Option/Option';
-import { appContext } from '@/context/AppContenxt';
+import appContext from '@/context/appContext';
 import UserInfo from './components/UserInfo/UserInfo';
 import EditUser from './components/EditUser/EditUser';
 import DeleteUser from './components/DeleteUser/DeleteUser';

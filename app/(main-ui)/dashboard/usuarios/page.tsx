@@ -3,7 +3,7 @@
 import MyBlock from '@/components/MyBlock/MyBlock'
 import NewButton from '@/components/NewButton/NewButton'
 import TheDataTable from '@/components/TheDataTable/TheDataTable'
-import { appContext } from '@/context/AppContenxt'
+import appContext from '@/context/appContext'
 import React, {useContext, useState } from 'react'
 import MyFilters from './components/MyFilters/MyFilters'
 import MyOptions from './components/MyOptions/MyOptions'
