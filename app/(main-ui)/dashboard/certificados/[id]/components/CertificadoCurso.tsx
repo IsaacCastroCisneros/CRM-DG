@@ -44,11 +44,11 @@ export const CertificadoCurso = ({ data, nombre, tipo }: any) => {
             }
             <div style={{ position: "absolute", transform: "translate(-50%, -50%)", left: "31%", top: "22%", width: "50%" }}>
                 <h1 style={{ fontFamily: "Open Sans" }} className={`textCentrado ${tipo === "sinNota" && "sinNota"}`} >CERTIFICADO</h1>
-          {/*       <p style={{ fontSize: "10px" }} className="paddingArr textCentrado">Con código CCDG-45145 que se otorga a </p>
+                <p className="paddingArr textCentrado">Con código CCDG-45145 que se otorga a </p>
                 <h5 style={{ fontFamily: "Open Sans" }} className="paddingArr textCentrado">{nombre}</h5>
                 <p className="paddingArr textCentrado">En reconocimiento por haber cumplido con los requisitos académicos exigidos  y por haber aprobado satisfactoriamente el Curso Especializado, Denominado: </p>
                 <h5 style={{ fontFamily: "Open Sans" }} className="paddingArr textCentrado">{data.nombre}</h5>
-                <p className="paddingArr textCentrado">Realizado desde el 15/02/2023 al 25/02/2023, con una duración total de 60 horas lectivas. Dado y firmado en la ciudad de Lima, a los 25 días de febrero del año 2023. </p> */}
+                <p className="paddingArr textCentrado">Realizado desde el 15/02/2023 al 25/02/2023, con una duración total de 60 horas lectivas. Dado y firmado en la ciudad de Lima, a los 25 días de febrero del año 2023. </p>
             </div>
         </div>
 
@@ -79,7 +79,7 @@ export const CertificadoCurso = ({ data, nombre, tipo }: any) => {
         </div>
     )
     const html = ReactDOMServer.renderToStaticMarkup(element);
-    const html2 = ReactDOMServer.renderToStaticMarkup(element);
+    const html2 = ReactDOMServer.renderToStaticMarkup(element2);
 
     return (
         <>

@@ -44,7 +44,7 @@ export const BtnAcciones = ({ data, buscarData, tipo }: any) => {
                 <Popover.Panel className="fixed z-10 w-auto -translate-x-1/2 transform px-4 sm:px-0">
                   <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                     <div className="bg-gray-50 p-4 flex gap-2">
-                      <PDFDownloadLink
+                    <PDFDownloadLink
                         document={
                           <CertificadoCurso
                             data={data}
