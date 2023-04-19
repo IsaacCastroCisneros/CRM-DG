@@ -13,14 +13,6 @@ const columns =
     name:'Certificado',
     cell:(row:any)=>row.certificado
   },
-/*   {
-    name:'DNI',
-    selector: (row:any) => row.dni,
-  },
-  {
-    name:'Correo',
-    selector: (row:any) => row.correo,
-  }, */
   {
     name:'Nombre',
     selector: (row:any) => row.nombre,
@@ -29,10 +21,6 @@ const columns =
     name:'Usuario',
     selector:(row:any)=><img src={row.user} className="w-[3rem] h-[3rem] rounded-[100%] block"/>,
   },
- /*  {
-    name:'Telefono',
-    selector: (row:any) => row.telefono,
-  }, */
   {
     name:'Estado',
     cell:(row:any)=><StatusEnvio exist={row.status}/>
@@ -120,4 +108,5 @@ const page=()=>
   )
 }
 
+export default page
 
