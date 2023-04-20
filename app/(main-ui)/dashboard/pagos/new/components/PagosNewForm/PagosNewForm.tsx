@@ -6,14 +6,10 @@ import UpperForm from './components/UpperForm/UpperForm';
 import PagosCertificados from './components/PagosCertificados/PagosCertificados';
 import Cuotas from './components/Cuotas/Cuotas';
 import BottomForm from './components/BottomForm/BottomForm';
+import values from './intefaces/values';
+import pagosNewFormContext from './context/pagosNewFormContext';
 
-interface values
-{
-  isOk:boolean;
-  setIsOk:React.Dispatch<React.SetStateAction<boolean>>
-}
 
-export const pagosNewFormContext = React.createContext<values>({isOk:false,setIsOk:()=>null})
 
 const PagosNewForm=()=> 
 {

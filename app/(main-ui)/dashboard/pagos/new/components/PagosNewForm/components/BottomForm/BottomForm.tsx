@@ -1,7 +1,7 @@
 import { faSheetPlastic } from '@fortawesome/free-solid-svg-icons';
 import React, { useContext } from 'react'
 import MyButtonThin from '../../../MyButtonThin/MyButtonThin';
-import { pagosNewFormContext } from '../../PagosNewForm';
+import pagosNewFormContext from '../../context/pagosNewFormContext';
 import FormOption from '@/components/FormOption/FormOption'
 
 

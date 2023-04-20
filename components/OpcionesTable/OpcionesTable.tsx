@@ -42,7 +42,7 @@ export const OpcionesTable = ({tipo, id}:any) =>
                                     <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                                         <div className="relative bg-white p-2">
                                             { tipo === "certificados" && (<Link href={`/dashboard/${tipo}/${id}`} className='flex items-center gap-2 font-medium p-1 hover:text-yellow-500'><i className="fi fi-rr-file flex items-cente"></i>Descargar</Link>) }
-                                            <Link href={`/${tipo}${editar(tipo)}/${id}`} className='capitalize flex items-center gap-2 font-medium p-1 hover:text-blue-500'><i className="fi fi-rr-edit flex items-center"></i>Editar</Link>
+                                            <Link href={`/dashboard/${tipo}${editar(tipo)}/${id}`} className='capitalize flex items-center gap-2 font-medium p-1 hover:text-blue-500'><i className="fi fi-rr-edit flex items-center"></i>Editar</Link>
                                             <p className='flex items-center gap-2 font-medium p-1 hover:text-red-500'><i className="fi fi-rr-trash flex items-center"></i>Eliminar</p>
                                         </div>
                                     </div>
