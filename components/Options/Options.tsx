@@ -1,7 +1,7 @@
 import appContext from '@/context/appContext'
 import React,{ReactElement, useContext} from 'react'
 
-export default function Options({children}:{children:ReactElement})
+export default function Options({children}:{children:React.ReactNode})
 {
   const{setShowPopup}=useContext(appContext)
 

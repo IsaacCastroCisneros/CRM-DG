@@ -1,12 +1,13 @@
 'use client'
 
-import React,{useContext, useState} from 'react'
-import {Field} from 'formik';
+import React,{useContext, useEffect, useState} from 'react'
+import {Field, useFormikContext} from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { pagosNewFormContext } from '@/context/pagosNewFormContext';
-import onlyNumFunc from '@/helpers/onlyNumFunc';
-import onlyTextFunc from '@/helpers/onlyTextFunc';
+import MyAwesomeField from './components/MyAwesomeField/MyAwesomeField';
+import showPassword from './interfaces/showPassword';
+import isRequired from '@/helpers/isRequired';
 
 interface props
 {
@@ -19,42 +20,70 @@ interface props
     styles?:string
     readonly?:boolean
     stylesInput?:string
-    onlyText?:boolean
+    onlyText?:boolean,
+    onChange?:(e:any)=>void
+    error?:any,
+    render?:React.ReactNode,
+    noLabel?:boolean,
+    customError?:boolean
 }
 
 const FormOption=(props:props)=>
 {
     const
     {
-      label,
-      type,
-      as='input',
-      options,
+      label='',
+      type='text',
+      options=[],
       name,
       styles='',
       readonly=false,
       stylesInput='',
-      onlyText=false
+      onlyText=false,
+      onChange=()=>null,
+      render,
+      noLabel,
+      customError,
     }=props
 
-    const[showPassword,setShowPassword]=useState({show:type==='password',shoPassword:false,type})
+    const{errors:error,validateForm}:any=useFormikContext()
 
-    const myStyles = 'relative px-[.4rem] py-[.2rem] h-[30.8px] w-[100%] cursor-auto border-inputBorder border-[1px] focus:border-primary outline-none rounded-[.3rem]';
+    useEffect(()=>
+    {
+      validateForm()
+    },[])
 
-    const myName = name ||
-    label?.toLowerCase()?.split('').map(entry=>
-      { 
-        if(entry===' ')return'-' 
-        return entry
-      }).join('')
+    const[showPassword,setShowPassword]=useState<showPassword>({show:type==='password',shoPassword:false,type})
 
+    const regExp=/[\s]\w/ig;
+    
+    let myName:string=''
+
+    if(name)
+    {
+      myName = name
+    }
+    else if(label!=='')
+    {
+      myName=label.toLowerCase().replace(regExp,(match)=>
+      {
+        return match[1].toUpperCase();
+      });
+    }
+    
+    const myError = error ? error[myName] :false
+
+    const myStyles = `relative px-[.4rem] py-[.2rem] h-[30.8px] w-[100%] cursor-auto border-[1px] focus:border-primary outline-none rounded-[.3rem] ${myError==='error'?'border-red-500':'border-inputBorder'}`;
 
     return (
       <div className={`flex flex-col relative flex-1 ${styles}`}>
-        <label className=" text-slate-500 uppercase whitespace-nowrap overflow-hidden text-ellipsis">
-          {label}
-        </label>
+        {!noLabel && (
+          <label className=" text-slate-500 uppercase whitespace-nowrap overflow-hidden text-ellipsis">
+            {label}
+          </label>
+        )}
         <div className="relative">
+          {render && <>{render}</>}
           {showPassword.show && (
             <button
               className="absolute right-[1rem] z-[999] translate-y-[-50%] top-[50%]"
@@ -73,35 +102,24 @@ const FormOption=(props:props)=>
               />
             </button>
           )}
-          {type !== "file" && (
-            <Field
+          {type !== "file"&& (
+            <MyAwesomeField
               name={myName}
-              as={options ? "select" : as}
-              className={`${myStyles} ${stylesInput} ${
-                readonly ? "bg-[#eee] pointer-events-none" : ""
-              }`}
-              readOnly={readonly}
-              size={1}
-              type={showPassword.type}
-              onKeyPress={(e: any) => {
-                if (type === "number") onlyNumFunc(e);
-                if (onlyText) onlyTextFunc(e);
-              }}
-            >
-              {options && (
-                <>
-                  {options.map((opt, pos) => {
-                    return (
-                      <option key={pos} value={opt}>
-                        {opt}
-                      </option>
-                    );
-                  })}
-                </>
-              )}
-            </Field>
+              readonly={readonly}
+              stylesInput={stylesInput}
+              onlyText={onlyText}
+              type={type}
+              options={options}
+              onChange={onChange}
+              label={label}
+              showPassword={showPassword}
+              validate={isRequired}
+              error={customError}
+            />
           )}
-          {type === "file" && <FileField myStyles={myStyles} name={myName} />}
+          {type === "file" && !onChange && (
+            <FileField myStyles={myStyles} name={myName} />
+          )}
         </div>
       </div>
     );
@@ -165,5 +183,7 @@ const gettingImg=(e:any,setIsOk:React.Dispatch<React.SetStateAction<boolean>>,se
    }  
    setIsOk(false)
 }
+
+
 
 export default FormOption

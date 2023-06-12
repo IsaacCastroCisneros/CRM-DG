@@ -1,6 +1,6 @@
 import { faSheetPlastic } from '@fortawesome/free-solid-svg-icons';
 import React, { useContext } from 'react'
-import MyButtonThin from '../../../MyButtonThin/MyButtonThin';
+import MyButtonSubmit from '@/components/MyButtonSubmit/MyButtonThin';
 import pagosNewFormContext from '../../context/pagosNewFormContext';
 import FormOption from '@/components/FormOption/FormOption'
 
@@ -46,7 +46,7 @@ export default function BottomForm()
       </section>
       <div className="flex flex-col text-myBlack pl-[24px] items-start">
         <span className="capitalize mb-[9.5px]">ficha de inscripcion</span>
-        <MyButtonThin label="generar ficha" icon={faSheetPlastic} enabled={isOk}/>
+        <MyButtonSubmit label="generar ficha" icon={faSheetPlastic} enabled={isOk}/>
       </div>
     </div>
   );

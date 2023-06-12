@@ -24,6 +24,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/[...nextauth].js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/[...nextauth].js", "app/(main-ui)/dashboard/programas_alumno/[id]/alumnos/new/components/AddStudent/components/AlumnoCuotas/components/TheCuota"],
   "exclude": ["node_modules"]
 }

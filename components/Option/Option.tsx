@@ -2,7 +2,7 @@ import HoverMsg from '@/components/HoverMsg/HoverMsg';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React,{useState} from 'react'
-import { faBars, faEdit, faEye, faInfoCircle, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faEdit, faEye, faInfoCircle, faPlusCircle, faSave, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
 interface props
@@ -11,8 +11,9 @@ interface props
   onClick?:()=>void,
   styles?:string,
   label:string
-  type?:'info'|'edit'|'delete'|'more'|'ver',
-  href?:string
+  type?:'info'|'edit'|'delete'|'more'|'ver'|'add'|'save',
+  href?:string,
+  typeButton?:"button" | "submit" | "reset" | undefined
 }
 
 export default function Option(props:props)
@@ -24,7 +25,8 @@ export default function Option(props:props)
     styles,
     label,
     type='',
-    href
+    href,
+    typeButton
   }=props
 
   const[isHover,setIsHover]=useState<boolean>(false) 
@@ -39,6 +41,7 @@ export default function Option(props:props)
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
           onClick={onClick}
+          type={typeButton}
         >
           <HoverMsg
             label={label}
@@ -94,6 +97,14 @@ function givingTheIcon(type:string)
     case 'ver':
       {
         return faEye
+      }
+    case 'add':
+      {
+        return faPlusCircle
+      }
+    case 'save':
+      {
+        return faSave
       }
     default:
       {

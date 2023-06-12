@@ -5,7 +5,7 @@ import NewButton from '@/components/NewButton/NewButton'
 import TheDataTable from '@/components/TheDataTable/TheDataTable'
 import appContext from '@/context/appContext'
 import React, {useContext, useState } from 'react'
-import MyFilters from './components/MyFilters/MyFilters'
+import MyFilters from '@/components/MyFilters/MyFilters'
 import MyOptions from './components/MyOptions/MyOptions'
 import NewUser from './components/NewUser/NewUser'
 import NewUserLite from './components/NewUserLite/NewUserLite'
@@ -111,7 +111,7 @@ const Page=()=>
           columns={columns}
           data={data}
           myFilter={myFilter}
-          buttons={<MyFilters setMyFilter={setMyFilter} />}
+          buttons={<MyFilters filters={[{label:'categoria',options:['PROF']}]} setMyFilter={setMyFilter} />}
         />
       </div>
     </MyBlock>

@@ -34,7 +34,7 @@ const TheDataTable=(props:props)=>
 
   if(myFilter&&myFilter.value!=='')
   {
-    filteredItems = data.filter((item: any) => item[myFilter.property] === myFilter.value);
+    filteredItems = data.filter((item: any) => item[myFilter.property.toLowerCase()] === myFilter.value);
   }
 
 	const subHeaderComponentMemo = React.useMemo(() => {
@@ -68,6 +68,7 @@ const TheDataTable=(props:props)=>
        pagination
        paginationResetDefaultPage={resetPaginationToggle}
        subHeader
+       highlightOnHover
        subHeaderComponent={subHeaderComponentMemo}
        conditionalRowStyles={conditionalStyles}
        customStyles={styles}

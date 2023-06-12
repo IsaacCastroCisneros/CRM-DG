@@ -1,9 +1,15 @@
 import React from 'react'
 
-export default function MyFlexContainer({children}:{children:any})
+interface props
+{
+  children:React.ReactNode
+  margin?:boolean
+}
+
+export default function MyFlexContainer({children,margin=true}:props)
 {
     return(
-        <div className='flex gap-[1rem]'>
+        <div className={`flex gap-[1rem] ${margin ?'mb-[.7rem]':'' }`}>
           {
             children
           }

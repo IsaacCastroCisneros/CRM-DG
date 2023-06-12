@@ -1,6 +1,5 @@
 "use client"
 import { LoadingComponent } from '@/components/LoadingComponent/LoadingComponent';
-import { OpcionesTable } from '@/components/OpcionesTable/OpcionesTable';
 import { SearchComponen } from '@/components/SearchComponen/SearchComponen';
 import { DataCertificados } from '@/helpers/DataCertificados';
 import { useFiltrosTable } from '@/hooks/useFiltroTable';
