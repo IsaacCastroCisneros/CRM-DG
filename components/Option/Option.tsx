@@ -1,8 +1,10 @@
+"use client"
+
 import HoverMsg from '@/components/HoverMsg/HoverMsg';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React,{useState} from 'react'
-import { faBars, faEdit, faEye, faInfoCircle, faPlusCircle, faSave, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCopy, faEdit, faEye, faInfoCircle, faPlusCircle, faSave, faTrashCan, faUser } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
 interface props
@@ -11,9 +13,10 @@ interface props
   onClick?:()=>void,
   styles?:string,
   label:string
-  type?:'info'|'edit'|'delete'|'more'|'ver'|'add'|'save',
+  type?:'info'|'edit'|'delete'|'more'|'ver'|'add'|'save'|'duplicate'|'user',
   href?:string,
-  typeButton?:"button" | "submit" | "reset" | undefined
+  typeButton?:"button" | "submit" | "reset" | undefined,
+  size?:SizeProp
 }
 
 export default function Option(props:props)
@@ -26,7 +29,8 @@ export default function Option(props:props)
     label,
     type='',
     href,
-    typeButton
+    typeButton,
+    size="lg"
   }=props
 
   const[isHover,setIsHover]=useState<boolean>(false) 
@@ -50,7 +54,7 @@ export default function Option(props:props)
             active={"translate-y-[-100%] opacity-1"}
             styles={"top-0 translate-x-[-50%] left-[50%]"}
           />
-          <FontAwesomeIcon icon={icon || givingTheIcon(type)} />
+          <FontAwesomeIcon size={size} icon={icon || givingTheIcon(type)} />
         </button>
       )}
       {href && (
@@ -67,7 +71,7 @@ export default function Option(props:props)
             active={"translate-y-[-100%] opacity-1"}
             styles={"top-0 translate-x-[-50%] left-[50%]"}
           />
-          <FontAwesomeIcon icon={icon || givingTheIcon(type)} />
+          <FontAwesomeIcon size={size} icon={icon || givingTheIcon(type)} />
         </Link>
       )}
     </>
@@ -105,6 +109,14 @@ function givingTheIcon(type:string)
     case 'save':
       {
         return faSave
+      }
+    case 'duplicate':
+      {
+        return faCopy
+      }
+    case 'user':
+      {
+        return faUser
       }
     default:
       {

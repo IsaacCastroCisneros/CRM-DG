@@ -29,7 +29,7 @@ export default function HoverMsg(props:props)
 
   return (
     <span
-      className={`capitalize absolute ${styles} transition-all duration-200 text-[#fff] bg-[#30394c] py-[.2rem] px-[.4rem] w-fit whitespace-nowrap text-[.8rem] pointer-events-none rounded-[.3rem] z-[9999] ${
+      className={`capitalize absolute ${styles} transition-all duration-200 text-[#fff] bg-[#30394c] py-[.2rem] px-[.4rem] w-fit whitespace-nowrap text-[.9rem] pointer-events-none rounded-[.3rem] z-[9999] ${
         isHover ? active : initial
       }`}
     >

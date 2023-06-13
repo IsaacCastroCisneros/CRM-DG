@@ -1,12 +1,12 @@
-import appContext from '@/context/appContext'
-import React,{ReactElement, useContext} from 'react'
+import React from 'react'
+import {twMerge} from 'tailwind-merge'
 
-export default function Options({children}:{children:React.ReactNode})
+export default function Options({children,className}:{children:React.ReactNode,className?:string})
 {
-  const{setShowPopup}=useContext(appContext)
+  const c = twMerge('flex flex-wrap gap-[.5rem] justify-center max-w-[86px]',className)
 
   return(
-    <div className='flex max-w-[100%] flex-wrap gap-[.5rem] justify-center'>
+    <div className={c}>
       {
         children
       }

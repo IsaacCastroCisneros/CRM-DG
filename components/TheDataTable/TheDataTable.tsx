@@ -9,7 +9,6 @@ interface props
   data:any;
   columns:any;
   conditionalStyles?:any;
-  styles?:any;
   buttons?:ReactElement<any, any>;
   myFilter?:{value:string,property:string}
 }
@@ -21,7 +20,6 @@ const TheDataTable=(props:props)=>
     data,
     columns,
     conditionalStyles,
-    styles,
     buttons,
     myFilter
   }=props
@@ -62,19 +60,33 @@ const TheDataTable=(props:props)=>
 
   return (
     <>
-      <DataTable 
-       columns={columns} 
-       data={filteredItems} 
-       pagination
-       paginationResetDefaultPage={resetPaginationToggle}
-       subHeader
-       highlightOnHover
-       subHeaderComponent={subHeaderComponentMemo}
-       conditionalRowStyles={conditionalStyles}
-       customStyles={styles}
-       selectableRows
-       persistTableHead
-       />
+      <DataTable
+        columns={columns}
+        data={filteredItems}
+        pagination
+        paginationResetDefaultPage={resetPaginationToggle}
+        subHeader
+        highlightOnHover
+        subHeaderComponent={subHeaderComponentMemo}
+        conditionalRowStyles={conditionalStyles}
+        customStyles={{
+          headCells: {
+            style: {
+              display:'flex',
+              justifyContent:'center',
+              textTransform:'capitalize'
+            },
+          },
+          cells: {
+            style: {
+              display:'flex',
+              justifyContent:'center'
+            },
+          },
+        }}
+/*         selectableRows */
+        persistTableHead
+      />
     </>
   );
 }
