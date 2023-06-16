@@ -1,9 +1,15 @@
 import appContext from '@/context/appContext'
+import popup from '@/interfaces/popup'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { ReactNode, useContext } from 'react'
+import React, { Dispatch, ReactNode, SetStateAction, useContext } from 'react'
+interface props
+{
+  content:ReactNode
+  title:string
+}
 
-export default function RegularPopup({content,title}:{content:ReactNode,title:string}) 
+export default function RegularPopup({content,title}:props) 
 {
   const{setShowPopup}=useContext(appContext) 
 
@@ -16,9 +22,11 @@ export default function RegularPopup({content,title}:{content:ReactNode,title:st
         <button
           className="absolute right-[2rem] top-[50%] translate-y-[-50%]"
           onClick={() =>
-            setShowPopup((prev) => {
-              return { ...prev, show: false };
-            })
+            {
+              setShowPopup((prev) => {
+                return { ...prev, show: false };
+              })
+            }
           }
         >
           <FontAwesomeIcon size="xl" icon={faXmark} />

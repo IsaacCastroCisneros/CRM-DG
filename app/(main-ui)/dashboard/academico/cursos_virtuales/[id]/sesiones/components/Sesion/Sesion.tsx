@@ -13,6 +13,7 @@ import React,{ReactNode, useContext, useState} from 'react'
 import { EditSession } from './components/EditSession'
 import { VerArchivos } from './components/VerArchivos'
 import { AsignarTarea } from './components/AsignarTarea'
+import { usePathname } from 'next/navigation'
 
 export const Sesion = (props:any) => 
 {
@@ -26,6 +27,8 @@ export const Sesion = (props:any) =>
 
   const[show,setShow]=useState<boolean>(false)
   const{setShowPopup}=useContext(appContext)
+
+  const pathname = usePathname();
 
   return (
     <div>
@@ -96,7 +99,7 @@ export const Sesion = (props:any) =>
             <Item
               icon={faFileLines}
               label="Ver Examenes"
-              fragment={<RegularPopup title="Ver Examenes" content={<></>} />}
+              href={`${pathname}/examenes`}  
             />
             <Item
               icon={faList}
@@ -112,14 +115,27 @@ export const Sesion = (props:any) =>
   );
 }
 
-function Item({icon,label,fragment}:{icon:IconProp,label:string,fragment:ReactNode})
+interface props
+{
+  icon:IconProp,
+  label:string,
+  fragment?:ReactNode,
+  href?:string
+}
+
+function Item({icon,label,fragment,href}:props)
 {
   const{setShowPopup}=useContext(appContext)
 
   return(
     <li className='flex py-[.8rem] px-[1rem] border-b-[1px] border-myBorderDark items-center gap-[2rem]'>
        <FontAwesomeIcon size='xl' icon={icon} />
-       <MyButtonLink type='thin' label={label} onClick={()=>setShowPopup({show:true,popup:fragment})} />
+       {
+        fragment&&<MyButtonLink type='thin' label={label} onClick={()=>setShowPopup({show:true,popup:fragment})} />
+       }
+       {
+         href&&<MyButtonLink type='thin' href={href} label={label} />
+       }
     </li>
   )
 }
