@@ -50,7 +50,7 @@ export const MyButtonLink = (props:props) =>
       )}
       {
         onClick&&
-        <button className={c}>
+        <button className={c} onClick={onClick} >
           {label}
         </button>
       }

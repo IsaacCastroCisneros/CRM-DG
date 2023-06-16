@@ -1,5 +1,5 @@
 import React from 'react'
-import { Sesion } from './components/Sesion'
+import { Sesion } from './components/Sesion/Sesion'
 import MyBlock from '@/components/MyBlock/MyBlock'
 
 export default function page() 

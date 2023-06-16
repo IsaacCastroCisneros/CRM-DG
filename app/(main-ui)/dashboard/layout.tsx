@@ -1,7 +1,7 @@
 import HeaderNav from '@/components/HeaderNav/HeaderNav';
 import NavbarUltimate from '@/components/NavbarUltimate/NavbarUltimate';
 import MyPopUp from './components/MyPopUp';
-import Link from 'next/link';
+import { MyNotification } from './components/MyNotification';
 
 export default async function RootLayout({
   children,
@@ -12,6 +12,7 @@ export default async function RootLayout({
     return (
       <>
         <MyPopUp />
+        <MyNotification/>
         <header className="w-[5rem] mob:w-[3rem] h-[100%] relative z-[999]">
            <NavbarUltimate />
         </header>

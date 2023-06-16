@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 
 export default interface popup
 {
   show:boolean,
-  popup:ReactElement<Element>
+  popup:ReactNode
 }
