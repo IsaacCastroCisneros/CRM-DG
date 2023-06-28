@@ -6,6 +6,8 @@ import appContext from "@/context/appContext";
 import { useContext } from "react";
 import { EditForm } from "../components/EditForm/EditForm";
 import RegularPopup from "@/components/RegularPopup/RegularPopup";
+import DeleteAlert from "@/components/DeleteAlert/DeleteAlert";
+import { CopyExam } from "../components/CopyExam/CopyExam";
 
 const exameColumns = [
     {
@@ -42,8 +44,31 @@ function MyOptions()
           })
         }
       />
-      <Option label="eliminar" type="delete" onClick={() => null} />
-      <Option label="copiar" type="duplicate" onClick={() => null} />
+      <Option
+        label="eliminar"
+        type="delete"
+        onClick={() =>
+          setShowPopup({
+            show: true,
+            popup: (
+              <RegularPopup
+                title="Elimnar Examen"
+                content={<DeleteAlert subject="Examen" />}
+              />
+            ),
+          })
+        }
+      />
+      <Option
+        label="copiar"
+        type="duplicate"
+        onClick={() =>
+          setShowPopup({
+            show: true,
+            popup: <RegularPopup title="Copiar Examen" content={<CopyExam/>} />,
+          })
+        }
+      />
     </Options>
   );
 }

@@ -1,22 +1,17 @@
 import MyBlock from '@/components/MyBlock/MyBlock'
 import React from 'react'
-import cursoVirtualItems from './helpers/cursoVirtualItems'
-import { CursoVirtualItem } from './components/CursoVirtualItem'
+import CursoVirtualItems from './examenes/components/CursoVirtualItems/CursoVirtualItems'
+import LocalContext from './context/LocalContext'
 
 export default function page({params}:any) 
 {
-  const{id} =params
+  const{id}=params
 
   return (
-    <MyBlock title='CURSO VIRTUAL' subtitle={`ID:${id}`} >
-      <div className='grid-cols-[repeat(3,1fr)] gap-[3rem] grid'>
-       {
-         cursoVirtualItems(id).map((c,pos)=>
-         (
-            <CursoVirtualItem key={pos} {...c} />
-         ))
-       }
-      </div>
-    </MyBlock>
-  )
+    <LocalContext program={{id,title:"ELABORACIÓN DE INSTRUMENTOS"}}>
+      <MyBlock title="ELABORACIÓN DE INSTRUMENTOS" subtitle={`ID:${id}`}>
+        <CursoVirtualItems program={{id,name:'ELABORACIÓN DE INSTRUMENTOS'}} />
+      </MyBlock>
+    </LocalContext>
+  );
 }

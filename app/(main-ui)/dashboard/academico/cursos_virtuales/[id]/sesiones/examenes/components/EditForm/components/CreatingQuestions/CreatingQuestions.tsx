@@ -1,9 +1,9 @@
 "use client"
 import React, { useState} from 'react'
 import { v4 as uuidv4 } from 'uuid';
-import { CustomQuestion } from './components/CustomQuestion';
 import question from './interface/question';
 import { Question } from './components/Question';
+import { MyButtonLink } from '@/components/MyButtonLink/MyButtonLink';
 
 export const CreatingQuestions = () => 
 {
@@ -11,8 +11,9 @@ export const CreatingQuestions = () =>
 
   return (
     <>
-      <button
-        type='button'
+      <MyButtonLink
+        label='Crear Pregunta'
+        className='mb-[1rem]'
         onClick={() =>
           setCustomQuestions((prev) => {
             return [
@@ -20,25 +21,16 @@ export const CreatingQuestions = () =>
               {
                 question: "",
                 id: uuidv4(),
-                options: [''],
+                options: [{label:'',correct:false}],
               },
             ];
           })
-        }
-      >
-        Crear Pregunta
-      </button>
-      {/* {customQuestions.map((q,pos) => (
-        <CustomQuestion
-          key={pos}
-          {...q}
-          questions={customQuestions}
-          setCustomQuestions={setCustomQuestions}
-        />
-      ))} */}
+        }></MyButtonLink>
+      <div className='flex gap-[.5rem] flex-col-reverse'>
       {customQuestions.map((q) => (
         <Question key={q.id} {...q} customQuestions={customQuestions} setCustomQuestions={setCustomQuestions} />
       ))}
+      </div>
     </>
   );
 }

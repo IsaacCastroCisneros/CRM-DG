@@ -1,8 +1,7 @@
 import appContext from '@/context/appContext'
-import popup from '@/interfaces/popup'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { Dispatch, ReactNode, SetStateAction, useContext } from 'react'
+import React, { ReactNode, useContext } from 'react'
 interface props
 {
   content:ReactNode
@@ -14,7 +13,7 @@ export default function RegularPopup({content,title}:props)
   const{setShowPopup}=useContext(appContext) 
 
   return (
-    <div className='w-[50rem] max-w-[100%]'>
+    <div className='min-w-[50rem]'>
       <div className="py-[8px] px-[32px] bg-primary relative text-white w-[100%]">
         <strong>
             {title}

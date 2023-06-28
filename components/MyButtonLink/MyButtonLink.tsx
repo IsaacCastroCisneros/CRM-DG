@@ -33,7 +33,7 @@ export const MyButtonLink = (props:props) =>
   {
     if(type==='normal')
     {
-      return twMerge('bg-primary text-[#fff] px-[.8rem] py-[.5rem] inline-block rounded-[.3rem] capitalize font-bold items-center',className)
+      return twMerge('bg-primary text-[#fff] px-[.8rem] py-[.5rem] inline-flex rounded-[.3rem] capitalize font-bold items-center gap-[.5rem]',className)
     }
     if(type==='thin')
     {
@@ -52,7 +52,7 @@ export const MyButtonLink = (props:props) =>
         </Link>
       )}
       {onClick && (
-        <button className={c} onClick={onClick}>
+        <button className={c} onClick={onClick} type='button'>
           {label}
           {icon && <FontAwesomeIcon icon={icon} size='lg' />}
         </button>

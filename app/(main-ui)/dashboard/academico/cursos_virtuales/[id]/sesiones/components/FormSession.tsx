@@ -6,7 +6,7 @@ import { MyForm } from '@/components/MyForm/MyForm';
 import { MyFormInput } from '@/components/MyFormInput/MyFormInput';
 import React,{useState} from 'react'
 
-export const EditSession=()=>
+export const FormSession=()=>
 { 
   const[values,setValues]= useState(
     {
@@ -26,12 +26,10 @@ export const EditSession=()=>
         gratis:''
     })  
 
-    console.log(values)
-
   return (
     <MyForm
       submit={async()=>null}
-      label='Guardar Cambios'
+      label='Guardar'
       >
       <MyFlexContainer>
         <MyFormInput

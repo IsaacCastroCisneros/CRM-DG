@@ -2,14 +2,15 @@ import appContext from '@/context/appContext'
 import React,{useContext} from 'react'
 import NewButton from '../NewButton/NewButton'
 
-export default function DeleteAlert({subject}:{subject:string}) 
+export default function DeleteAlert({subject,fullLine}:{subject?:string,fullLine?:string}) 
 {
     const{setShowPopup}=useContext(appContext)
 
     return(
         <>
           <strong className='block text-center text-[1.5rem] mb-[1rem]'>
-            {`¿Estas seguro de elimar ${subject}?`}
+             {fullLine&&<>{fullLine}</>} 
+             {!fullLine&&<>{`¿Estas seguro de elimar ${subject}?`}</>}
           </strong>
           <div className='flex w-[100%] justify-center gap-[1rem]'>
             <NewButton label='SI' />

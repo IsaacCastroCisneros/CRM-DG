@@ -10,7 +10,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown, faClipboard, faFile, faFileLines, faList } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React,{ReactNode, useContext, useState} from 'react'
-import { EditSession } from './components/EditSession'
+import { FormSession } from '../FormSession'
 import { VerArchivos } from './components/VerArchivos'
 import { AsignarTarea } from './components/AsignarTarea'
 import { usePathname } from 'next/navigation'
@@ -72,7 +72,7 @@ export const Sesion = (props:any) =>
                 popup: (
                   <RegularPopup
                     title={`Editar ${title}`}
-                    content={<EditSession />}
+                    content={<FormSession />}
                   />
                 ),
               })
