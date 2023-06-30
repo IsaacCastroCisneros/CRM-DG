@@ -4,7 +4,7 @@ import {twMerge} from 'tailwind-merge'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-type linkButtonType = 'thin'|'normal'
+type linkButtonType = 'thin'|'normal'|'thin2'
 
 interface props
 {
@@ -38,6 +38,10 @@ export const MyButtonLink = (props:props) =>
     if(type==='thin')
     {
       return twMerge('font-medium hover:underline',className)
+    }
+    if(type==='thin2')
+    {
+      return twMerge('hover:underline hover:text-blue-500',className)
     }
   }
 

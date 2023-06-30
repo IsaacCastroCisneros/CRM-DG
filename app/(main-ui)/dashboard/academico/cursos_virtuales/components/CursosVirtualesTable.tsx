@@ -3,6 +3,9 @@
 import React from 'react'
 import TheDataTable from '@/components/TheDataTable/TheDataTable'
 import cursosVirtualesColumns from '../helpers/cursosVirtualesColumns'
+import { MyButtonLink } from '@/components/MyButtonLink/MyButtonLink'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { usePathname } from 'next/navigation'
 
 
 const data =
@@ -18,10 +21,19 @@ const data =
   },
 ]
 
-const CursosVirtualesTable = () => {
+const CursosVirtualesTable = () => 
+{
+  const path = usePathname()||''
+
   return (
-    <TheDataTable data={data} columns={cursosVirtualesColumns} />
-  )
+    <TheDataTable
+      data={data}
+      columns={cursosVirtualesColumns}
+      buttons={
+        <MyButtonLink label="Nuevo" icon={faPlusCircle} href={`${path}/new`} />
+      }
+    />
+  );
 }
 
 export default CursosVirtualesTable

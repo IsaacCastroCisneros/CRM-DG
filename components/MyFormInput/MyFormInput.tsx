@@ -14,11 +14,12 @@ interface props extends InputHTMLAttributes<HTMLInputElement>
   onlyText?:boolean
   onChange:(e:any)=>void
   file?:FileList
+  styles?:{container:string}
 }
 
 export const MyFormInput = ({className,type='text',...props} :props) => 
 {
-  const{name,options,onlyText,max,onChange=()=>null,file}=props
+  const{name,options,onlyText,max,onChange=()=>null,file,styles}=props
  
   const def= 'py-[.3rem] px-[.5rem] outline-none outline-none rounded-[.4rem] focus:border-primary border-[1px] w-[100%]'
 
@@ -27,8 +28,10 @@ export const MyFormInput = ({className,type='text',...props} :props) =>
 
   const label = name?.replace(/([a-z])([A-Z])/g,"$1 $2").toLocaleLowerCase(); 
 
+  const myStyles = styles || {container:''}
+
   return (
-    <div className="flex flex-col flex-1">
+    <div className={twMerge("flex flex-col flex-1",myStyles.container)}>
       {name && <label className="capitalize">{label}&nbsp;:</label>}
       {!options && type !== "textarea" && (
         <div className="relative">
