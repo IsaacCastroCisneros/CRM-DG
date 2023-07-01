@@ -32,42 +32,46 @@ export const MyFormInput = ({className,type='text',...props} :props) =>
 
   return (
     <>
-      {!options && type !== "textarea" && (
+      {
         <div className={c}>
-          <label className='text-[#AAB1B8] font-medium text-[14px] capitalize' >{label}</label>
-          <input
-            {...props}
-            className='outline-none font-bold text-[20px] text-[#374957]'
-            type={type}
-            size={1}
-            onKeyPress={(e: any) => {
-              if (type === "number") onlyNumFunc(e);
-              if (onlyText) onlyTextFunc(e);
-            }}
-            onChange={(e) => {
-              if (max) {
-                e.target.value = maxNum(e.target.value, max);
-              }
-              onChange(e);
-            }}
-          />
+          <label className="text-[#AAB1B8] font-medium text-[14px] capitalize">
+            {label}
+          </label>
+          {!options && type !== "textarea" && (
+            <input
+              {...props}
+              className="outline-none font-bold text-[20px] text-[#374957]"
+              type={type}
+              size={1}
+              onKeyPress={(e: any) => {
+                if (type === "number") onlyNumFunc(e);
+                if (onlyText) onlyTextFunc(e);
+              }}
+              onChange={(e) => {
+                if (max) {
+                  e.target.value = maxNum(e.target.value, max);
+                }
+                onChange(e);
+              }}
+            />
+          )}
+          {options && (
+            <select
+              defaultValue="myDefault"
+              size={1}
+              className="outline-none font-bold text-[20px] capitalize"
+              onChange={onChange}
+            >
+              <option value="myDefault">Seleccione Opcion</option>
+              {options.map((op, pos) => (
+                <option key={pos} className='capitalize' value={op}>
+                  {op}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
-      )}
-      {options && (
-        <select
-          defaultValue="myDefault"
-          size={1}
-          className={`${c} capitalize flex-1`}
-          onChange={onChange}
-        >
-          <option value="myDefault">{label}</option>
-          {options.map((op, pos) => (
-            <option key={pos} value={op}>
-              {op}
-            </option>
-          ))}
-        </select>
-      )}
+      }
       {type === "textarea" && (
         <textarea
           className="resize-none w-[100%] outline-none focus:border-primary border-[1px] h-[5rem] rounded-[.5rem] p-[.5rem] bg-slate-100"

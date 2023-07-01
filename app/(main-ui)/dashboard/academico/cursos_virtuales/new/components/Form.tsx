@@ -38,7 +38,7 @@ export const Form = () =>
             onChange={() => null}
           />
         </MyFlexContainer>
-        <MyFormInput name="titulo" onChange={() => null}  />
+        <MyFormInput name="titulo" onChange={() => null}  className='mb-[1.5rem]' />
         <MyFormInput name="tituloPreCabecera" onChange={() => null}  className='mb-[1.5rem]' />
         <MyFlexContainer>
           <MyFormInput name="fechaDeinico" type="date" onChange={() => null} />
