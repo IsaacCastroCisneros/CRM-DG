@@ -1,5 +1,7 @@
 'use client'
 
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRouter } from 'next/navigation'
 import React, { ReactNode } from 'react'
 
@@ -30,12 +32,12 @@ export default function MyBlock(props:props)
     <div className={`flex-1 ${styles}`}>
       <button
         onClick={() => router.back()}
-        className="hover:underline text-[1.2rem] text-blue-400 mb-[1rem]"
+        className="hover:underline text-myGray mb-[1rem] flex items-center gap-[1rem] text-[14px] font-medium"
       >
-        {"< Regresar"}
+        <FontAwesomeIcon icon={faChevronLeft} /> Regresar
       </button>
       <div className="flex">
-        <strong className="block capitalize Montserrat text-[#000] text-3xl font-black">
+        <strong className="block capitalize Montserrat text-[32px] font-black text-primary">
           {title}
         </strong>
         {

@@ -9,7 +9,7 @@ interface props
 
 export default function MyFlexContainer({children,margin=true,className}:props)
 {
-    const c = twMerge(`flex gap-[1rem] ${margin ?'mb-[.7rem]':'' }`,className)
+    const c = twMerge(`flex gap-[1rem] ${margin ?'mb-[1.5rem]':'' }`,className)
     
     return(
         <div className={c}>

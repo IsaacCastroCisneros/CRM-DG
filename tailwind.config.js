@@ -37,12 +37,12 @@ module.exports = {
         myRed:"#fa5c7c",
         myRedDark:"#d54e69",
         myGreen:"#0acf97",
-        myGray:"#F5F6F8",
+        myGray:"#7A8897",
         myGreenDark:"#09b080",
         myYellow:"#ffc626",
         myYellowDark:"#ffbc00",
-        primary:"#2D62ED",
-        inputBorder:"#717171" 
+        primary:"#0E2FAA",
+        inputBorder:"#717171",
       },
       zIndex: {
         'z-100': "100000"
