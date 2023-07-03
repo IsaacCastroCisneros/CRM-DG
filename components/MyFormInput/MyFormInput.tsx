@@ -26,7 +26,7 @@ export const MyFormInput = ({className,type='text',...props} :props) =>
   }=props
 
 
-  const c = twMerge(`w-[100%] flex-1 bg-[#fff] placeholder:capitalize py-[.8rem] px-[1rem] rounded-[.4rem] shadow-[0_.3rem_.5rem_0px] shadow-[#d9dbda] flex flex-col`,className)
+  const c = twMerge(`w-[100%] flex-1 bg-[#fff] placeholder:capitalize py-[.8rem] px-[1rem] rounded-[.4rem] shadow-[0_.3rem_.5rem_0px] shadow-shadow flex flex-col`,className)
 
   const label = name?.replace(/([a-z])([A-Z])/g,"$1 $2").toLocaleLowerCase(); 
 
@@ -34,13 +34,13 @@ export const MyFormInput = ({className,type='text',...props} :props) =>
     <>
       {
         <div className={c}>
-          <label className="text-[#AAB1B8] font-medium text-[14px] capitalize">
+          <label className="text-myGray2 font-medium text-[14px] capitalize">
             {label}
           </label>
           {!options && type !== "textarea" && (
             <input
               {...props}
-              className="outline-none font-bold text-[20px] text-[#374957]"
+              className="outline-none font-bold text-[20px] text-myGray3"
               type={type}
               size={1}
               onKeyPress={(e: any) => {

@@ -40,9 +40,9 @@ export const Form = () =>
         </MyFlexContainer>
         <MyFormInput name="titulo" onChange={() => null}  className='mb-[1.5rem]' />
         <MyFormInput name="tituloPreCabecera" onChange={() => null}  className='mb-[1.5rem]' />
-        <MyFlexContainer>
-          <MyFormInput name="fechaDeinico" type="date" onChange={() => null} />
-          <MyFormInput name="fechaDeFin" type="date" onChange={() => null} />
+        <MyFlexContainer gap='64px'>
+          <MyFormInput name="fechaDeinico" type="date" onChange={() => null} className='max-w-[343px]'  />
+          <MyFormInput name="fechaDeFin" type="date" onChange={() => null}  className='max-w-[343px]' />
         </MyFlexContainer>
       </InputGroup>
       <InputGroup title="personal implicado">

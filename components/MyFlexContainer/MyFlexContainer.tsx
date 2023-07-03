@@ -5,14 +5,17 @@ interface props
   children:React.ReactNode
   margin?:boolean
   className?:string
+  gap?:'98px'|'64px'
 }
 
-export default function MyFlexContainer({children,margin=true,className}:props)
+export default function MyFlexContainer({children,margin=true,className,gap='98px'}:props)
 {
-    const c = twMerge(`flex gap-[1rem] ${margin ?'mb-[1.5rem]':'' }`,className)
+    const c = twMerge(`flex ${margin ?'mb-[1.5rem]':'' }`,className)
     
     return(
-        <div className={c}>
+        <div className={c}
+          style={{gap}}
+          >
           {
             children
           }
