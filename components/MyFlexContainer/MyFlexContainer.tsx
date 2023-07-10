@@ -8,9 +8,9 @@ interface props
   gap?:'98px'|'64px'
 }
 
-export default function MyFlexContainer({children,margin=true,className,gap='98px'}:props)
+export default function MyFlexContainer({children,className,gap='98px'}:props)
 {
-    const c = twMerge(`flex ${margin ?'mb-[1.5rem]':'' }`,className)
+    const c = twMerge(`flex`,className)
     
     return(
         <div className={c}

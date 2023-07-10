@@ -7,7 +7,7 @@ import { MyButtonLink } from '../MyButtonLink/MyButtonLink'
 interface props
 {
   children:ReactNode
-  label:string
+  label?:string
   submit:()=>Promise<any>
   fragment?:ReactNode
   path?:string
@@ -51,12 +51,19 @@ export const MyForm = (props:props) =>
     >
       {children}
       {fragment}
-      <div className="flex">
-        <button className="flex-1 block px-[1rem] py-[.8rem] bg-primary outline-none focus:shadow-2xl text-[#fff] font-bold mt-[1rem] w-[100%]">
-          {label}
-        </button>
-        <MyButtonLink type='thin2' label='Cancelar' onClick={()=>null} className='flex-1 text-'/>
-      </div>
+      {label && (
+        <div className="flex">
+          <button className="flex-1 block px-[1rem] py-[.8rem] bg-primary outline-none focus:shadow-2xl text-[#fff] font-bold mt-[1rem] w-[100%]">
+            {label}
+          </button>
+          <MyButtonLink
+            type="thin2"
+            label="Cancelar"
+            onClick={() => null}
+            className="flex-1 text-"
+          />
+        </div>
+      )}
     </form>
   );
 }

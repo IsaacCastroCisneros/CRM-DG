@@ -10,7 +10,7 @@ const useClickOutside = (callback: () => void) =>
       if (ref.current && !ref.current.contains(event.target as Node)) {
         callback();
       }
-      if(opt.current&&event.target)
+      if(opt.current===event.target)
       {
         callback();
       }

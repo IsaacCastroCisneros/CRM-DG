@@ -74,13 +74,20 @@ const TheDataTable=(props:props)=>
             style: {
               display:'flex',
               justifyContent:'center',
-              textTransform:'capitalize'
+              textTransform:'capitalize',
+              backgroundColor:'#485BFF',
+              color:"#fff",
+              fontWeight:600
             },
           },
           cells: {
             style: {
               display:'flex',
-              justifyContent:'center'
+              fontSize:'14px',
+              fontWeight:'medium',
+              justifyContent:'center',
+              color:'#7A8897',
+              textTransform:'capitalize'
             },
           },
         }}

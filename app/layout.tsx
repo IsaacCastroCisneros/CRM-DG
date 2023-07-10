@@ -19,7 +19,7 @@ export default async function RootLayout({
     return (
       <MyMainContent>
         <>
-          <html lang="en" className="bg-[#F8F9FB]">
+          <html lang="en" className="bg-bg">
             <Head></Head>
             <body>
               <AppContenxt>{children}</AppContenxt>

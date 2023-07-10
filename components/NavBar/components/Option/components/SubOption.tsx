@@ -1,4 +1,3 @@
-import option from '@/components/NavBar/interfaces/option'
 import subOption from '@/components/NavBar/interfaces/subOption'
 import Link from 'next/link'
 import React, { Dispatch, SetStateAction } from 'react'

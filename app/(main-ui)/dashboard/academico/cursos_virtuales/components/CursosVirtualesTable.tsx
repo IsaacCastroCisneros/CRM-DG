@@ -6,18 +6,24 @@ import cursosVirtualesColumns from '../helpers/cursosVirtualesColumns'
 import { MyButtonLink } from '@/components/MyButtonLink/MyButtonLink'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { usePathname } from 'next/navigation'
+import { MyButton } from '@/components/MyButton/MyButton'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { MyLink } from '@/components/MyLink/MyLink'
 
 
 const data =
 [
   {
-    id:'1',
-    codigo:'4334',
-    titulo:'ESPECIALIZACION EN CONTRATACIONES PUBLICAS',
-    precio:'420',
-    profesores:'Jose',
-    fechaInicio:'2020/05/05',
-    fechaFin:'2023/05/05'
+    img:'/img/cer.webp',
+    type:'curso',
+    titulo:'siaf',
+    mode:'dual',
+    sessions:'5',
+    status:true,
+    students:'50',
+    price:'200',
+    destacado:true,
+    created:'07/12/28'
   },
 ]
 
@@ -30,7 +36,9 @@ const CursosVirtualesTable = () =>
       data={data}
       columns={cursosVirtualesColumns}
       buttons={
-        <MyButtonLink label="Nuevo" icon={faPlusCircle} href={`${path}/new`} />
+        <MyLink href={`${path}/new`} className='h-[50px] w-[147px] font-semibold text-[18px]'>
+          <FontAwesomeIcon size="lg" icon={faPlusCircle} /> Nuevo
+        </MyLink>
       }
     />
   );

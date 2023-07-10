@@ -4,6 +4,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./styles/**/*.{js,ts,jsx,tsx}",
  
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -19,12 +20,14 @@ module.exports = {
         myGray:"#7A8897",
         myGray2:"#AAB1B8",
         myGray3:"#374957",
+        myBorder:"#374957",
         primary:"#485BFF",
         myBlue:"#2A50E4",
         myYellow:"#EEAE00",
-        myYellow:"#EEAE00",
-
+        bg:"#F8F9FB",
         shadow:'#d9dbda',
+        myGreen:'#04EB84',
+        myRed:'#E8003F',
       },
       zIndex: {
         'z-100': "100000"

@@ -2,21 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-.kDEcCH{
-    padding: 0 !important;
-    margin: 0 !important;
+.kTRUaX.sc-dKfzgJ, .sc-iKGpAt.cOhUY.rdt_Pagination
+{
+  background-color: transparent !important;
 }
-.kNxEtY{
-   text-shadow: 300 !important;
-}
-.sc-bcXHqe{
-    margin-top:  12px !important;
+.sc-dnwKUv.hXLGuA
+{
+  overflow: initial !important;
 }
 
 body
 {
   font-size: 14.4px;
-  color: #374957;
+  color: #7A8897;
+}
+
+.my-shadow
+{
+  box-shadow: 0 .3rem .5rem 0px #d9dbda;
 }
 
 .Montserrat {
