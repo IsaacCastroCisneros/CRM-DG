@@ -1,5 +1,5 @@
 import FormOption from '@/components/FormOption/FormOption';
-import NewButton from '@/components/NewButton/NewButton';
+import { MyButton } from '@/components/MyButton/MyButton';
 import RegularPopup from '@/components/RegularPopup/RegularPopup'
 import { Form, Formik } from 'formik'
 import React from 'react'
@@ -32,7 +32,7 @@ function MyForm()
          <FormOption label='Clave' type='password' />
          <FormOption label='Nombres' onlyText/>
          <FormOption label='Apellidos' onlyText/>
-         <NewButton label='Guardar' />
+         <MyButton>Guardar</MyButton>
        </Form>
      </Formik>
    );

@@ -1,12 +1,10 @@
-import React, { Children, useState } from 'react'
+import React, { useState } from 'react'
 import RegularPopup from '@/components/RegularPopup/RegularPopup'
-import MyInput from '@/components/MyInput/MyInput'
-import MyInput2 from '@/components/MyInput2/MyInput2'
 import FormOption from '@/components/FormOption/FormOption'
 import { Form, Formik } from 'formik'
-import NewButton from '@/components/NewButton/NewButton'
 import ChangePassord from './components/ChangePassord'
 import MyFlexContainer from '@/components/MyFlexContainer/MyFlexContainer'
+import { MyButton } from '@/components/MyButton/MyButton'
 
 export default function UserInfo({nombre}:{nombre:string}) 
 {
@@ -79,7 +77,7 @@ function MyForm()
           isPassWordChanging&&<ChangePassord/>
         }
         <div className="flex justify-end">
-          <NewButton label="cambiar password" onClick={()=>setIsPassWordChanging(true)}  />
+          <MyButton onClick={()=>setIsPassWordChanging(true)} >cambiar password</MyButton>
         </div>
       </>
     );

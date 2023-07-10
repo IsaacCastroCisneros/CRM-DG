@@ -1,8 +1,8 @@
 import { faCheck, faDollar, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import MyButtonThin from '../../../../../../../../../components/MyButtonSubmit/MyButtonThin'
 import FormOption from '@/components/FormOption/FormOption'
+import { MyButton } from '@/components/MyButton/MyButton'
 
 export default function Cuotas() 
 {
@@ -35,26 +35,25 @@ export default function Cuotas()
   ]  
 
   return (
-    <div className='text-myBlack mb-[2rem]'>
-        <div className='flex flex-col mb-[12.8px] px-[24px]'>
-            <span className='block capitalize mb-[.6rem]'>cuota correspondiente</span>
-            <div className='flex items-stretch gap-[1.5rem] w-[20rem]'>
-                <MyButtonThin label='ver cuotas' icon={faDollar} onClick={()=>null} />
-                <FormOption options={['hmm','fdfdf']}/>
-            </div>
+    <div className="text-myBlack mb-[2rem]">
+      <div className="flex flex-col mb-[12.8px] px-[24px]">
+        <span className="block capitalize mb-[.6rem]">
+          cuota correspondiente
+        </span>
+        <div className="flex items-stretch gap-[1.5rem] w-[20rem]">
+          <MyButton>
+            <FontAwesomeIcon icon={faDollar}></FontAwesomeIcon> ver cuotas
+          </MyButton>
+          <FormOption options={["hmm", "fdfdf"]} />
         </div>
-        <ul className='flex flex-col gap-[.7rem]'>
-           {
-             list.map((cuo,pos)=>
-                {
-                    return(
-                        <Cuota key={pos} {...cuo}/>
-                    )
-                })
-           }
-        </ul>
+      </div>
+      <ul className="flex flex-col gap-[.7rem]">
+        {list.map((cuo, pos) => {
+          return <Cuota key={pos} {...cuo} />;
+        })}
+      </ul>
     </div>
-  )
+  );
 }
 
 interface cuota

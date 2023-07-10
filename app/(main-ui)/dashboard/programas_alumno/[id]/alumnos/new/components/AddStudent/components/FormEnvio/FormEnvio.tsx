@@ -4,11 +4,6 @@ import React, { useEffect, useState } from 'react'
 import FormContainer from '../FormContainer'
 import FormOption from '@/components/FormOption/FormOption'
 import MyFlexContainer from '@/components/MyFlexContainer/MyFlexContainer'
-import MyNormalSelect from '@/components/MyNormalSelect/MyNormalSelect'
-import DatePickerField from '@/components/DataPickerField/DatePickerField'
-import MyButtonSubmit from '@/components/MyButtonSubmit/MyButtonThin'
-import { faDollar } from '@fortawesome/free-solid-svg-icons'
-import isRequired from '@/helpers/isRequired'
 import { useFormikContext } from 'formik'
 
 const FormEnvio=()=> 
@@ -44,13 +39,7 @@ const FormEnvio=()=>
         </>
       )}
       <MyFlexContainer>
-        <MyNormalSelect label="Fecha de Inicio">
-          <DatePickerField name="fechaDeInicio" validate={isRequired} />
-        </MyNormalSelect>
-        <MyNormalSelect label="Fecha Fin">
-          <DatePickerField name="fechaFin" validate={isRequired} />
-        </MyNormalSelect>
-        <FormOption label="Horas Certificadas" type="number" />
+       
       </MyFlexContainer>
       <MyFlexContainer>
         <FormOption label="Numero De comprobante" type="number" />
@@ -80,7 +69,6 @@ const FormEnvio=()=>
         />
         <FormOption label="Asesor Asignado" options={["Alex", "Jose"]} />
       </MyFlexContainer>
-      <MyButtonSubmit label="Generar Cuotas" icon={faDollar} error={discountErr} />
     </FormContainer>
   );
 }

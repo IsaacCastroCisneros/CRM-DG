@@ -3,11 +3,9 @@
 import DatePickerField from '@/components/DataPickerField/DatePickerField';
 import FormOption from '@/components/FormOption/FormOption';
 import MyFlexContainer from '@/components/MyFlexContainer/MyFlexContainer';
-import MyNormalSelect from '@/components/MyNormalSelect/MyNormalSelect';
 import isRequired from '@/helpers/isRequired';
 import { Form, Formik } from 'formik';
 import React ,{useState} from 'react'
-import CuotasOptions from '../CuotasOptions';
 import cuota from '../../../../interfaces/cuota';
 
 interface props
@@ -20,7 +18,6 @@ export default function TheCuota(props:props)
 {
   const{pos,cuo}=props  
 
-  const[uneditable,setUneditable]=useState<boolean>(false)
 
   return (
     <div className="px-[3rem] py-[1rem] bg-myGray mb-[.5rem]">
@@ -39,13 +36,6 @@ export default function TheCuota(props:props)
         <Form>
           <MyFlexContainer margin={false}>
             <FormOption name="cuota" noLabel />
-            <MyNormalSelect>
-              <DatePickerField
-                name="fechaDeVencimiento"
-            
-                validate={isRequired}
-              />
-            </MyNormalSelect>
             <FormOption
               name="nOperacion"
               type="number"

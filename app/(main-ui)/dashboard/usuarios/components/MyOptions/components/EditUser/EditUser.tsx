@@ -1,6 +1,6 @@
 import FormOption from '@/components/FormOption/FormOption';
+import { MyButton } from '@/components/MyButton/MyButton';
 import MyFlexContainer from '@/components/MyFlexContainer/MyFlexContainer';
-import NewButton from '@/components/NewButton/NewButton';
 import RegularPopup from '@/components/RegularPopup/RegularPopup'
 import { Form, Formik } from 'formik'
 import React from 'react'
@@ -54,7 +54,7 @@ function MyForm()
           <FormOption label="razón" />
           <FormOption label="categoria" options={["yeeei", "leeel"]} />
           <div className='flex justify-end'>
-            <NewButton type="submit" label="guardar" />
+            <MyButton type="submit">guardar</MyButton>
           </div>
         </Form>
       </Formik>

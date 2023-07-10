@@ -1,6 +1,6 @@
 import FormOption from '@/components/FormOption/FormOption'
-import NewButton from '@/components/NewButton/NewButton';
 import { Form, Formik } from 'formik'
+import {MyButton} from '@/components/MyButton/MyButton'
 import React from 'react'
 
 export default function ChangePassord() {
@@ -21,7 +21,7 @@ export default function ChangePassord() {
       >
         <Form className="px-[1rem] py-[.5rem] bg-[#eee] flex items-end gap-[2rem] mb-[2rem]">
           <FormOption label="Nueva Contraseña" />
-          <NewButton label='Guardar' />
+          <MyButton>Guardar</MyButton>
         </Form>
       </Formik>
     </div>

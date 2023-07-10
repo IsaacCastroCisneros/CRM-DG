@@ -1,6 +1,6 @@
 import FormOption from '@/components/FormOption/FormOption'
+import { MyButton } from '@/components/MyButton/MyButton'
 import MyFlexContainer from '@/components/MyFlexContainer/MyFlexContainer'
-import NewButton from '@/components/NewButton/NewButton'
 import RegularPopup from '@/components/RegularPopup/RegularPopup'
 import { Form, Formik } from 'formik'
 import React from 'react'
@@ -48,7 +48,7 @@ function MyForm()
          <FormOption label='referencia' />
          <FormOption label='tipo de comprobante' options={['loool','siii']} />
          <FormOption label='categoria' options={['loool','siii']} />
-         <NewButton label='Guardar' type='submit' />
+         <MyButton>Guardar</MyButton>
        </Form>
      </Formik>
    );

@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
-import NewButton from '@/components/NewButton/NewButton';
+import { MyButton } from '@/components/MyButton/MyButton';
 
 const EditorBox=()=> 
 {
@@ -53,7 +53,9 @@ const EditorBox=()=>
               "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
           }}
         />
-        <NewButton label="Guardar" styles='!mt-[1rem]' onClick={gettingTheText}/>
+        <MyButton className="!mt-[1rem]" onClick={gettingTheText}>
+          Guardar
+        </MyButton>
       </>
     );
 }

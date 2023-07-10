@@ -7,7 +7,7 @@ import { faClipboard } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import React from 'react'
-import NewButton from '@/components/NewButton/NewButton'
+import {MyLink} from '@/components/MyLink/MyLink'
 
 const columns = unifiedStyle([
   {
@@ -134,11 +134,9 @@ const Page=({params}:any)=>
         columns={columns}
         data={data}
         buttons={
-          <NewButton
-            styles='!bg-myGreen !rounded-[2rem] !leading-[1.5rem]'
-            href={`/dashboard/programas_alumno/${id}/alumnos/new`}
-            label="+ Agregar Alumno"
-          />
+          <MyLink href={`/dashboard/programas_alumno/${id}/alumnos/new`}>
+            + Agregar Alumno
+          </MyLink>
         }
       />
     </MyBlock>

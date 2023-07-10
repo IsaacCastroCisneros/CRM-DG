@@ -1,7 +1,6 @@
 'use client'
 
 import MyBlock from '@/components/MyBlock/MyBlock'
-import NewButton from '@/components/NewButton/NewButton'
 import TheDataTable from '@/components/TheDataTable/TheDataTable'
 import appContext from '@/context/appContext'
 import React, {useContext, useState } from 'react'
@@ -9,6 +8,7 @@ import MyFilters from '@/components/MyFilters/MyFilters'
 import MyOptions from './components/MyOptions/MyOptions'
 import NewUser from './components/NewUser/NewUser'
 import NewUserLite from './components/NewUserLite/NewUserLite'
+import {MyButton} from '@/components/MyButton/MyButton'
 
 const columns =
 [
@@ -104,8 +104,8 @@ const Page=()=>
     <MyBlock title="usuarios">
       <div className='flex flex-col'>
         <div className='flex gap-[1rem] mb-[1rem]'>
-          <NewButton label='Registro Completo' onClick={()=>setShowPopup({show:true,popup:<NewUser/>})}  />
-          <NewButton label='Registro Corto' onClick={()=>setShowPopup({show:true,popup:<NewUserLite/>})} />
+          <MyButton onClick={()=>setShowPopup({show:true,popup:<NewUser/>})}>Registro Completo</MyButton>
+          <MyButton onClick={()=>setShowPopup({show:true,popup:<NewUserLite/>})}>Registro Corto</MyButton>
         </div>
         <TheDataTable
           columns={columns}
