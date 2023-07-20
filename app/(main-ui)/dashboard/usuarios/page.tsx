@@ -9,6 +9,7 @@ import MyOptions from './components/MyOptions/MyOptions'
 import NewUser from './components/NewUser/NewUser'
 import NewUserLite from './components/NewUserLite/NewUserLite'
 import {MyButton} from '@/components/MyButton/MyButton'
+import filter from '@/interfaces/filter'
 
 const columns =
 [
@@ -97,7 +98,7 @@ const data =
 
 const Page=()=> 
 {
-  const[myFilter,setMyFilter]=useState({value:'',property:''})
+  const[myFilter,setMyFilter]=useState<Array<filter>>([{value:'',property:''}])
   const{setShowPopup}=useContext(appContext)
 
   return (
@@ -111,7 +112,7 @@ const Page=()=>
           columns={columns}
           data={data}
           myFilter={myFilter}
-          buttons={<MyFilters filters={[{label:'categoria',options:['PROF']}]} setMyFilter={setMyFilter} />}
+          buttons={<MyFilters myFilters={myFilter} filters={[{label:'categoria',options:['PROF']}]} setMyFilter={setMyFilter} />}
         />
       </div>
     </MyBlock>
