@@ -1,5 +1,6 @@
 import React from 'react'
 import MyBlock from '@/components/MyBlock/MyBlock'
+import ClientContent from './components/ClientContent/ClientContent';
 
 export default function page() 
 {
@@ -9,7 +10,7 @@ export default function page()
       title="Sesiones"
       subtitle="ELABORACIÓN DE INSTRUMENTOS"
     >
-      <button>crear sesion</button>
+      <ClientContent/>
     </MyBlock>
   );
 }

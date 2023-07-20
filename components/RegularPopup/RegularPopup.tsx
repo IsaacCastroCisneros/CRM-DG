@@ -15,7 +15,7 @@ export default function RegularPopup({content,title}:props)
   return (
     <div className='min-w-[50rem]'>
       <div className="py-[8px] px-[32px] bg-primary relative text-white w-[100%]">
-        <strong>
+        <strong className='capitalize'>
             {title}
         </strong>
         <button

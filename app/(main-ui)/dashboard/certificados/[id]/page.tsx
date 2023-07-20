@@ -1,17 +1,12 @@
-"use client"
-import dynamic from 'next/dynamic';
-import TableEdit from './components/TableEdit';
+import MyBlock from '@/components/MyBlock/MyBlock'
+import React from 'react'
+import Table from './components/Table'
 
-
-const EditCertificado=({ params }: any)=> 
+export default function page() 
 {
-    const { id } = params
-    return(
-        <>
-            <h1 className='Montserrat font-black text-2xl mb-5'>Cursos Inscritos de Juan Perez</h1>
-            <TableEdit id={id} />
-        </>
-    )
+  return (
+    <MyBlock title='Programas de Jessica Perez' subtitle='DNI:70368870' >
+      <Table/>
+    </MyBlock>
+  )
 }
-
-export default EditCertificado

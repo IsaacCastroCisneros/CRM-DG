@@ -1,7 +1,7 @@
 import buttonLink from '@/styles/buttonLink'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { ButtonHTMLAttributes, Children, ReactNode } from 'react'
+import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface props extends ButtonHTMLAttributes<HTMLButtonElement>
@@ -9,6 +9,8 @@ interface props extends ButtonHTMLAttributes<HTMLButtonElement>
   children:ReactNode
   cancel?:boolean
   icon?:IconProp
+  finish?:boolean
+  noWidth?:boolean
 }
 
 export const MyButton = (myProps:props) => 
@@ -19,13 +21,18 @@ export const MyButton = (myProps:props) =>
     className,
     cancel,
     icon,
+    finish,
+    noWidth,
     ...props
   }=myProps
-  const c = twMerge(buttonLink(cancel),className);
+
+  const noWidthStyle = noWidth ? 'px-[1rem] py-[.6rem] w-auto h-auto':''
+
+  const c = twMerge(buttonLink(cancel,finish),className+noWidthStyle)
 
   return (
     <button {...props} className={c}>
-      {icon && <FontAwesomeIcon icon={icon} />}
+      {icon && <FontAwesomeIcon size='xl' icon={icon} />}
       {children}
     </button>
   );

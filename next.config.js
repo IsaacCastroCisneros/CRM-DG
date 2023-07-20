@@ -6,7 +6,7 @@ const nextConfig = {
   },
   reactStrictMode: false,
   images:{
-    domains: ["images.unsplash.com"]
+    domains: ["images.unsplash.com","archivos-comunes.s3.amazonaws.com"]
   },
   async redirects() {
     return [

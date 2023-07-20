@@ -15,7 +15,6 @@ export default function CursoVirtualItems({program}:{program:{id:number,name:str
 
   const local = `/dashboard/academico/cursos_virtuales/${id}/`
 
-
   const cursoVirtualItems = [
     {
       title: "Sesiones",

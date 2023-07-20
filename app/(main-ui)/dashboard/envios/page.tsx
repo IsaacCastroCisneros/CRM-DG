@@ -3,33 +3,10 @@
 import MyBlock from '@/components/MyBlock/MyBlock'
 import TheDataTable from '@/components/TheDataTable/TheDataTable'
 import React from 'react'
-import MyOptions from './components/MyOptions/MyOptions'
-import StatusEnvio from './components/StatusEnvio/StatusEnvio'
 import registroEnvio from './interface/registroEnvio'
+import columns from './helpers/columns'
 
-const columns =
-[
-  {
-    name:'Certificado',
-    cell:(row:any)=>row.certificado
-  },
-  {
-    name:'Nombre',
-    selector: (row:any) => row.nombre,
-  },
-  {
-    name:'Usuario',
-    selector:(row:any)=><img src={row.user} className="w-[3rem] h-[3rem] rounded-[100%] block"/>,
-  },
-  {
-    name:'Estado',
-    cell:(row:any)=><StatusEnvio exist={row.status}/>
-  },
-  {
-    name:'Opciones',
-    cell:(row:any)=><MyOptions user={row} />
-  }
-]
+
 
 interface user {
   dni: string;
@@ -47,7 +24,7 @@ const data:Array<user>=
   {
     dni:'999999',
     correo:'fdfd',
-    user:'https://concepto.de/wp-content/uploads/2018/08/persona-e1533759204552.jpg',
+    user:'https://archivos-comunes.s3.amazonaws.com/2022/asesores/LUCERO+ALCANTARA.png',
     nombre:'hola',
     telefono:'5555555',
     registroEnvio:
@@ -64,7 +41,7 @@ const data:Array<user>=
   {
     dni:'999999',
     correo:'fdfd',
-    user:'https://media.gettyimages.com/id/88500538/es/foto/bottle-nosed-dolphin-jumping.jpg?s=612x612&w=gi&k=20&c=G8OypwOt8tPATL6L-h8eBga8VxdodqbRyeQvz417TYA=',
+    user:'https://archivos-comunes.s3.amazonaws.com/2022/asesores/LUCERO+ALCANTARA.png',
     nombre:'fdfd',
     telefono:'5555555',
     registroEnvio:
@@ -81,7 +58,7 @@ const data:Array<user>=
   {
     dni:'888888',
     correo:'fdfd',
-    user:'https://media.gettyimages.com/id/88500538/es/foto/bottle-nosed-dolphin-jumping.jpg?s=612x612&w=gi&k=20&c=G8OypwOt8tPATL6L-h8eBga8VxdodqbRyeQvz417TYA=',
+    user:'https://archivos-comunes.s3.amazonaws.com/2022/asesores/LUCERO+ALCANTARA.png',
     nombre:'fdfd',
     telefono:'5555555',
     registroEnvio:[
@@ -103,7 +80,7 @@ const page=()=>
 
   return (
     <MyBlock title='Envios'>
-     <TheDataTable columns={columns} data={data} />
+     <TheDataTable columns={columns} data={data} newButton={false} />
     </MyBlock>
   )
 }

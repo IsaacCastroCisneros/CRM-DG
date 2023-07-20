@@ -9,6 +9,7 @@ import inputContainer from '@/styles/inputContainer'
 import inputLabel from '@/styles/inputLabel'
 import React, {InputHTMLAttributes} from 'react'
 import {twMerge} from 'tailwind-merge'
+import TextEditor from './components/TextEditor'
 
 interface props extends InputHTMLAttributes<HTMLInputElement>
 {
@@ -17,6 +18,7 @@ interface props extends InputHTMLAttributes<HTMLInputElement>
   onlyText?:boolean
   onChange:(e:any)=>void
   file?:FileList
+  textEditor?:boolean
 }
 
 interface option
@@ -26,7 +28,7 @@ interface option
   disabled?:boolean
 }
 
-export const MyFormInput = ({className,type='text',...props} :props) => 
+export const MyFormInput = ({className,type='text',...props}:props) => 
 {
   const
   {
@@ -35,6 +37,7 @@ export const MyFormInput = ({className,type='text',...props} :props) =>
     onlyText,
     max,
     onChange=()=>null,
+    textEditor
   }=props
 
   const c = twMerge(inputContainer,className)
@@ -63,54 +66,60 @@ export const MyFormInput = ({className,type='text',...props} :props) =>
       {
         <div className={c}>
           <label className={inputLabel}>{label}</label>
-          {!options && type !== "textarea" && (
-            <input
-              {...props}
-              className={input}
-              type={type}
-              size={1}
-              onKeyPress={(e: any) => {
-                if (type === "number") onlyNumFunc(e);
-                if (onlyText) onlyTextFunc(e);
-              }}
-              onChange={(e) => {
-                if (max) {
-                  e.target.value = maxNum(e.target.value, max);
-                }
-                onChange(e);
-              }}
-            />
-          )}
-          {options && (
-            <select
-              defaultValue={props.value !== "" ? props.value : "myDefault"}
-              size={1}
-              className="outline-none font-bold text-[20px] capitalize"
-              onChange={onChange}
-            >
-              <option value="myDefault" disabled>
-                Seleccione Opcion
-              </option>
-              {options.map((op, pos) => (
-                <option
-                  key={pos}
-                  className={`capitalize ${
-                    gettingDisabled(op) ? "text-myGray3 font-bold" : ""
-                  }`}
-                  value={gettingValue(op)}
-                  disabled={gettingDisabled(op)}
+          {!textEditor && (
+            <>
+              {!options && type !== "textarea" && (
+                <input
+                  {...props}
+                  className={input}
+                  type={type}
+                  size={1}
+                  onKeyPress={(e: any) => {
+                    if (type === "number") onlyNumFunc(e);
+                    if (onlyText) onlyTextFunc(e);
+                  }}
+                  onChange={(e) => {
+                    if (max) {
+                      e.target.value = maxNum(e.target.value, max);
+                    }
+                    onChange(e);
+                  }}
+                />
+              )}
+              {options && (
+                <select
+                  defaultValue={props.value !== "" ? props.value : "myDefault"}
+                  size={1}
+                  className="outline-none font-bold text-[20px] capitalize"
+                  onChange={onChange}
                 >
-                  {gettingLabel(op)}
-                </option>
-              ))}
-            </select>
+                  <option value="myDefault" disabled>
+                    Seleccione Opcion
+                  </option>
+                  {options.map((op, pos) => (
+                    <option
+                      key={pos}
+                      className={`capitalize ${
+                        gettingDisabled(op) ? "text-myGray3 font-bold" : ""
+                      }`}
+                      value={gettingValue(op)}
+                      disabled={gettingDisabled(op)}
+                    >
+                      {gettingLabel(op)}
+                    </option>
+                  ))}
+                </select>
+              )}
+              {type === "textarea" && (
+                <textarea
+                  className={`${input} h-[7rem] resize-none`}
+                  value={props.value}
+                  onChange={onChange}
+                ></textarea>
+              )}
+            </>
           )}
-          {type === "textarea" && (
-            <textarea
-              className={`${input} h-[7rem] resize-none`}
-              onChange={onChange}
-            ></textarea>
-          )}
+          {textEditor && <TextEditor onChange={onChange} />}
         </div>
       }
     </>

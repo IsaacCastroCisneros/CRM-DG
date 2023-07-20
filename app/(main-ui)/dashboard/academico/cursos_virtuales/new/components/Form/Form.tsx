@@ -1,7 +1,5 @@
 "use client"
 
-import { MyButton } from '@/components/MyButton/MyButton'
-import { MyLink } from '@/components/MyLink/MyLink'
 import React, { useState } from 'react'
 import { SwitchButton } from './components/SwitchButton'
 import curso from '../../interfaces/curso'
@@ -10,8 +8,6 @@ import { MyForm } from '@/components/MyForm/MyForm'
 import { Options } from './components/Options'
 import { Fecha } from './components/Fecha'
 import { Media } from './components/Media'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons'
 import { Seo } from './components/Seo'
 import { Respon } from './components/Respon'
 
@@ -55,27 +51,8 @@ export const Form = () =>
       metaDescripcion:"",
       metaImagen:""
     })
-  
-  const step = values.step
 
-  function switching(prev:any,maxmin:number,operation:'minus'|'addition')
-  {
-
-    function operatting()
-    {
-      if(operation==='minus')return prevStep-1
-      if(operation==='addition')return prevStep+1
-    }
-
-    const prevStep = prev.step
-
-    const step = prevStep===maxmin ? maxmin: operatting()
-
-    return {...prev,step}
-  }
-
-  const min =1;
-  const max=6
+    const step = values.step
 
   return (
     <>
@@ -121,7 +98,7 @@ export const Form = () =>
           setValues={setValues}
         />
       </div>
-      <MyForm submit={async () => null}>
+      <MyForm submit={async () => null} values={values} setValues={setValues} stepsMax={6} >
         {step === 1 && <Info values={values} setValues={setValues} />}
         {step === 2 && <Options values={values} setValues={setValues} />}
         {step === 3 && <Fecha values={values} setValues={setValues} />}
@@ -129,27 +106,6 @@ export const Form = () =>
         {step === 5 && <Respon values={values} setValues={setValues} />}
         {step === 6 && <Seo values={values} setValues={setValues} />}
       </MyForm>
-      <div className="flex gap-[2rem]">
-        <div className='flex gap-[.5rem]'>
-          <button
-            disabled={values.step===min}
-            className={`${values.step===min? 'brightness-[70%]':''} bg-myGray text-[#fff] rounded-[.5rem] px-[.5rem]`}
-            onClick={() => setValues((prev) => switching(prev, min, "minus"))}
-          >
-            <FontAwesomeIcon size='xl' icon={faAnglesLeft} />
-          </button>
-          <MyButton
-            className={`${values.step===max ? 'brightness-[70%]':''}`}
-            disabled={values.step===max}
-            onClick={() => setValues((prev) => switching(prev, max, "addition"))}
-          >
-            siguiente
-          </MyButton>
-        </div>
-        <MyLink href={"/dashboard/academico/cursos_virtuales/"} cancel>
-          cancel
-        </MyLink>
-      </div>
     </>
   );
 }

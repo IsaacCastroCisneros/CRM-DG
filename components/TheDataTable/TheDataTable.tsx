@@ -1,8 +1,12 @@
 "use client"
 
 import DataTable from 'react-data-table-component';
-import React, { ReactElement } from 'react'
+import React, { ReactElement, ReactNode, useState } from 'react'
 import { FilterComponent } from './components/FilterComponent';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { MyLink } from '../MyLink/MyLink';
+import { usePathname } from 'next/navigation';
+import filter from '@/interfaces/filter';
 
 interface props
 {
@@ -10,29 +14,49 @@ interface props
   columns:any;
   conditionalStyles?:any;
   buttons?:ReactElement<any, any>;
-  myFilter?:{value:string,property:string}
+  newButton?:boolean|ReactNode
+  myFilter?:Array<filter>
 }
 
 const TheDataTable=(props:props)=> 
 {
+  const path = usePathname()||''
+
   const
   {
     data,
     columns,
     conditionalStyles,
     buttons,
-    myFilter
+    myFilter,
+    newButton= <MyLink
+    href={`${path}/new`}
+    className="h-[50px] w-[147px] font-semibold text-[16px]"
+    icon={faPlusCircle}
+  >
+    Nuevo
+  </MyLink>
   }=props
+
 
   const [filterText, setFilterText] = React.useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
-	let filteredItems = data.filter(
-		(item: any) => JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !== -1,
-	);
 
-  if(myFilter&&myFilter.value!=='')
+  let filteredItems=data.filter(
+		(item: any) => JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !== -1,
+	)
+
+  if(myFilter)
   {
-    filteredItems = data.filter((item: any) => item[myFilter.property.toLowerCase()] === myFilter.value);
+    filteredItems = data.filter((item: any) =>
+          {
+            const isPass= myFilter.every(m=>
+              {
+                  if(m.value==="")return true
+                  return item[m.property.toLowerCase()].toLowerCase()===m.value.toLowerCase()
+                })
+              return isPass===true
+          });
   }
 
 	const subHeaderComponentMemo = React.useMemo(() => {
@@ -44,22 +68,26 @@ const TheDataTable=(props:props)=>
 		};
 
 		return (
-      <div className='flex w-[100%] justify-between'>
-        <FilterComponent
-          onFilter={(e: any) => setFilterText(e.target.value)}
-          onClear={handleClear}
-          filterText={filterText}
-        />
+      <div className="flex w-[100%] justify-between mb-[2rem] items-center">
+        <div className="flex gap-[1rem]">
+          <FilterComponent
+            onFilter={(e: any) => setFilterText(e.target.value)}
+            onClear={handleClear}
+            filterText={filterText}
+          />
+          {buttons}
+        </div>
         {
-          buttons
+          newButton 
         }
       </div>
     ); 
-	}, [filterText, resetPaginationToggle]);
+	}, [filterText, resetPaginationToggle,myFilter]);
 
 
   return (
     <>
+       
       <DataTable
         columns={columns}
         data={filteredItems}

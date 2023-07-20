@@ -6,7 +6,9 @@ const appContext=React.createContext<appContextValues>(
        showPopup:{show:false,popup:<></>},
        setShowPopup:()=>null,
        showNoti:{show:false,type:'success'},
-       setShowNoti:()=>null
+       setShowNoti:()=>null,
+       showSideMenu:{show:false,content:<></>},
+       setShowSideMenu:()=>null
     }
   )
 

@@ -24,6 +24,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/[...nextauth].js", "app/(main-ui)/dashboard/programas_alumno/[id]/alumnos/new/components/AddStudent/components/AlumnoCuotas/components/TheCuota"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/[...nextauth].js", "app/(main-ui)/dashboard/programas_alumno/[id]/alumnos/new/components/AddStudent/components/AlumnoCuotas/components/TheCuota", "app/(main-ui)/dashboard/academico/cursos_virtuales/[id]/sesiones/components/ClientContent"],
   "exclude": ["node_modules"]
 }

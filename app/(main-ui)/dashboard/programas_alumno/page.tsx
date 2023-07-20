@@ -3,34 +3,9 @@
 import MyBlock from '@/components/MyBlock/MyBlock'
 import TheDataTable from '@/components/TheDataTable/TheDataTable'
 import React, { useState } from 'react'
-import Program from './components/Program/Program'
 import MyFilters from '@/components/MyFilters/MyFilters'
-import MyAlumnosOptions from './components/MyAlumnosOptions/MyAlumnosOptions'
-import unifiedStyle from '@/helpers/unifiedStyle'
-
-const columns = unifiedStyle([
-  {
-    name:'Nombre de Programa',
-    cell:(row:any)=><Program row={row}/>
-  },
-  {
-    name:'Categoria',
-    selector: (row:any) => row.categoria,
-  },
-  {
-    name:'Modalidad',
-    selector:(row:any)=>row.modalidad,
-  },
-  {
-    name:'Alumnos',
-    cell:(row:any)=>row.alumnos
-  },
-  {
-    name:'Acciones',
-    cell:(row:any)=><MyAlumnosOptions row={row} />
-  }
-])
-
+import filter from '@/interfaces/filter'
+import columns from './helpers/columns/columns'
 
 const data=
 [
@@ -41,8 +16,8 @@ const data=
         name:'Sistema integrado de Gestion SIGA',
         img:'https://ipappg.edu.pe/blog/wp-content/uploads/2022/05/siaf-sin-fondo-logo.png'
      },
-     categoria:'Curso',
-     modalidad:'Dual',
+     categoria:'curso',
+     modalidad:'dual',
      alumnos:50,
    },
    {
@@ -52,8 +27,8 @@ const data=
        name:'Sistema integrado de Gestion SIGA',
        img:'https://ipappg.edu.pe/blog/wp-content/uploads/2022/05/siaf-sin-fondo-logo.png'
     },
-    categoria:'Diploma',
-    modalidad:'Presencial',
+    categoria:'diploma',
+    modalidad:'presencial',
     alumnos:15,
   },
   {
@@ -63,8 +38,8 @@ const data=
        name:'Sistema integrado de Gestion SIGA',
        img:'https://ipappg.edu.pe/blog/wp-content/uploads/2022/05/siaf-sin-fondo-logo.png'
     },
-    categoria:'Curso',
-    modalidad:'Dual',
+    categoria:'curso',
+    modalidad:'dual',
     alumnos:30,
   },
   {
@@ -74,31 +49,37 @@ const data=
        name:'Sistema integrado de Gestion SIGA',
        img:'https://ipappg.edu.pe/blog/wp-content/uploads/2022/05/siaf-sin-fondo-logo.png'
     },
-    categoria:'Curso',
-    modalidad:'Virtual',
+    categoria:'curso',
+    modalidad:'virtual',
     alumnos:15,
   } 
 ]
 
 const Page=()=> 
 {
-  const[myFilter,setMyFilter]=useState({value:'',property:''})  
-  
+  const[myFilter,setMyFilter]=useState<Array<filter>>([{value:'',property:''}])  
+
   return (
     <MyBlock title="Programas por Alumno">
       <TheDataTable
         columns={columns}
         data={data}
         myFilter={myFilter}
+        newButton={false}
         buttons={
           <MyFilters
             filters={[
               {
-                label: "Modalidad",
-                options: ["Dual", "Presencial", "Virtual"],
+                label: "modalidad",
+                options: ["dual", "presencial", "virtual"],
+              },
+              {
+                label: "categoria",
+                options: ["diploma", "curso"],
               },
             ]}
             setMyFilter={setMyFilter}
+            myFilters={myFilter}
           />
         }
       />

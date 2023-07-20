@@ -3,11 +3,14 @@
 import MyBlock from '@/components/MyBlock/MyBlock'
 import TheDataTable from '@/components/TheDataTable/TheDataTable'
 import unifiedStyle from '@/helpers/unifiedStyle'
-import { faClipboard } from '@fortawesome/free-solid-svg-icons'
+import { faClipboard, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
-import React from 'react'
+import React,{useState} from 'react'
 import {MyLink} from '@/components/MyLink/MyLink'
+import { MyButton } from '@/components/MyButton/MyButton'
+import filter from '@/interfaces/filter'
+import MyFilters from '@/components/MyFilters/MyFilters'
 
 const columns = unifiedStyle([
   {
@@ -126,6 +129,7 @@ const data=
 
 const Page=({params}:any)=> 
 {
+  const[filters,setFilters]=useState<Array<filter>>([{value:"",property:""}])
   const{id}=params
 
   return (
@@ -133,9 +137,26 @@ const Page=({params}:any)=>
       <TheDataTable
         columns={columns}
         data={data}
+        myFilter={filters}
         buttons={
-          <MyLink href={`/dashboard/programas_alumno/${id}/alumnos/new`}>
-            + Agregar Alumno
+          <MyFilters
+            setMyFilter={setFilters}
+            filters={[
+              {
+                label: "status",
+                options: ["culminado", "no iniciado", "en curso"],
+              },
+            ]}
+            myFilters={filters}
+          />
+        }
+        newButton={
+          <MyLink
+            href={`/dashboard/programas_alumno/${id}/alumnos/new`}
+            className="h-[50px] w-[147px] font-semibold text-[16px]"
+            icon={faPlusCircle}
+          >
+            Nuevo
           </MyLink>
         }
       />

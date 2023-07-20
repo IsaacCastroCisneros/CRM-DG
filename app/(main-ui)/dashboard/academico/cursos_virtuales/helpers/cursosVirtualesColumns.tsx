@@ -1,8 +1,10 @@
 "use client"
 
 import Image from "next/image";
-import { useState } from "react";
 import { MenuColumns } from "@/components/MenuColumns/MenuColumns";
+import SwitchColumn from "@/components/SwitchColumn/SwitchColumn";
+import Option from "@/components/Option/Option";
+import menuOptions from "./menuOptions";
 
 const cursosVirtualesColumns = 
 [
@@ -42,27 +44,20 @@ const cursosVirtualesColumns =
   },
   {
     name: "destacado",
-    selector: (row: any) => <SwitchColumn status={row.destacado} labels={['Si','No']} />,
+    selector: (row: any) =><SwitchColumn status={row.destacado} labels={['Si','No']} />,
     width:'10rem'
   },
   {
     name: "acciones",
-    cell: (row:any) => <MenuColumns/>,
+    cell: (row:any) =>(
+      <div className="flex gap-[1rem]">
+        <Option label="clonar" type="copy" onClick={()=>null} />
+        <MenuColumns options={menuOptions} /> 
+      </div>
+    ),
   },
 ];
 
-function SwitchColumn({status,labels}:{status:boolean,labels:[string,string]})
-{
-  const[toggle,setToggle]=useState<boolean>(status)
 
-  return (
-   <button className={`${toggle ? 'bg-myGreen flex-row-reverse':'bg-myRed'} rounded-[1rem] justify-between text-[#fff] h-[30px] px-[.5rem] flex w-[125px]  items-center font-bold gap-[.3rem]`}
-    onClick={()=>setToggle(prev=>!prev)}
-    >
-       <span className="bg-[#fff] w-[.8rem] h-[.8rem] rounded-[100%]"></span>
-       <span className="text-[.9rem]">{toggle ? labels[0]:labels[1]} </span>
-   </button>
-  );
-}
 
 export default cursosVirtualesColumns
