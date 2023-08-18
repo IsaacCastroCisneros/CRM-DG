@@ -1,5 +1,7 @@
 "use clinet"
-export const FechasComponent = ({ setFiltroFechas }: any) => {
+
+export const FechasComponent = ({ setFiltroFechas }: any) => 
+{
     const valorFechas = (e: any) => {
         e.preventDefault()
         const start = (document.getElementById("start") as HTMLInputElement).value

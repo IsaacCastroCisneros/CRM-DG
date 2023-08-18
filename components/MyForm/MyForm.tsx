@@ -1,6 +1,6 @@
 "use client"
 
-import React, { Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react'
+import React, { Dispatch, ReactNode, SetStateAction, useContext } from 'react'
 import { MyButton } from '@/components/MyButton/MyButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons'
@@ -19,6 +19,9 @@ interface props
   path?:string
   stepsMax?:number 
   oneMore?:boolean
+  isBack?:boolean
+  isValid?:boolean|null
+  defaultValues?:Record<any,any>
 }
 
 export const MyForm = (props:props) => 
@@ -34,9 +37,11 @@ export const MyForm = (props:props) =>
     stepsMax=1,
     path,
     oneMore=true,
+    isBack=false,
+    isValid=null,
+    defaultValues={}
   }=props
 
-  const[isBack,setIsBack]=useState<boolean>(false)
   const router = useRouter()
   const{setShowNoti}=useContext(appContext)
 
@@ -51,16 +56,7 @@ export const MyForm = (props:props) =>
 
         if (!isBack) 
         {
-          const valuesArr = Object.keys(values);
-          const emptyValues: any = {};
-          valuesArr.forEach((v: any) => {
-            if (v === "step") {
-              emptyValues[v] = 1;
-              return;
-            }
-            emptyValues[v] = "";
-          });
-          setValues(emptyValues);
+          setValues(defaultValues);
         }
         if (isBack) router.back();
       }}
@@ -111,7 +107,7 @@ export const MyForm = (props:props) =>
             cancel
           </MyButton>
         )}
-        <MyButton finish onClick={() => setIsBack(true)}>
+        <MyButton disabled={isValid===null?false:!isValid} finish>
           Finalizar
         </MyButton>
       </div>

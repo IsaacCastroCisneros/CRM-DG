@@ -23,6 +23,7 @@ export const MyButton = (myProps:props) =>
     icon,
     finish,
     noWidth,
+    disabled,
     ...props
   }=myProps
 
@@ -31,7 +32,7 @@ export const MyButton = (myProps:props) =>
   const c = twMerge(buttonLink(cancel,finish),className+noWidthStyle)
 
   return (
-    <button {...props} className={c}>
+    <button {...props} className={c+` ${disabled ? 'brightness-75':''}`} disabled={disabled} >
       {icon && <FontAwesomeIcon size='xl' icon={icon} />}
       {children}
     </button>

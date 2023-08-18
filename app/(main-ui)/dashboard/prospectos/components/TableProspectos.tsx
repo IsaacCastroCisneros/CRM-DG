@@ -13,7 +13,7 @@ export const DatosProspectos:any = [
       id: 0,
       nombre: "Sistema Integrado de Administración Financiera – SIAF",
       logo: "https://s3-us-west-2.amazonaws.com/uploads-desarrolloglobal.pe/2021/01/ICONOS_osce_DG.png",
-      fecha: "17-01-2023",
+      fecha: "03-08-2023",
       categoria: "Curso",
       modalidad: "Dual",
       prospectos: 50,
@@ -43,8 +43,8 @@ export const DatosProspectos:any = [
       id: 1,
       nombre: "Sistema Integrado de Gestión Administrativa – SIGA",
       logo: "https://s3-us-west-2.amazonaws.com/uploads-desarrolloglobal.pe/2019/06/icono_contabilidad_gubernamental.png",
-      fecha: "01-01-2023",
-      categoria: "Diploma",
+      fecha: "15-08-2023",
+      categoria: "Curso",
       modalidad: "Presencial",
       prospectos: 20,
       alumnos: [{
@@ -170,6 +170,7 @@ const TableProspectos=()=>
     ];
 
     const [setFilterText, setFilterSelect, setFiltroFechas, filteredAccounts] = useFiltrosTable(DatosProspectos)
+    
     return (
         <>
             <BotonesFiltros setFilterText={setFilterText} setFilterSelect={setFilterSelect} setFiltroFechas={setFiltroFechas} />

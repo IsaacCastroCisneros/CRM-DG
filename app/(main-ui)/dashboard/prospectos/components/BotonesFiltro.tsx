@@ -2,7 +2,8 @@
 import { FechasComponent } from '@/components/FechasComponent/FechasComponent';
 import { SearchComponen } from '@/components/SearchComponen/SearchComponen';
 
-export const BotonesFiltros = ({ setFilterText, setFilterSelect, setFiltroFechas }: any) => {
+export const BotonesFiltros = ({ setFilterText, setFilterSelect, setFiltroFechas }: any) => 
+{
     const button = [{
         id: "1",
         name: "TODOS",

@@ -37,7 +37,7 @@ export const FormFileInputSimple = ({name,...props}:props) =>
         {file?.name || myName}
       </label>
       <div className="flex">
-        <input type="text" className={`${input} flex-1`} />
+        <input type="text" readOnly className={`${input} flex-1`} />
         <div className="relative w-fit">
           <div className="relative w-fit hover:cursor-pointer">
             <FontAwesomeIcon size="2xl" icon={faImage} />

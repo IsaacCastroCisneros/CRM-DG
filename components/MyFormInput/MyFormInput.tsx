@@ -19,6 +19,8 @@ interface props extends InputHTMLAttributes<HTMLInputElement>
   onChange:(e:any)=>void
   file?:FileList
   textEditor?:boolean
+  label?:string
+  isMoney?:boolean
 }
 
 interface option
@@ -37,11 +39,13 @@ export const MyFormInput = ({className,type='text',...props}:props) =>
     onlyText,
     max,
     onChange=()=>null,
-    textEditor
+    isMoney=false,
+    textEditor,
   }=props
 
   const c = twMerge(inputContainer,className)
-  const label = camelToNormal(name||'')
+  const finalLabel =camelToNormal(name||'')
+  const isRed= finalLabel.startsWith('*')
 
   function gettingValue(op:string|option):string
   {
@@ -61,36 +65,55 @@ export const MyFormInput = ({className,type='text',...props}:props) =>
      return op.disabled
   }
 
+
   return (
     <>
       {
         <div className={c}>
-          <label className={inputLabel}>{label}</label>
+          <label
+            className={twMerge(inputLabel, `${isRed ? "text-red-500" : ""}`)}
+          >
+            {finalLabel}
+          </label>
           {!textEditor && (
             <>
-              {!options && type !== "textarea" && (
-                <input
-                  {...props}
-                  className={input}
-                  type={type}
-                  size={1}
-                  onKeyPress={(e: any) => {
-                    if (type === "number") onlyNumFunc(e);
-                    if (onlyText) onlyTextFunc(e);
-                  }}
-                  onChange={(e) => {
-                    if (max) {
-                      e.target.value = maxNum(e.target.value, max);
+              <div className="relative">
+                {isMoney && (
+                  <div className="absolute left-[0] translate-y-[-50%] top-[50%]">
+                    S/.
+                  </div>
+                )}
+                {!options && type !== "textarea" && (
+                  <input
+                    {...props}
+                    className={
+                      input +
+                      ` ${type === "number" ? "w-[100%]" : ""} ${
+                        isMoney ? "pl-[1.3rem]" : ""
+                      }`
                     }
-                    onChange(e);
-                  }}
-                />
-              )}
+                    step="0.01"
+                    type={type}
+                    pattern="[0-9]*[.]?[0-9]{0,2}"
+                    size={1}
+                    onKeyPress={(e: any) => {
+                      if (type === "number") onlyNumFunc(e);
+                      if (onlyText) onlyTextFunc(e);
+                    }}
+                    onChange={(e) => {
+                      if (max) {
+                        e.target.value = maxNum(e.target.value, max);
+                      }
+                      onChange(e);
+                    }}
+                  />
+                )}
+              </div>
               {options && (
                 <select
-                  defaultValue={props.value !== "" ? props.value : "myDefault"}
+                  value={props.value !== "" ? props.value : "myDefault"}
                   size={1}
-                  className="outline-none font-bold text-[20px] capitalize"
+                  className="outline-none font-bold text-[20px] capitalize hover:cursor-pointer py-[.4rem]"
                   onChange={onChange}
                 >
                   <option value="myDefault" disabled>

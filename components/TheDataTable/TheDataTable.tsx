@@ -7,6 +7,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { MyLink } from '../MyLink/MyLink';
 import { usePathname } from 'next/navigation';
 import filter from '@/interfaces/filter';
+import date from '@/interfaces/date';
 
 interface props
 {
@@ -16,27 +17,30 @@ interface props
   buttons?:ReactElement<any, any>;
   newButton?:boolean|ReactNode
   myFilter?:Array<filter>
+  date?:date
 }
 
 const TheDataTable=(props:props)=> 
 {
   const path = usePathname()||''
 
-  const
-  {
+  const {
     data,
     columns,
     conditionalStyles,
     buttons,
     myFilter,
-    newButton= <MyLink
-    href={`${path}/new`}
-    className="h-[50px] w-[147px] font-semibold text-[16px]"
-    icon={faPlusCircle}
-  >
-    Nuevo
-  </MyLink>
-  }=props
+    newButton = (
+      <MyLink
+        href={`${path}/new`}
+        className="h-[50px] w-[147px] font-semibold text-[16px]"
+        icon={faPlusCircle}
+      >
+        Nuevo
+      </MyLink>
+    ),
+    date
+  } = props;
 
 
   const [filterText, setFilterText] = React.useState('');
@@ -54,9 +58,21 @@ const TheDataTable=(props:props)=>
               {
                   if(m.value==="")return true
                   return item[m.property.toLowerCase()].toLowerCase()===m.value.toLowerCase()
-                })
+              })
               return isPass===true
           });
+
+    if(date)
+    {
+      filteredItems=filteredItems.filter((item:any)=>
+        { 
+          if(date.start===""||date.end==="")return true
+          return (
+            new Date(item.created) > new Date(date.start) &&
+            new Date(item.created) < new Date(date.end)
+          );   
+        })
+    }
   }
 
 	const subHeaderComponentMemo = React.useMemo(() => {
@@ -87,7 +103,6 @@ const TheDataTable=(props:props)=>
 
   return (
     <>
-       
       <DataTable
         columns={columns}
         data={filteredItems}

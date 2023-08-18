@@ -11,7 +11,7 @@ export function useFiltrosTable(DatosProspectos:any) {
         valor1: "",
         valor2: ""
     })
-    console.log(filterText)
+
     const filteredItems = DatosProspectos.filter((item: any) => item.nombre && item.nombre.toLowerCase().includes(filterText.toLowerCase()),);
     const filter2 = filteredItems.filter((items: any) => items.categoria && items.categoria.toLowerCase().includes(filterSelect.toLowerCase()),)
 
@@ -31,7 +31,5 @@ export function useFiltrosTable(DatosProspectos:any) {
         setFiltroFechas,
         filteredAccounts,
         filteredItems
-
-
     ]
 }

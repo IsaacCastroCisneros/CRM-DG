@@ -9,14 +9,17 @@ interface props
 
 export default function SwitchColumn({status,labels}:props)
 {
-  const[toggle,setToggle]=useState<boolean>(status)
+/*   const[toggle,setToggle]=useState<boolean>(status) */
 
   return (
-   <button className={`${toggle ? 'bg-myGreen flex-row-reverse':'bg-myRed'} rounded-[1rem] justify-between text-[#fff] h-[30px] px-[.5rem] flex w-[125px]  items-center font-bold gap-[.3rem] capitalize`}
-    onClick={()=>setToggle(prev=>!prev)}
+    <button
+      className={`${
+        status ? "bg-myGreen flex-row-reverse" : "bg-myRed"
+      } rounded-[1rem] justify-between text-[#fff] h-[30px] px-[.5rem] flex w-[125px]  items-center font-bold gap-[.3rem] capitalize`}
+/*       onClick={() => setToggle(!toggle)} */
     >
-       <span className="bg-[#fff] w-[.8rem] h-[.8rem] rounded-[100%]"></span>
-       <span className="text-[.9rem]">{toggle ? labels[0]:labels[1]} </span>
-   </button>
+      <span className="bg-[#fff] w-[.8rem] h-[.8rem] rounded-[100%]"></span>
+      <span className="text-[.9rem]">{status ? labels[0] : labels[1]} </span>
+    </button>
   );
 }
