@@ -9,6 +9,8 @@ import Head from './head';
 import MyMainContent from './components/MyMainContent/MyMainContent';
 
 
+
+
 export default async function RootLayout({
     children,
   }: {
@@ -20,7 +22,6 @@ export default async function RootLayout({
       <MyMainContent>
         <>
           <html lang="en" className="bg-bg">
-            <Head></Head>
             <body>
               <AppContenxt>{children}</AppContenxt>
             </body>
