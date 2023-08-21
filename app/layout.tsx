@@ -22,6 +22,7 @@ export default async function RootLayout({
       <MyMainContent>
         <>
           <html lang="en" className="bg-bg">
+            <Head></Head>
             <body>
               <AppContenxt>{children}</AppContenxt>
             </body>

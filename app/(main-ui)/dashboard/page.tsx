@@ -38,11 +38,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 
-export const metadata:Metadata = {
-  title: 'CRM Desarrollo Global',
-  description: 'Desarrollo Global',
-}
-
 
 export default function PageDashboard() {
   return (
