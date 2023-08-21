@@ -9,6 +9,7 @@ export default function Form()
 {
   const [values, setValues] = useState<session>({
     title: "",
+    id:"",
     content: "",
     date: "",
     horaInicio: "",
