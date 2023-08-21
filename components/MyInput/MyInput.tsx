@@ -30,7 +30,7 @@ export default function MyInput(props:props)
 
     return (
       <div
-        className={`flex bg-myGray2 gap-[1rem] px-[.8rem] py-[1rem] items-center rounded-[.3rem] relative border-[1px] ${
+        className={`flex bg-white gap-[1rem] px-[.8rem] py-[1rem] items-center rounded-[.3rem] relative border-[1px] ${
           err ? "border-myRed" : "border-myGreen"
         }`}
       >
