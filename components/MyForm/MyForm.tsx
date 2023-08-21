@@ -7,6 +7,7 @@ import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons'
 import { MyLink } from '@/components/MyLink/MyLink'
 import { useRouter } from 'next/navigation'
 import appContext from '@/context/appContext'
+import { ok } from 'assert'
 
 interface props
 {
@@ -22,6 +23,7 @@ interface props
   isBack?:boolean
   isValid?:boolean|null
   defaultValues?:Record<any,any>
+  isPopup?:boolean
 }
 
 export const MyForm = (props:props) => 
@@ -39,17 +41,22 @@ export const MyForm = (props:props) =>
     oneMore=true,
     isBack=false,
     isValid=null,
+    isPopup=false,
     defaultValues={}
   }=props
 
   const router = useRouter()
-  const{setShowNoti}=useContext(appContext)
+  const{setShowNoti,setShowPopup}=useContext(appContext)
 
   const currentStep= values.step||1
 
+  const noYet= isValid===null?false:!isValid
+
   return (
     <form
-      onSubmit={async (e) => {
+      onSubmit={async (e) => 
+      { 
+        if(noYet)return
         e.preventDefault();
         await submit();
         setShowNoti({ show: true, type: "success" });
@@ -57,6 +64,10 @@ export const MyForm = (props:props) =>
         if (!isBack) 
         {
           setValues(defaultValues);
+        }
+        if(isPopup)
+        {
+           setShowPopup(prev=>{return{...prev,show:false}})
         }
         if (isBack) router.back();
       }}
@@ -94,20 +105,20 @@ export const MyForm = (props:props) =>
             </>
           }
           {currentStep === stepsMax &&oneMore&&(
-            <MyButton type="submit">crear uno mas</MyButton>
+            <MyButton type="submit" disabled={noYet}>crear uno mas</MyButton>
           )}
         </div>
-        {path && (
+        {path &&!isPopup&&(
           <MyLink href={path} cancel>
             cancel
           </MyLink>
         )}
-        {!path && (
+        {!path &&!isPopup&&(
           <MyButton type="button" cancel onClick={() => router.back()}>
             cancel
           </MyButton>
         )}
-        <MyButton disabled={isValid===null?false:!isValid} finish>
+        <MyButton disabled={noYet} finish>
           Finalizar
         </MyButton>
       </div>

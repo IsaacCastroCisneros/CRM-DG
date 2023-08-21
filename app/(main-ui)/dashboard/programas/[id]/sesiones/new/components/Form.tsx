@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import session from '../../components/ClientContent/interfaces/session'
 import { MyFormInput } from '@/components/MyFormInput/MyFormInput';
 import MyFlexContainer from '@/components/MyFlexContainer/MyFlexContainer';
+import validatingRequired from '@/helpers/validateRequired';
 
 export default function Form() 
 {
@@ -16,6 +17,8 @@ export default function Form()
     horaTermino: "",
     tipoDeTransmision: "",
   });
+
+  const isValid = validatingRequired(values,[])
 
   return (
     <MyForm submit={async () => null} values={values} setValues={setValues} >

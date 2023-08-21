@@ -100,7 +100,7 @@ export default function ClientContent()
               popup: (
                 <RegularPopup
                   title="Crear Cabecera"
-                  content={<CreateTitulo setFullSessions={setFullSessions} />}
+                  content={<CreateTitulo />}
                 />
               ),
             })
