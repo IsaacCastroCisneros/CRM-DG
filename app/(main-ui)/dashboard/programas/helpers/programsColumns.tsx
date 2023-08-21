@@ -56,7 +56,7 @@ const programsColumns =
     cell: (row:any) =>(
       <div className="flex gap-[1rem]">
         <Option label="clonar" type="copy" onClick={()=>null} />
-        <MenuColumns options={menuOptions} /> 
+        <MenuColumns options={menuOptions(row.titulo)} /> 
       </div>
     ),
   },

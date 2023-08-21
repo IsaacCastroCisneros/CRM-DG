@@ -7,6 +7,9 @@ import RegularPopup from '@/components/RegularPopup/RegularPopup';
 import CreateTitulo from './components/CreateTitulo';
 import fullSession from './interfaces/fullSession';
 import FullSession from './components/FulllSession/FullSession';
+import { DndContext,closestCenter } from '@dnd-kit/core';
+import { SortableContext ,verticalListSortingStrategy,useSortable} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 const sessions = [
   {
@@ -15,6 +18,7 @@ const sessions = [
     sessions: [
       {
         title: "SESION1",
+        id:'1',
         content: "",
         date: "",
         horaInicio: "",
@@ -23,6 +27,7 @@ const sessions = [
       },
       {
         title: "SESION2",
+        id:'2',
         content: "",
         date: "",
         horaInicio: "",
@@ -31,6 +36,7 @@ const sessions = [
       },
       {
         title: "SESION3",
+        id:'3',
         content: "",
         date: "",
         horaInicio: "",
@@ -45,6 +51,7 @@ const sessions = [
     sessions: [
       {
         title: "SESION4",
+        id:'1',
         content: "",
         date: "",
         horaInicio: "",
@@ -53,6 +60,7 @@ const sessions = [
       },
       {
         title: "SESION5",
+        id:'2',
         content: "",
         date: "",
         horaInicio: "",
@@ -61,6 +69,7 @@ const sessions = [
       },
       {
         title: "SESION6",
+        id:'3',
         content: "",
         date: "",
         horaInicio: "",
@@ -78,30 +87,31 @@ export default function ClientContent()
   const{setShowPopup}=useContext(appContext)
 
   return (
-    <>
-      {fullSessions.map((s, pos) => (
-        <FullSession
-          key={pos}
-          current={s}
-        />
-      ))}
-      <MyButton
-        icon={faPlusCircle}
-        className="w-auto"
-        onClick={() =>
-          setShowPopup({
-            show: true,
-            popup: (
-              <RegularPopup
-                title="Crear Cabecera"
-                content={<CreateTitulo setFullSessions={setFullSessions} />}
-              />
-            ),
-          })
-        }
-      >
-        Crear Nuevo Titulo
-      </MyButton>
-    </>
+      <>
+        {fullSessions.map((s, pos) => (
+          <FullSession key={pos} current={s} />
+        ))}
+        <MyButton
+          icon={faPlusCircle}
+          className="w-auto"
+          onClick={() =>
+            setShowPopup({
+              show: true,
+              popup: (
+                <RegularPopup
+                  title="Crear Cabecera"
+                  content={<CreateTitulo setFullSessions={setFullSessions} />}
+                />
+              ),
+            })
+          }
+        >
+          Crear Nuevo Titulo
+        </MyButton>
+      </>
   );
 }
+
+
+
+

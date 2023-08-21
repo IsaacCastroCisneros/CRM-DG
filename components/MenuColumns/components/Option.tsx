@@ -14,7 +14,7 @@ export default function Option({option,setShow}:props)
   const{href,onClick=()=>null,label}=option
   const{opt}=useClickOutside(()=>setShow(false))
 
-  const styles = "w-[100%] text-left py-[.2rem] px-[.7rem] hover:bg-myGray border-b-[1px] border-myBorder hover:text-[#fff] capitalize whitespace-nowrap overflow-hidden text-ellipsis max-w-[12rem]"
+  const styles = "w-[100%] text-left py-[.2rem] block px-[.7rem] hover:bg-myGray border-b-[1px] border-myBorder hover:text-[#fff] capitalize whitespace-nowrap overflow-hidden text-ellipsis max-w-[12rem]"
 
   return (
     <>

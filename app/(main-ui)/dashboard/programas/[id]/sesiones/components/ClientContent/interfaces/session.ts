@@ -6,4 +6,5 @@ export default interface session
     horaInicio:string
     horaTermino:string
     tipoDeTransmision:string
+    id:string
 }

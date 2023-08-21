@@ -4,18 +4,21 @@ import { MyFormInput } from '@/components/MyFormInput/MyFormInput';
 import { SwitchInput } from '@/components/SwitchInput/SwitchInput';
 import React,{useState} from 'react'
 
+const defaultValues={
+  nombreDeCategoria: "",
+  estado: false,
+}
+
 export default function CategoriaForm() 
 {
-  const [values, setValues] = useState({
-    nombreDeCategoria: "",
-    estado: false,
-  });
+  const [values, setValues] = useState(defaultValues);
 
   return (
     <MyForm
       label="crear"
       setValues={setValues}
       values={values}
+      defaultValues={defaultValues}
       submit={async () => null}
     >
       <MyFormInput

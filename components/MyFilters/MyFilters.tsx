@@ -1,4 +1,3 @@
-import date from '@/interfaces/date';
 import filter from '@/interfaces/filter';
 import React,{Dispatch, SetStateAction} from 'react'
 
@@ -13,10 +12,10 @@ interface props
 {
   setMyFilter: Dispatch<SetStateAction<Array<filter>>>;
   filters: Array<myFilter>;
-  myFilters:Array<filter>
+  myFilters?:Array<filter>
 }
 
-export default function MyFilters({setMyFilter,filters,myFilters}:props) 
+export default function MyFilters({setMyFilter,filters}:props) 
 {
   
   return (

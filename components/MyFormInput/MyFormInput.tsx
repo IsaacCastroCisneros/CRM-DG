@@ -92,9 +92,7 @@ export const MyFormInput = ({className,type='text',...props}:props) =>
                         isMoney ? "pl-[1.3rem]" : ""
                       }`
                     }
-                    step="0.01"
                     type={type}
-                    pattern="[0-9]*[.]?[0-9]{0,2}"
                     size={1}
                     onKeyPress={(e: any) => {
                       if (type === "number") onlyNumFunc(e);

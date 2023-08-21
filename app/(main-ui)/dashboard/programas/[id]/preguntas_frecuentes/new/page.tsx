@@ -1,5 +1,4 @@
 "use client"
-
 import MyBlock from '@/components/MyBlock/MyBlock'
 import React from 'react'
 import Form from '../components/Form/Form';

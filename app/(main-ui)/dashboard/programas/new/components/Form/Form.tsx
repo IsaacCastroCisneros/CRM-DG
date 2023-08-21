@@ -13,6 +13,7 @@ import { Respon } from './components/Respon'
 import subject from '@/interfaces/subject'
 import ContainerStepSwitchButton from '@/components/ContainerStepSwitchButton/ContainerStepSwitchButton'
 import { MyFormInput } from '@/components/MyFormInput/MyFormInput'
+import validatingRequired from '@/helpers/validateRequired'
 
 const programDefault:program =
 {
@@ -76,22 +77,6 @@ export const Form = () =>
   ]
 
   const isValid = validatingRequired(values,values.type==='curso'?requirements:[...requirements,{propertie:"cursos",value:[]}]);
-
-
-  function validatingRequired(values:Record<any,any>,requirements:Array<{value:ReactNode,propertie:string}|string>):boolean
-  {
-     const isValid=requirements.every(requirement=>
-      {
-        const finalRequirement =
-        typeof requirement === "string"
-        ? { propertie: requirement, value: "" }
-        : requirement;
-
-        return `${values[finalRequirement.propertie]}`!==`${finalRequirement.value}`
-      }) 
-
-     return isValid
-  }
 
   return (
     <>

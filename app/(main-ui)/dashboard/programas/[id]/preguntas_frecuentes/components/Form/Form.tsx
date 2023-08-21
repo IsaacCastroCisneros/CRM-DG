@@ -1,26 +1,31 @@
 "use client"
 
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { MyFormInput } from '@/components/MyFormInput/MyFormInput'
 import { MyForm } from '@/components/MyForm/MyForm'
+import validatingRequired from '@/helpers/validateRequired'
 
 interface values
 {
-    question:string
-    answer:string
-}
-interface props {
-  question?: string;
-  answer?: string;
+    question?:string
+    answer?:string
 }
 
+const defaultValues={
+  question:"",
+  answer:"",
+}
 
-export default function Form({question="",answer=""}:props) 
+export default function Form({question="",answer=""}:values) 
 {
-    const [values, setValues] = useState<values>({
-      question,
-      answer,
-    });
+    const [values, setValues] = useState<values>(defaultValues);
+
+    useEffect(()=>
+    {
+      setValues({question,answer})
+    },[])
+
+    const isValid=validatingRequired(values,['question','answer'])
 
   return (
     <MyForm
@@ -28,6 +33,9 @@ export default function Form({question="",answer=""}:props)
       values={values}
       setValues={setValues}
       oneMore={false}
+      defaultValues={defaultValues}
+      isBack
+      isValid={isValid}
     >
       <MyFormInput
         name="question"
