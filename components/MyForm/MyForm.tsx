@@ -24,6 +24,7 @@ interface props
   isValid?:boolean|null
   defaultValues?:Record<any,any>
   isPopup?:boolean
+  specificCondition?:(value:any)=>boolean
 }
 
 export const MyForm = (props:props) => 
@@ -42,6 +43,7 @@ export const MyForm = (props:props) =>
     isBack=false,
     isValid=null,
     isPopup=false,
+    specificCondition=()=>false,
     defaultValues={}
   }=props
 
@@ -56,8 +58,12 @@ export const MyForm = (props:props) =>
     <form
       onSubmit={async (e) => 
       { 
-        if(noYet)return
         e.preventDefault();
+        if(noYet||specificCondition(values))
+        {
+          setShowNoti({ show: true, type: "failed" });
+          return 
+        }
         await submit();
         setShowNoti({ show: true, type: "success" });
 
