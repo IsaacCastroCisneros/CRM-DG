@@ -1,7 +1,7 @@
 "use client"
 import { MyForm } from '@/components/MyForm/MyForm'
-import React, { useState } from 'react'
-import session from '../../components/ClientContent/interfaces/session'
+import React, { useEffect, useState } from 'react'
+import session from '../interfaces/session'
 import { MyFormInput } from '@/components/MyFormInput/MyFormInput';
 import MyFlexContainer from '@/components/MyFlexContainer/MyFlexContainer';
 import validatingRequired from '@/helpers/validateRequired';
@@ -15,18 +15,25 @@ const defaultValues ={
   tipoDeTransmision: "",
 }
  
-interface mySession extends Omit<session,'id'>
+interface mySession extends Partial<Omit<session,'id'>>
 {
 
 }
 
-export default function Form() 
+
+export default function Form(props:mySession) 
 {
   const [values, setValues] = useState<mySession>(defaultValues);
 
   const{content,...myValues}=values
   
   const isValid = validatingRequired(myValues)
+
+  useEffect(()=>
+  {
+    const{title="",content="",date="",horaInicio="",horaTermino="",tipoDeTransmision=""}=props
+    setValues({title,content,date,horaInicio,horaTermino,tipoDeTransmision})
+  },[])
 
   return (
     <MyForm

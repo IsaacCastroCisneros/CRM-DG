@@ -86,8 +86,14 @@ export default function ClientContent()
   const[fullSessions,setFullSessions]=useState<Array<fullSession>>(sessions)
   const{setShowPopup}=useContext(appContext)
 
+  const items= fullSessions.flatMap(fullSession=>fullSession.sessions)
+
   return (
       <>
+      <SortableContext
+       items={items}
+       strategy={verticalListSortingStrategy}
+       > 
         {fullSessions.map((s, pos) => (
           <FullSession key={pos} current={s} />
         ))}
@@ -108,6 +114,7 @@ export default function ClientContent()
         >
           Crear Nuevo Titulo
         </MyButton>
+      </SortableContext>
       </>
   );
 }

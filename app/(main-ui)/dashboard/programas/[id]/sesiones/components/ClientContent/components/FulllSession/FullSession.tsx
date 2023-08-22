@@ -1,15 +1,16 @@
 "use client"
 
-import React, { useEffect,useState } from 'react'
+import React, { useContext, useEffect,useState } from 'react'
 import fullSession from '../../interfaces/fullSession'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import session from '../../interfaces/session'
 import Session from './components/Session/SessionList'
 import { DndContext, closestCenter } from '@dnd-kit/core'
+import appContext from '@/context/appContext'
+import DeleteAlert from '@/components/DeleteAlert/DeleteAlert'
+import RegularPopup from '@/components/RegularPopup/RegularPopup'
+import Option from '@/components/Option/Option'
 
 interface props
 {
@@ -22,6 +23,7 @@ export default function FullSession({current}:props)
   const path =usePathname()||''
   const{sessions}=current
   const[sesiones,setSesion]=useState<Array<session>>(sessions)
+  const{setShowPopup}=useContext(appContext)
 
   useEffect(()=>
   {
@@ -51,16 +53,32 @@ export default function FullSession({current}:props)
       <div className="flex flex-col items-end gap-[1rem]">
         <div className="flex w-[100%] my-shadow px-[1rem] py-[.7rem] text-[1.2rem] rounded-[.5rem] font-bold justify-between">
           {title}
-          <Link href={`${path}/new`}>
-            <FontAwesomeIcon size="xl" icon={faPlusCircle} /> 
-          </Link>
+          <div className="flex items-center gap-[.5rem]">
+            <Option
+              label="Eliminar Cabecera"
+              type="delete"
+              onClick={() =>
+                setShowPopup({
+                  show: true,
+                  popup: (
+                    <RegularPopup
+                      content={<DeleteAlert subject={`Cabecera ${title}`} />}
+                      title="eliminar Cabecera"
+                    />
+                  ),
+                })
+              }
+            />
+            <Option label="Editar Cabecera" href={`edit`} type="edit" />
+            <Option label="Nueva Cabecera" href={`new`} type="add" />
+          </div>
         </div>
         <ul className="flex flex-col max-w-[25rem] gap-[.5rem]">
           <SortableContext
             items={sesiones}
             strategy={verticalListSortingStrategy}
           >
-            {sesiones.map((session,pos) => (
+            {sesiones.map((session, pos) => (
               <Session key={pos} {...session} />
             ))}
           </SortableContext>
