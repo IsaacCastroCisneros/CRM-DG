@@ -1,13 +1,20 @@
+"use client"
+
 import { MyFormInput } from '@/components/MyFormInput/MyFormInput'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MyForm } from '@/components/MyForm/MyForm';
 import validatingRequired from '@/helpers/validateRequired';
 
-export default function CreateTitulo() 
+export default function CreateTitulo({title=""}:{title?:string}) 
 { 
   const[values,setValues]=useState<{title:string}>({title:""})
 
   const isValid=validatingRequired(values,['title'])
+  
+  useEffect(()=>
+  {
+    setValues({title})
+  },[])
 
   return (
     <>

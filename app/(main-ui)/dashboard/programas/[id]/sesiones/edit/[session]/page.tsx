@@ -1,12 +1,14 @@
 import React from 'react'
-import Form from '../components/ClientContent/components/Form'
+import Form from '../../components/ClientContent/components/Form'
 import MyBlock from '@/components/MyBlock/MyBlock'
 
-export default function page() 
+export default function page({params}:any) 
 {
+  const{session}=params
+
   const data=
   {
-    title: "si",
+    title: "titulo",
     content: "nada",
     date: "2023-05-10",
     horaInicio: "14:32",

@@ -13,15 +13,19 @@ import { createPortal } from 'react-dom';
 import session from './interfaces/session';
 import sessionWithIdDeCabecera from './interfaces/sessionWithIdDeCabecera';
 import Session from './components/Session';
+import fullSessionWithShow from './interfaces/fullSessionWithShow';
 
-const cabeceras:Array<fullSession> = [
+const cabeceras:Array<fullSessionWithShow> = 
+[
   {
     id: "si",
     title: "SESIONES CABECERA",
+    show:true
   },
   {
     id: "no",
     title: "SESIONES CABECERA 2",
+    show:true
   },
 ];
 
@@ -91,12 +95,12 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
 
 export default function ClientContent() 
 {
-  const[fullSessions,setFullSessions]=useState<Array<fullSession>>(cabeceras)
+  const[fullSessions,setFullSessions]=useState<Array<fullSessionWithShow>>(cabeceras)
   const[sessions,setSessions]=useState<Array<sessionWithIdDeCabecera>>(defaultSessions)
-  const[activeColumn,setActiveColumn]=useState<fullSession|null>(null)
+  const[activeColumn,setActiveColumn]=useState<fullSessionWithShow|null>(null)
   const[activeSession,setActiveSession]=useState<session|null>(null)
-  const[draggin,setDraggin]=useState<boolean>(false)
   const{setShowPopup}=useContext(appContext)
+  const[showAll,setShowAll]=useState<boolean>(false)
 
   const items= useMemo(()=>fullSessions.map(fullSession=>fullSession.id),[fullSessions])
 
@@ -108,18 +112,25 @@ export default function ClientContent()
     })
   );
 
+  function toggleCabecera(id:string,show:boolean)
+  {
+    const newArr = [...fullSessions]
+    const indexCabecera = fullSessions.findIndex(fullSession=>fullSession.id===id)
+    newArr[indexCabecera].show=show
+    setFullSessions(newArr)
+  }
+
   function onDragStartHandle(e:DragStartEvent)
   {
     const column = e.active.data.current
     
     if(column?.type==="column")
     {
-      setDraggin(true)
+      setShowAll(true)
       setActiveColumn(column.column)
     }
     if(column?.type==="session")
     {
-       setDraggin(false)
        setActiveSession(column.session)
      }
   }
@@ -128,7 +139,7 @@ export default function ClientContent()
   {
     setActiveColumn(null);
     setActiveSession(null);
-    setDraggin(false)
+    setShowAll(false)
     const { active, over } = e;
     if (!over) return;
 
@@ -189,7 +200,6 @@ export default function ClientContent()
         const activeIndex = sessions.findIndex((t) => t.id === activeId);
 
         sessions[activeIndex].idCabecera = `${overId}`;
-        console.log("DROPPING TASK OVER COLUMN", { activeIndex });
         return arrayMove(sessions, activeIndex, activeIndex);
       });
     }
@@ -207,12 +217,12 @@ export default function ClientContent()
       >
         <SortableContext items={items} >
           {fullSessions.map((s, pos) => (
-            <FullSession key={pos} sessions={filterSessions(s)} cabecera={s} draggin={draggin} />
+            <FullSession key={pos} sessions={filterSessions(s)} cabecera={s} showAll={showAll} />
           ))}
         </SortableContext>
         {createPortal(
           <DragOverlay>
-            {activeColumn && <FullSession cabecera={activeColumn} sessions={filterSessions(activeColumn)} draggin={draggin} />}
+            {activeColumn && <FullSession cabecera={activeColumn} sessions={filterSessions(activeColumn)}  showAll={showAll} />}
             {
               activeSession&&<Session {...activeSession}/>
             }

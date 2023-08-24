@@ -1,7 +1,6 @@
 "use client"
 
-import React, { useContext, useMemo, useState } from 'react'
-import fullSession from '../../interfaces/fullSession'
+import React, { Dispatch, SetStateAction, useContext, useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Session from '../Session'
 import appContext from '@/context/appContext'
@@ -13,22 +12,25 @@ import { faChevronDown, faGripVertical } from '@fortawesome/free-solid-svg-icons
 import { SortableContext, useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import session from '../../interfaces/session'
+import CreateTitulo from '../CreateTitulo'
+import fullSessionWithShow from '../../interfaces/fullSessionWithShow'
 
 interface props
 {
   sessions:Array<session>
-  cabecera:fullSession
-  draggin:boolean
+  cabecera:fullSessionWithShow
+  showAll:boolean
 }
 
-export default function FullSession({sessions,cabecera,draggin}:props)
+export default function FullSession({sessions,cabecera,showAll}:props)
 {
-  const{title,id}=cabecera
+  const{title,id,show}=cabecera
   const path =usePathname()||''
   const{setShowPopup}=useContext(appContext)
-  const[showSessions,setShowSessions]=useState<boolean>(false)
+  const[showSessions,setShowSessions]=useState<boolean>(true)
 
   const items = useMemo(()=>sessions.map(session=>session.id),[sessions])
+
 
   const {
     attributes,
@@ -36,13 +38,14 @@ export default function FullSession({sessions,cabecera,draggin}:props)
     setNodeRef,
     transform,
     transition,
-    isDragging
+    isDragging,
   } = useSortable({
     id,
     animateLayoutChanges:()=>false,
     data: {
       type: "column",
       column: cabecera,
+      id
     },
   });
 
@@ -52,6 +55,7 @@ export default function FullSession({sessions,cabecera,draggin}:props)
       transition
     }
 
+  const isShowSessions= showAll ? false : showSessions
 
   return (
     <div
@@ -86,14 +90,26 @@ export default function FullSession({sessions,cabecera,draggin}:props)
               })
             }
           />
-          <Option label="Editar Cabecera" href={`edit`} type="edit" />
-          <Option label="Nueva Cabecera" href={`new`} type="add" />
-          <button onClick={() => setShowSessions(prev=>!prev)} className='ml-[2rem]'>
+          <Option
+            label="Editar Cabecera"
+            type="edit"
+            onClick={() =>
+              setShowPopup({
+                show: true,
+                popup: <RegularPopup title="Editar Cabecera" content={<CreateTitulo title={title} />} />,
+              })
+            }
+          />
+          <Option label="Nueva Sesion" href={`new`} type="add" />
+          <button
+            onClick={() =>setShowSessions(prev=>!prev)}
+            className="ml-[2rem]"
+          >
             <FontAwesomeIcon icon={faChevronDown} />
           </button>
         </div>
       </div>
-      {(!draggin&&showSessions) && (
+      {isShowSessions&&(
         <ul className="flex flex-col max-w-[25rem] gap-[.5rem]">
           <SortableContext items={items}>
             {sessions.map((session, pos) => (
