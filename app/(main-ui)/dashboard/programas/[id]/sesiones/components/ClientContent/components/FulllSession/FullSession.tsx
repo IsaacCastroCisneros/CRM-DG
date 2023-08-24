@@ -57,6 +57,8 @@ export default function FullSession({sessions,cabecera,showAll}:props)
 
   const isShowSessions= showAll ? false : showSessions
 
+  console.log(isShowSessions,id)
+
   return (
     <div
       ref={setNodeRef}
