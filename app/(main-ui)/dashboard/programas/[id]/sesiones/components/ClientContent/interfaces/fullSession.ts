@@ -4,6 +4,5 @@ export default interface fullSession
 {
   id:string
   title:string
-  sessions:Array<session>
 }
 
