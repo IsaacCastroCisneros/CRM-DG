@@ -2,7 +2,7 @@
 
 import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+import { faGripVertical, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import { useSortable} from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import session from '../../../../interfaces/session';
@@ -12,29 +12,40 @@ import RegularPopup from '@/components/RegularPopup/RegularPopup';
 import DeleteAlert from '@/components/DeleteAlert/DeleteAlert';
 
 
-export default function Session({title,id}:session) 
+export default function Session(props:session) 
 {
-  const{attributes,listeners,setNodeRef,transform,transition}=useSortable(
+  const{title,id}=props
+
+ /*  const{attributes,listeners,setNodeRef,transform,transition}=useSortable(
     {
        id,
-       animateLayoutChanges:()=>false
-    })
+       animateLayoutChanges:()=>false,
+       data:
+       {
+         type:"session",
+         session:props
+       }
+    }) */
   const{setShowPopup}=useContext(appContext)
 
-  const style=
+ /*  const style=
   {
     transform:CSS.Transform.toString(transform),
     transition
-  }
+  } */
 
   return (
     <li
-      style={style}
-      ref={setNodeRef}
-      {...attributes}
-      {...listeners}
-      className={`px-[1rem] my-shadow py-[.7rem] font-bold gap-[1rem] flex hover:cursor-grab bg-white z-50 relative`}
+     /*  style={style}
+      ref={setNodeRef}  */
+      className={`px-[1rem] my-shadow py-[.7rem] font-bold gap-[1rem] flex bg-white z-50 relative`}
     >
+      <div className='hover:cursor-grab'
+      /*  {...attributes}
+       {...listeners} */
+       >
+        <FontAwesomeIcon icon={faGripVertical} />
+      </div>
       <FontAwesomeIcon icon={faPlayCircle} size="xl" />
       <Option
         type="delete"

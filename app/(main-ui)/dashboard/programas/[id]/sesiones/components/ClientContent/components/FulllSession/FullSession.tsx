@@ -1,16 +1,17 @@
 "use client"
 
-import React, { useContext, useEffect,useState } from 'react'
+import React, { useContext, useMemo } from 'react'
 import fullSession from '../../interfaces/fullSession'
 import { usePathname } from 'next/navigation'
-import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable'
-import session from '../../interfaces/session'
-import Session from './components/Session/SessionList'
-import { DndContext, closestCenter } from '@dnd-kit/core'
+import Session from './components/Session/Session'
 import appContext from '@/context/appContext'
 import DeleteAlert from '@/components/DeleteAlert/DeleteAlert'
 import RegularPopup from '@/components/RegularPopup/RegularPopup'
 import Option from '@/components/Option/Option'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGripLinesVertical, faGripVertical } from '@fortawesome/free-solid-svg-icons'
+import { SortableContext, useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 
 interface props
 {
@@ -22,69 +23,69 @@ export default function FullSession({current}:props)
   const{title,id}=current
   const path =usePathname()||''
   const{sessions}=current
-  const[sesiones,setSesion]=useState<Array<session>>(sessions)
   const{setShowPopup}=useContext(appContext)
 
-  useEffect(()=>
-  {
-    setSesion(sesiones)
-  },[])
+  const items = useMemo(()=>current.sessions.map(session=>`${session.id}-session`),[current])
 
-  function handleDragEnd(e:any)
-  {
-    const{active,over}=e
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging
+  } = useSortable({
+    id,
+    animateLayoutChanges:()=>false,
+    data: {
+      type: "column",
+      column: current,
+    },
+  });
 
-    if (!active.id !== over.id) 
+    const style=
     {
-
-      setSesion((prev) => 
-      {
-        const oldIndex = prev.findIndex((person) => person.id === active.id);
-        const newIndex = prev.findIndex((person) => person.id === over.id);
-   
-        return arrayMove(prev, oldIndex, newIndex);
-      });
+      transform:CSS.Transform.toString(transform),
+      transition
     }
-  }
-
 
   return (
-    <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <div className="flex flex-col items-end gap-[1rem]">
-        <div className="flex w-[100%] my-shadow px-[1rem] py-[.7rem] text-[1.2rem] rounded-[.5rem] font-bold justify-between">
-          {title}
-          <div className="flex items-center gap-[.5rem]">
-            <Option
-              label="Eliminar Cabecera"
-              type="delete"
-              onClick={() =>
-                setShowPopup({
-                  show: true,
-                  popup: (
-                    <RegularPopup
-                      content={<DeleteAlert subject={`Cabecera ${title}`} />}
-                      title="eliminar Cabecera"
-                    />
-                  ),
-                })
-              }
-            />
-            <Option label="Editar Cabecera" href={`edit`} type="edit" />
-            <Option label="Nueva Cabecera" href={`new`} type="add" />
-          </div>
+    <div
+      ref={setNodeRef}
+      style={style}
+      className={`flex flex-col items-end gap-[1rem] rounded-[.5rem] overflow-hidden ${isDragging ? 'border-[3px] border-primary opacity-[.5]':''}`} 
+    >
+      <div className="flex w-[100%] my-shadow px-[1rem] py-[.7rem] text-[1.2rem]  font-bold justify-between bg-white">
+        <div className="hover:cursor-grab" {...attributes} {...listeners}>
+          <FontAwesomeIcon icon={faGripVertical} />
         </div>
-        <ul className="flex flex-col max-w-[25rem] gap-[.5rem]">
-          <SortableContext
-            items={sesiones}
-            strategy={verticalListSortingStrategy}
-          >
-            {sesiones.map((session, pos) => (
-              <Session key={pos} {...session} />
-            ))}
-          </SortableContext>
-        </ul>
+        {title}
+        <div className="flex items-center gap-[.5rem]">
+          <Option
+            label="Eliminar Cabecera"
+            type="delete"
+            onClick={() =>
+              setShowPopup({
+                show: true,
+                popup: (
+                  <RegularPopup
+                    content={<DeleteAlert subject={`Cabecera ${title}`} />}
+                    title="eliminar Cabecera"
+                  />
+                ),
+              })
+            }
+          />
+          <Option label="Editar Cabecera" href={`edit`} type="edit" />
+          <Option label="Nueva Cabecera" href={`new`} type="add" />
+        </div>
       </div>
-    </DndContext>
+      <ul className="flex flex-col max-w-[25rem] gap-[.5rem]">
+          {sessions.map((session, pos) => (
+            <Session key={pos} {...session} />
+          ))}
+      </ul>
+    </div>
   );
 }
 
