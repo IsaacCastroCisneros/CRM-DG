@@ -280,14 +280,14 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
 
 export default function ClientContent() 
 {
-  const[cabeceras,setCabeceras]=useState<Array<cabecera>>(defaultCabeceras)
+  const[fullSessions,setFullSessions]=useState<Array<cabecera>>(defaultCabeceras)
   const[sessions,setSessions]=useState<Array<sessionWithIdDeCabecera>>(defaultSessions)
   const[activeColumn,setActiveColumn]=useState<cabecera|null>(null)
   const[activeSession,setActiveSession]=useState<session|null>(null)
   const{setShowPopup}=useContext(appContext)
-
-  const items= useMemo(()=>cabeceras.map(cabecera=>cabecera.id),[cabeceras])
-
+  
+  const items= useMemo(()=>fullSessions.map(fullSession=>fullSession.id),[fullSessions])
+  
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -295,8 +295,8 @@ export default function ClientContent()
       },
     })
   );
-
-
+  
+  
   function onDragStartHandle(e:DragStartEvent)
   {
     const column = e.active.data.current
@@ -310,111 +310,106 @@ export default function ClientContent()
        setActiveSession(column.session)
      }
   }
-
+  
   function onDragEndHandle(e:DragEndEvent)
   {
     setActiveColumn(null);
     setActiveSession(null);
     const { active, over } = e;
     if (!over) return;
-
+  
     const activeId = active.id;
     const overId = over.id;
-
+  
     if (activeId === overId) return;
-
-    const isActiveAColumn = active.data.current?.type === "column";
-    if (!isActiveAColumn) return;
     
-    setCabeceras((cabeceras) => {
-      const activeColumnIndex = cabeceras.findIndex((cabecera) => cabecera.id === activeId);
-
-      const overColumnIndex = cabeceras.findIndex((cabecera) => cabecera.id === overId);
-
-      return arrayMove(cabeceras, activeColumnIndex, overColumnIndex);
+    setFullSessions((columns) => {
+      const activeColumnIndex = columns.findIndex((col) => col.id === activeId);
+  
+      const overColumnIndex = columns.findIndex((col) => col.id === overId);
+  
+      return arrayMove(columns, activeColumnIndex, overColumnIndex);
     });
   }
-
+  
   function filterSessions(cabecera:fullSession):Array<session>
   {
     return  sessions.filter(session=>session.idCabecera===cabecera.id)
   }
-
+  
   function onDragOverHandle(e:DragOverEvent)
   {
     const { active, over } = e;
     if (!over) return;
-
+  
     const activeId = active.id;
     const overId = over.id;
-
+  
     if (activeId === overId) return;
-
+  
     const isActiveASession = active.data.current?.type === "session";
     const isOverASession = over.data.current?.type === "session";
-
-    if (!isActiveASession)return
-
+  
+    if (!isActiveASession) return;
+  
     if (isActiveASession && isOverASession) 
     {
       setSessions((sessions) => 
       {
-        const activeIndex = sessions.findIndex((session) => session.id === activeId);
-        const overIndex = sessions.findIndex((session) => session.id === overId);
-
-        if (sessions[activeIndex].idCabecera != sessions[overIndex].idCabecera) {
+        const activeIndex = sessions.findIndex((t) => t.id === activeId);
+        const overIndex = sessions.findIndex((t) => t.id === overId);
+  
+        if (sessions[activeIndex].idCabecera != sessions[overIndex].idCabecera) 
+        {
           sessions[activeIndex].idCabecera = sessions[overIndex].idCabecera;
           return arrayMove(sessions, activeIndex, overIndex - 1);
         }
-
+  
         return arrayMove(sessions, activeIndex, overIndex);
       });
     }
-
+  
     const isOverAColumn = over.data.current?.type === "column";
-
+  
     if (isActiveASession && isOverAColumn) {
       setSessions((sessions) => {
-        const activeIndex = sessions.findIndex((session) => session.id === activeId);
-
+        const activeIndex = sessions.findIndex((t) => t.id === activeId);
+  
         sessions[activeIndex].idCabecera = `${overId}`;
         return arrayMove(sessions, activeIndex, activeIndex);
       });
     }
   }
   
-
+  
   return (
     <>
-      <div className="flex flex-wrap gap-[1rem]">
-        <DndContext
-          onDragStart={onDragStartHandle}
-          onDragOver={onDragOverHandle}
-          sensors={sensors}
-          onDragEnd={onDragEndHandle}
-        >
-          <SortableContext items={items}>
-            {cabeceras.map((s, pos) => (
-              <Cabecera key={pos} sessions={filterSessions(s)} cabecera={s} />
-            ))}
-          </SortableContext>
-          {createPortal(
-            <DragOverlay>
-              {activeColumn && (
-                <Cabecera
-                  cabecera={activeColumn}
-                  sessions={filterSessions(activeColumn)}
-                />
-              )}
-              {activeSession && <Session {...activeSession} />}
-            </DragOverlay>,
-            document.body
-          )}
-        </DndContext>
-      </div>
+     <div className='flex flex-wrap gap-[1rem]'>
+      <DndContext
+        onDragStart={onDragStartHandle}
+        onDragOver={onDragOverHandle}
+        sensors={sensors}
+        onDragEnd={onDragEndHandle}
+      >
+        <SortableContext items={items} >
+          {fullSessions.map((s, pos) => (
+            <Cabecera key={pos} sessions={filterSessions(s)} cabecera={s} />
+          ))}
+        </SortableContext>
+        {createPortal(
+          <DragOverlay>
+            {activeColumn && <Cabecera cabecera={activeColumn} sessions={filterSessions(activeColumn)}  />}
+            {
+              activeSession&&<Session {...activeSession}/>
+            }
+          </DragOverlay>,
+          document.body
+        )}
+      </DndContext>
+     </div>
       <MyButton
         icon={faPlusCircle}
-        className="w-auto fixed left-[5rem] bottom-[5rem] z-[99] !shadow-[#000]"
+        className="w-auto"
         onClick={() =>
           setShowPopup({
             show: true,
@@ -427,9 +422,8 @@ export default function ClientContent()
         Crear Nuevo Titulo
       </MyButton>
     </>
-  );
+  );  
 }
-
 
 
 

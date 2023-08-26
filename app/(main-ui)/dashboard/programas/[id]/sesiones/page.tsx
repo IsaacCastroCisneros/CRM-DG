@@ -1,6 +1,7 @@
 import React from 'react'
 import MyBlock from '@/components/MyBlock/MyBlock'
 import ClientContent from './components/ClientContent/ClientContent';
+import KanbanBoard from './components/KanbanBoard';
 
 export default function page() 
 {
@@ -10,7 +11,7 @@ export default function page()
       title="Sesiones"
       subtitle="ELABORACIÓN DE INSTRUMENTOS"
     >
-      <ClientContent/>
+      <KanbanBoard/>
     </MyBlock>
   );
 }
