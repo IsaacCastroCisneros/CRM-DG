@@ -27,7 +27,7 @@ module.exports = {
         myBlack:"#333332",
         bg:"#F8F9FB",
         shadow:'#d9dbda',
-        myGreen:'#04EB84',
+        myGreen:'#62e6f0',
         myRed:'#E8003F',
       },
       zIndex: {

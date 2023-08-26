@@ -24,7 +24,7 @@ export default function MyFilters({setMyFilter,filters}:props)
         return (
           <div className="flex" key={pos}>
             <select
-              className="my-shadow rounded-[.5rem] text-myGray3 font-medium border-[1px] border-myBorderDark outline-none focus:border-primary focus:text-primary px-[1rem] hover:cursor-pointer capitalize"
+              className="my-shadow rounded-[.5rem] text-myGray3 font-medium border-[1px] border-myBorderDark outline-none focus:border-primary focus:text-primary px-[1rem] hover:cursor-pointer capitalize py-[.6rem] px-[1rem]"
               onChange={(e) => {
                 setMyFilter((prev)=>
                 {

@@ -5,27 +5,48 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import appContext from '@/context/appContext';
 import RegularPopup from '@/components/RegularPopup/RegularPopup';
 import CreateTitulo from './components/CreateTitulo';
-import fullSession from './interfaces/fullSession';
-import FullSession from './components/FulllSession/FullSession';
+import fullSession from './interfaces/cabecera';
 import { DndContext,DragEndEvent,DragOverEvent,DragOverlay,DragStartEvent,PointerSensor,closestCenter, useSensor, useSensors } from '@dnd-kit/core';
 import { SortableContext ,arrayMove,verticalListSortingStrategy} from '@dnd-kit/sortable';
 import { createPortal } from 'react-dom';
 import session from './interfaces/session';
 import sessionWithIdDeCabecera from './interfaces/sessionWithIdDeCabecera';
 import Session from './components/Session';
-import fullSessionWithShow from './interfaces/fullSessionWithShow';
+import cabecera from './interfaces/cabecera';
+import Cabecera from './components/Cabecera/Cabecera';
+import {v4 as uuid} from 'uuid'
 
-const cabeceras:Array<fullSessionWithShow> = 
+const defaultCabeceras:Array<cabecera> = 
 [
   {
-    id: "si",
+    id:"si" ,
+    idDragAndDrop:"1",
     title: "SESIONES CABECERA",
-    show:true
   },
   {
     id: "no",
+    idDragAndDrop:"2",
     title: "SESIONES CABECERA 2",
-    show:true
+  },
+  {
+    id: "2",
+    idDragAndDrop:"3",
+    title: "SESIONES CABECERA",
+  },
+  {
+    id: "3",
+    idDragAndDrop:"4",
+    title: "SESIONES CABECERA 2",
+  },
+  {
+    id: "4",
+    idDragAndDrop:"5",
+    title: "SESIONES CABECERA",
+  },
+  {
+    id: "5",
+    idDragAndDrop:"6",
+    title: "SESIONES CABECERA 2",
   },
 ];
 
@@ -35,6 +56,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION4",
     id:'1',
     idCabecera:"si",
+    idDragAndDrop:"1",
     content: "",
     date: "",
     horaInicio: "",
@@ -45,6 +67,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION5",
     id:'2',
     idCabecera:"si",
+    idDragAndDrop:"3",
     content: "",
     date: "",
     horaInicio: "",
@@ -55,6 +78,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION6",
     id:'3',
     idCabecera:"si",
+    idDragAndDrop:"3",
     content: "",
     date: "",
     horaInicio: "",
@@ -65,6 +89,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION7",
     id:'4',
     idCabecera:"no",
+    idDragAndDrop:"4",
     content: "",
     date: "",
     horaInicio: "",
@@ -76,6 +101,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     id:'5',
     idCabecera:"no",
     content: "",
+    idDragAndDrop:"5",
     date: "",
     horaInicio: "",
     horaTermino: "",
@@ -86,6 +112,194 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     id:'6',
     idCabecera:"no",
     content: "",
+    idDragAndDrop:"6",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'7',
+    idCabecera:"no",
+    content: "",
+    idDragAndDrop:"7",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'8',
+    idCabecera:"2",
+    content: "",
+    idDragAndDrop:"8",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'9',
+    idCabecera:"no",
+    idDragAndDrop:"9",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'10',
+    idCabecera:"2",
+    idDragAndDrop:"10",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'11',
+    idCabecera:"si",
+    content: "",
+    date: "",
+    idDragAndDrop:"11",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'12',
+    idCabecera:"3",
+    content: "",
+    idDragAndDrop:"12",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'13',
+    idCabecera:"3",
+    idDragAndDrop:"13",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'14',
+    idCabecera:"3",
+    idDragAndDrop:"14",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'15',
+    idCabecera:"2",
+    idDragAndDrop:"15",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'16',
+    idCabecera:"4",
+    content: "",
+    idDragAndDrop:"16",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'17',
+    idCabecera:"3",
+    idDragAndDrop:"17",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'18',
+    idCabecera:"4",
+    idDragAndDrop:"18",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'19',
+    idCabecera:"4",
+    idDragAndDrop:"19",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'20',
+    idCabecera:"2",
+    idDragAndDrop:"20",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'21',
+    idCabecera:"5",
+    idDragAndDrop:"21",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'22',
+    idCabecera:"5",
+    idDragAndDrop:"22",
+    content: "",
+    date: "",
+    horaInicio: "",
+    horaTermino: "",
+    tipoDeTransmision: "",
+  },
+  {
+    title: "SESION9",
+    id:'23',
+    idCabecera:"5",
+    idDragAndDrop:"23",
+    content: "",
     date: "",
     horaInicio: "",
     horaTermino: "",
@@ -95,14 +309,15 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
 
 export default function ClientContent() 
 {
-  const[fullSessions,setFullSessions]=useState<Array<fullSessionWithShow>>(cabeceras)
+  const[cabeceras,setFullSessions]=useState<Array<cabecera>>(defaultCabeceras)
   const[sessions,setSessions]=useState<Array<sessionWithIdDeCabecera>>(defaultSessions)
-  const[activeColumn,setActiveColumn]=useState<fullSessionWithShow|null>(null)
+  const[activeColumn,setActiveColumn]=useState<cabecera|null>(null)
   const[activeSession,setActiveSession]=useState<session|null>(null)
   const{setShowPopup}=useContext(appContext)
-  const[showAll,setShowAll]=useState<boolean>(false)
 
-  const items= useMemo(()=>fullSessions.map(fullSession=>fullSession.id),[fullSessions])
+  const items= useMemo(()=>cabeceras.map(cabecera=>cabecera.idDragAndDrop),[cabeceras])
+
+  console.log(uuid())
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -112,34 +327,25 @@ export default function ClientContent()
     })
   );
 
-  function toggleCabecera(id:string,show:boolean)
-  {
-    const newArr = [...fullSessions]
-    const indexCabecera = fullSessions.findIndex(fullSession=>fullSession.id===id)
-    newArr[indexCabecera].show=show
-    setFullSessions(newArr)
-  }
 
   function onDragStartHandle(e:DragStartEvent)
   {
-    const column = e.active.data.current
+   /*  const column = e.active.data.current
     
     if(column?.type==="column")
     {
-      setShowAll(true)
       setActiveColumn(column.column)
     }
     if(column?.type==="session")
     {
        setActiveSession(column.session)
-     }
+     } */
   }
 
   function onDragEndHandle(e:DragEndEvent)
   {
-    setActiveColumn(null);
-    setActiveSession(null);
-    setShowAll(false)
+   /*  setActiveColumn(null);
+    setActiveSession(null); */
     const { active, over } = e;
     if (!over) return;
 
@@ -208,7 +414,7 @@ export default function ClientContent()
 
   return (
     <>
-     <div className='flex flex-col gap-[.6rem] mb-[1rem]'>
+     <div className='flex flex-wrap gap-[1rem]'>
       <DndContext
         onDragStart={onDragStartHandle}
         onDragOver={onDragOverHandle}
@@ -216,19 +422,19 @@ export default function ClientContent()
         onDragEnd={onDragEndHandle}
       >
         <SortableContext items={items} >
-          {fullSessions.map((s, pos) => (
-            <FullSession key={pos} sessions={filterSessions(s)} cabecera={s} showAll={showAll} />
+          {cabeceras.map((s, pos) => (
+            <Cabecera key={pos} sessions={filterSessions(s)} cabecera={s}  />
           ))}
         </SortableContext>
-        {createPortal(
+{/*         {createPortal(
           <DragOverlay>
-            {activeColumn && <FullSession cabecera={activeColumn} sessions={filterSessions(activeColumn)}  showAll={showAll} />}
+            {activeColumn && <Cabecera cabecera={activeColumn} sessions={filterSessions(activeColumn)}  showAll={showAll} />}
             {
               activeSession&&<Session {...activeSession}/>
             }
           </DragOverlay>,
           document.body
-        )}
+        )} */}
       </DndContext>
      </div>
       <MyButton

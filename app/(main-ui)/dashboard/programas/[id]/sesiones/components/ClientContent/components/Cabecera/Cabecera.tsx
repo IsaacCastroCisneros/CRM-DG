@@ -13,24 +13,22 @@ import { SortableContext, useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import session from '../../interfaces/session'
 import CreateTitulo from '../CreateTitulo'
-import fullSessionWithShow from '../../interfaces/fullSessionWithShow'
+import cabecera from '../../interfaces/cabecera'
 
 interface props
 {
   sessions:Array<session>
-  cabecera:fullSessionWithShow
-  showAll:boolean
+  cabecera:cabecera
 }
 
-export default function FullSession({sessions,cabecera,showAll}:props)
+export default function Cabecera({sessions,cabecera}:props)
 {
-  const{title,id,show}=cabecera
+  const{title,id}=cabecera
   const path =usePathname()||''
   const{setShowPopup}=useContext(appContext)
   const[showSessions,setShowSessions]=useState<boolean>(true)
 
-  const items = useMemo(()=>sessions.map(session=>session.id),[sessions])
-
+  const items = useMemo(()=>sessions.map(session=>session.idDragAndDrop),[sessions])
 
   const {
     attributes,
@@ -55,21 +53,17 @@ export default function FullSession({sessions,cabecera,showAll}:props)
       transition
     }
 
-  const isShowSessions= showAll ? false : showSessions
-
-  console.log(isShowSessions,id)
-
   return (
     <div
       ref={setNodeRef}
       style={style}
-      className={`flex flex-col items-end gap-[1rem] ${
+      className={`flex flex-col items-end gap-[1rem] h-[32rem] min-w-[328px] bg-white my-shadow ${
         isDragging
           ? "border-[3px] border-primary opacity-[.5] overflow-hidden rounded-[.5rem]"
           : ""
       }`}
     >
-      <div className="flex w-[100%] my-shadow px-[1rem] py-[.7rem] text-[1.2rem] rounded-[.5rem] font-bold justify-between bg-white">
+      <div className="flex w-[100%] px-[1rem] py-[.7rem] text-[1.2rem] rounded-[.5rem] font-bold justify-between bg-white">
         <div className="flex gap-[1rem]">
           <div className="hover:cursor-grab" {...attributes} {...listeners}>
             <FontAwesomeIcon icon={faGripVertical} />
@@ -103,16 +97,10 @@ export default function FullSession({sessions,cabecera,showAll}:props)
             }
           />
           <Option label="Nueva Sesion" href={`new`} type="add" />
-          <button
-            onClick={() =>setShowSessions(prev=>!prev)}
-            className="ml-[2rem]"
-          >
-            <FontAwesomeIcon icon={faChevronDown} />
-          </button>
         </div>
       </div>
-      {isShowSessions&&(
-        <ul className="flex flex-col max-w-[25rem] gap-[.5rem]">
+      {(
+        <ul className={`flex flex-col max-w-[25rem] gap-[.5rem]`}>
           <SortableContext items={items}>
             {sessions.map((session, pos) => (
               <Session key={pos} {...session} />

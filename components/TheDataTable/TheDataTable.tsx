@@ -85,7 +85,7 @@ const TheDataTable=(props:props)=>
 
 		return (
       <div className="flex w-[100%] justify-between mb-[2rem] items-center">
-        <div className="flex gap-[1rem]">
+        <div className="flex gap-[1rem] items-center">
           <FilterComponent
             onFilter={(e: any) => setFilterText(e.target.value)}
             onClear={handleClear}

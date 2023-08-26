@@ -8,7 +8,7 @@ export default function DatePickers({setDate}:{setDate:Dispatch<SetStateAction<d
       <div className="flex gap-[.5rem]">
         <label className="self-center capitalize">inicio</label>
         <input
-          className="my-shadow rounded-[.5rem] text-myGray3 font-medium border-[1px] border-myBorderDark outline-none focus:border-primary focus:text-primary px-[1rem] hover:cursor-pointer"
+          className="my-shadow py-[.6rem] px-[1rem] rounded-[.5rem] text-myGray3 font-medium border-[1px] border-myBorderDark outline-none focus:border-primary focus:text-primary px-[1rem] hover:cursor-pointer"
           type="date"
           onChange={(e) =>
             setDate((prev) => {
@@ -20,7 +20,7 @@ export default function DatePickers({setDate}:{setDate:Dispatch<SetStateAction<d
       <div className="flex gap-[.5rem]">
         <label className="self-center capitalize">fin</label>
         <input
-          className="my-shadow rounded-[.5rem] text-myGray3 font-medium border-[1px] border-myBorderDark outline-none focus:border-primary focus:text-primary px-[1rem] hover:cursor-pointer"
+          className="my-shadow py-[.6rem] px-[1rem] rounded-[.5rem] text-myGray3 font-medium border-[1px] border-myBorderDark outline-none focus:border-primary focus:text-primary px-[1rem] hover:cursor-pointer"
           type="date"
           onChange={(e) =>
             setDate((prev) => {

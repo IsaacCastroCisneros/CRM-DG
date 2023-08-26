@@ -1,4 +1,4 @@
-import fullSession from "./fullSession";
+import fullSession from "./cabecera";
 
 export default interface fullSessionWithShow extends fullSession
 {

@@ -27,13 +27,13 @@ export const MyButton = (myProps:props) =>
     ...props
   }=myProps
 
-  const noWidthStyle = noWidth ? 'px-[1rem] py-[.6rem] w-auto h-auto':''
+  const noWidthStyle = noWidth ? ' px-[1rem] py-[.6rem] w-auto h-auto':''
 
   const c = twMerge(buttonLink(cancel,finish),className+noWidthStyle)
 
   return (
     <button {...props} className={c+` ${disabled ? 'brightness-75':''}`} disabled={disabled} >
-      {icon && <FontAwesomeIcon size='xl' icon={icon} />}
+      {icon && <FontAwesomeIcon size='lg' icon={icon} />}
       {children}
     </button>
   );
