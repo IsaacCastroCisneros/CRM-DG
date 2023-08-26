@@ -15,11 +15,11 @@ import { twMerge } from 'tailwind-merge';
 
 export default function Session(props:session) 
 {
-  const{title,id}=props
+  const{title,id,idDragAndDrop}=props
 
   const{attributes,listeners,setNodeRef,isDragging,transform,transition}=useSortable(
     {
-       id,
+       id:idDragAndDrop,
        animateLayoutChanges:()=>false,
        data:
        {
@@ -39,7 +39,7 @@ export default function Session(props:session)
     <li
       style={style}
       ref={setNodeRef} 
-      className={twMerge(`px-[1rem] py-[.7rem] font-bold gap-[1rem] flex rounded-[.5rem] bg-white z-50 relative border-[3px] border-[transparent]`,`${isDragging?' border-primary opacity-[.5]':''}`) }
+      className={twMerge(`px-[1rem] py-[.7rem] font-bold gap-[1rem] flex rounded-[.5rem] bg-white z-50 relative border-[2px] border-myGray`,`${isDragging?' border-primary opacity-[.5]':''}`) }
     >
       <div className='hover:cursor-grab'
        {...attributes}

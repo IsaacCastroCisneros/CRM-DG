@@ -20,33 +20,33 @@ const defaultCabeceras:Array<cabecera> =
 [
   {
     id:"si" ,
-    idDragAndDrop:"1",
-    title: "SESIONES CABECERA",
+    idDragAndDrop:uuid(),
+    title: "SESIONES CABECERA1",
   },
   {
     id: "no",
-    idDragAndDrop:"2",
+    idDragAndDrop:uuid(),
     title: "SESIONES CABECERA 2",
   },
   {
     id: "2",
-    idDragAndDrop:"3",
-    title: "SESIONES CABECERA",
+    idDragAndDrop:uuid(),
+    title: "SESIONES CABECERA3",
   },
   {
     id: "3",
-    idDragAndDrop:"4",
-    title: "SESIONES CABECERA 2",
+    idDragAndDrop:uuid(),
+    title: "SESIONES CABECERA 4",
   },
   {
     id: "4",
-    idDragAndDrop:"5",
-    title: "SESIONES CABECERA",
+    idDragAndDrop:uuid(),
+    title: "SESIONES CABECERA 5",
   },
   {
     id: "5",
-    idDragAndDrop:"6",
-    title: "SESIONES CABECERA 2",
+    idDragAndDrop:uuid(),
+    title: "SESIONES CABECERA 6",
   },
 ];
 
@@ -56,7 +56,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION4",
     id:'1',
     idCabecera:"si",
-    idDragAndDrop:"1",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -67,7 +67,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION5",
     id:'2',
     idCabecera:"si",
-    idDragAndDrop:"3",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -78,7 +78,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION6",
     id:'3',
     idCabecera:"si",
-    idDragAndDrop:"3",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -89,7 +89,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION7",
     id:'4',
     idCabecera:"no",
-    idDragAndDrop:"4",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -101,7 +101,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     id:'5',
     idCabecera:"no",
     content: "",
-    idDragAndDrop:"5",
+    idDragAndDrop:uuid(),
     date: "",
     horaInicio: "",
     horaTermino: "",
@@ -112,7 +112,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     id:'6',
     idCabecera:"no",
     content: "",
-    idDragAndDrop:"6",
+    idDragAndDrop:uuid(),
     date: "",
     horaInicio: "",
     horaTermino: "",
@@ -123,7 +123,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     id:'7',
     idCabecera:"no",
     content: "",
-    idDragAndDrop:"7",
+    idDragAndDrop:uuid(),
     date: "",
     horaInicio: "",
     horaTermino: "",
@@ -134,7 +134,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     id:'8',
     idCabecera:"2",
     content: "",
-    idDragAndDrop:"8",
+    idDragAndDrop:uuid(),
     date: "",
     horaInicio: "",
     horaTermino: "",
@@ -144,7 +144,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'9',
     idCabecera:"no",
-    idDragAndDrop:"9",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -155,7 +155,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'10',
     idCabecera:"2",
-    idDragAndDrop:"10",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -168,7 +168,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     idCabecera:"si",
     content: "",
     date: "",
-    idDragAndDrop:"11",
+    idDragAndDrop:uuid(),
     horaInicio: "",
     horaTermino: "",
     tipoDeTransmision: "",
@@ -178,7 +178,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     id:'12',
     idCabecera:"3",
     content: "",
-    idDragAndDrop:"12",
+    idDragAndDrop:uuid(),
     date: "",
     horaInicio: "",
     horaTermino: "",
@@ -188,7 +188,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'13',
     idCabecera:"3",
-    idDragAndDrop:"13",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -199,7 +199,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'14',
     idCabecera:"3",
-    idDragAndDrop:"14",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -210,7 +210,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'15',
     idCabecera:"2",
-    idDragAndDrop:"15",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -222,7 +222,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     id:'16',
     idCabecera:"4",
     content: "",
-    idDragAndDrop:"16",
+    idDragAndDrop:uuid(),
     date: "",
     horaInicio: "",
     horaTermino: "",
@@ -232,7 +232,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'17',
     idCabecera:"3",
-    idDragAndDrop:"17",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -243,7 +243,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'18',
     idCabecera:"4",
-    idDragAndDrop:"18",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -254,7 +254,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'19',
     idCabecera:"4",
-    idDragAndDrop:"19",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -265,7 +265,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'20',
     idCabecera:"2",
-    idDragAndDrop:"20",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -276,7 +276,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'21',
     idCabecera:"5",
-    idDragAndDrop:"21",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -287,7 +287,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'22',
     idCabecera:"5",
-    idDragAndDrop:"22",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -298,7 +298,7 @@ const defaultSessions:Array<sessionWithIdDeCabecera> =
     title: "SESION9",
     id:'23',
     idCabecera:"5",
-    idDragAndDrop:"23",
+    idDragAndDrop:uuid(),
     content: "",
     date: "",
     horaInicio: "",
@@ -317,8 +317,6 @@ export default function ClientContent()
 
   const items= useMemo(()=>cabeceras.map(cabecera=>cabecera.idDragAndDrop),[cabeceras])
 
-  console.log(uuid())
-
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -330,7 +328,7 @@ export default function ClientContent()
 
   function onDragStartHandle(e:DragStartEvent)
   {
-   /*  const column = e.active.data.current
+    const column = e.active.data.current
     
     if(column?.type==="column")
     {
@@ -339,13 +337,13 @@ export default function ClientContent()
     if(column?.type==="session")
     {
        setActiveSession(column.session)
-     } */
+     }
   }
 
   function onDragEndHandle(e:DragEndEvent)
   {
-   /*  setActiveColumn(null);
-    setActiveSession(null); */
+    setActiveColumn(null);
+    setActiveSession(null);
     const { active, over } = e;
     if (!over) return;
 
@@ -354,12 +352,12 @@ export default function ClientContent()
 
     if (activeId === overId) return;
     
-    setFullSessions((columns) => {
-      const activeColumnIndex = columns.findIndex((col) => col.id === activeId);
+    setFullSessions((cabeceras) => {
+      const activeColumnIndex = cabeceras.findIndex((cabecera) => cabecera.idDragAndDrop === activeId);
 
-      const overColumnIndex = columns.findIndex((col) => col.id === overId);
+      const overColumnIndex = cabeceras.findIndex((cabecera) => cabecera.idDragAndDrop === overId);
 
-      return arrayMove(columns, activeColumnIndex, overColumnIndex);
+      return arrayMove(cabeceras, activeColumnIndex, overColumnIndex);
     });
   }
 
@@ -387,8 +385,8 @@ export default function ClientContent()
     {
       setSessions((sessions) => 
       {
-        const activeIndex = sessions.findIndex((t) => t.id === activeId);
-        const overIndex = sessions.findIndex((t) => t.id === overId);
+        const activeIndex = sessions.findIndex((session) => session.idDragAndDrop === activeId);
+        const overIndex = sessions.findIndex((session) => session.idDragAndDrop === overId);
 
         if (sessions[activeIndex].idCabecera != sessions[overIndex].idCabecera) {
           sessions[activeIndex].idCabecera = sessions[overIndex].idCabecera;
@@ -403,7 +401,7 @@ export default function ClientContent()
 
     if (isActiveASession && isOverAColumn) {
       setSessions((sessions) => {
-        const activeIndex = sessions.findIndex((t) => t.id === activeId);
+        const activeIndex = sessions.findIndex((session) => session.idDragAndDrop === activeId);
 
         sessions[activeIndex].idCabecera = `${overId}`;
         return arrayMove(sessions, activeIndex, activeIndex);
@@ -411,32 +409,37 @@ export default function ClientContent()
     }
   }
   
+  
+  
 
   return (
     <>
-     <div className='flex flex-wrap gap-[1rem]'>
-      <DndContext
-        onDragStart={onDragStartHandle}
-        onDragOver={onDragOverHandle}
-        sensors={sensors}
-        onDragEnd={onDragEndHandle}
-      >
-        <SortableContext items={items} >
-          {cabeceras.map((s, pos) => (
-            <Cabecera key={pos} sessions={filterSessions(s)} cabecera={s}  />
-          ))}
-        </SortableContext>
-{/*         {createPortal(
-          <DragOverlay>
-            {activeColumn && <Cabecera cabecera={activeColumn} sessions={filterSessions(activeColumn)}  showAll={showAll} />}
-            {
-              activeSession&&<Session {...activeSession}/>
-            }
-          </DragOverlay>,
-          document.body
-        )} */}
-      </DndContext>
-     </div>
+      <div className="flex flex-wrap gap-[1rem]">
+        <DndContext
+          onDragStart={onDragStartHandle}
+          onDragOver={onDragOverHandle}
+          sensors={sensors}
+          onDragEnd={onDragEndHandle}
+        >
+          <SortableContext items={items}>
+            {cabeceras.map((s, pos) => (
+              <Cabecera key={pos} sessions={filterSessions(s)} cabecera={s} />
+            ))}
+          </SortableContext>
+          {createPortal(
+            <DragOverlay>
+              {activeColumn && (
+                <Cabecera
+                  cabecera={activeColumn}
+                  sessions={filterSessions(activeColumn)}
+                />
+              )}
+              {activeSession && <Session {...activeSession} />}
+            </DragOverlay>,
+            document.body
+          )}
+        </DndContext>
+      </div>
       <MyButton
         icon={faPlusCircle}
         className="w-auto"
