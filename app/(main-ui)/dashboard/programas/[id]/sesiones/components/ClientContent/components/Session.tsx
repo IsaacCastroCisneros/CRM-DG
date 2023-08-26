@@ -15,11 +15,11 @@ import { twMerge } from 'tailwind-merge';
 
 export default function Session(props:session) 
 {
-  const{title,id,idDragAndDrop}=props
+  const{title,id}=props
 
   const{attributes,listeners,setNodeRef,isDragging,transform,transition}=useSortable(
     {
-       id:idDragAndDrop,
+       id,
        animateLayoutChanges:()=>false,
        data:
        {
@@ -38,13 +38,13 @@ export default function Session(props:session)
   return (
     <li
       style={style}
-      ref={setNodeRef} 
-      className={twMerge(`px-[1rem] py-[.7rem] font-bold gap-[1rem] flex rounded-[.5rem] bg-white z-50 relative border-[2px] border-myGray`,`${isDragging?' border-primary opacity-[.5]':''}`) }
+      ref={setNodeRef}
+      className={twMerge(
+        `px-[1rem] py-[.7rem] font-bold gap-[1rem] flex rounded-[.5rem] bg-white z-50 relative border-[2px] border-myGray`,
+        `${isDragging ? " border-primary opacity-[.5]" : ""}`
+      )}
     >
-      <div className='hover:cursor-grab'
-       {...attributes}
-       {...listeners}
-       >
+      <div className="hover:cursor-grab" {...attributes} {...listeners}>
         <FontAwesomeIcon icon={faGripVertical} />
       </div>
       <FontAwesomeIcon icon={faPlayCircle} size="xl" />
@@ -63,7 +63,7 @@ export default function Session(props:session)
           })
         }
       />
-      <Option type="edit" label='editar sesion' href={`edit/${id}`}  />
+      <Option type="edit" label="editar sesion" href={`edit/${id}`} />
       <strong>{title}</strong>
     </li>
   );

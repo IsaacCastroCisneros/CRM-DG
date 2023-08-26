@@ -25,11 +25,11 @@ interface props
 
 export default function Cabecera({sessions,cabecera}:props)
 {
-  const{title,id,idDragAndDrop}=cabecera
+  const{title,id}=cabecera
   const path =usePathname()||''
   const{setShowPopup}=useContext(appContext)
 
-  const items = useMemo(()=>sessions.map(session=>session.idDragAndDrop),[sessions])
+  const items = useMemo(()=>sessions.map(session=>session.id),[sessions])
 
 
   const {
@@ -40,7 +40,7 @@ export default function Cabecera({sessions,cabecera}:props)
     transition,
     isDragging,
   } = useSortable({
-    id:idDragAndDrop,
+    id,
     animateLayoutChanges:()=>false,
     data: {
       type: "column",
@@ -105,7 +105,7 @@ export default function Cabecera({sessions,cabecera}:props)
         </div>
       </div>
       <div className='px-[1rem] py-[1.3rem] flex-1 w-[100%] flex flex-col justify-between'>
-        <ul className={`flex flex-col max-w-[25rem] gap-[.5rem]`}>
+        <ul className={`flex flex-col max-w-[25rem] gap-[.5rem] overflow-y-auto`}>
           <SortableContext items={items}>
             {sessions.map((session, pos) => (
               <Session key={pos} {...session} />
