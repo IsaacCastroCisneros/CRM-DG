@@ -1,5 +1,5 @@
 "use client"
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Column, Id, Task } from "./types";
 import ColumnContainer from "./ColumnContainer";
 import {
@@ -15,6 +15,8 @@ import {
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import { createPortal } from "react-dom";
 import TaskCard from "./TaskCard";
+import sessionWithIdDeCabecera from "./ClientContent/interfaces/sessionWithIdDeCabecera";
+import cabecera from "./ClientContent/interfaces/cabecera";
 
 const defaultCols: Column[] = [
   {
@@ -102,14 +104,14 @@ const defaultTasks: Task[] = [
 
 function KanbanBoard() 
 {
+ 
   const [columns, setColumns] = useState<Column[]>(defaultCols);
   const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
-
   const [tasks, setTasks] = useState<Task[]>(defaultTasks);
 
-  const [activeColumn, setActiveColumn] = useState<Column | null>(null);
+  const [activeColumn, setActiveColumn] = useState<cabecera | null>(null);
 
-  const [activeTask, setActiveTask] = useState<Task | null>(null);
+  const [activeTask, setActiveTask] = useState<sessionWithIdDeCabecera | null>(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -118,6 +120,7 @@ function KanbanBoard()
       },
     })
   );
+
 
   return (
     <div
@@ -272,8 +275,10 @@ function KanbanBoard()
   }
 
   function onDragEnd(event: DragEndEvent) {
+    
     setActiveColumn(null);
     setActiveTask(null);
+
 
     const { active, over } = event;
     if (!over) return;
@@ -286,8 +291,6 @@ function KanbanBoard()
     const isActiveAColumn = active.data.current?.type === "Column";
     if (!isActiveAColumn) return;
 
-    console.log("DRAG END");
-
     setColumns((columns) => {
       const activeColumnIndex = columns.findIndex((col) => col.id === activeId);
 
@@ -295,9 +298,11 @@ function KanbanBoard()
 
       return arrayMove(columns, activeColumnIndex, overColumnIndex);
     });
+
   }
 
-  function onDragOver(event: DragOverEvent) {
+  function onDragOver(event: DragOverEvent) 
+  {
     const { active, over } = event;
     if (!over) return;
 

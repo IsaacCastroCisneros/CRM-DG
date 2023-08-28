@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Id, Task } from "./types";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import sessionWithIdDeCabecera from "./ClientContent/interfaces/sessionWithIdDeCabecera";
 
 interface Props {
-  task: Task;
+  task: sessionWithIdDeCabecera;
   deleteTask: (id: Id) => void;
   updateTask: (id: Id, content: string) => void;
 }
 
-function TaskCard({ task, deleteTask, updateTask }: Props) {
-  const [mouseIsOver, setMouseIsOver] = useState(false);
-  const [editMode, setEditMode] = useState(true);
+function TaskCard({ task, deleteTask}: Props) 
+{
 
   const {
     setNodeRef,
@@ -26,17 +26,12 @@ function TaskCard({ task, deleteTask, updateTask }: Props) {
       type: "Task",
       task,
     },
-    disabled: editMode,
+    disabled: false,
   });
 
   const style = {
     transition,
     transform: CSS.Transform.toString(transform),
-  };
-
-  const toggleEditMode = () => {
-    setEditMode((prev) => !prev);
-    setMouseIsOver(false);
   };
 
   if (isDragging) {
@@ -52,34 +47,6 @@ function TaskCard({ task, deleteTask, updateTask }: Props) {
     );
   }
 
-  if (editMode) {
-    return (
-      <div
-        ref={setNodeRef}
-        style={style}
-        {...attributes}
-        {...listeners}
-        className="bg-mainBackgroundColor p-2.5 h-[100px] min-h-[100px] items-center flex text-left rounded-xl hover:ring-2 hover:ring-inset hover:ring-rose-500 cursor-grab relative"
-      >
-        <textarea
-          className="
-        h-[90%]
-        w-full resize-none border-none rounded bg-transparent text-white focus:outline-none
-        "
-          value={task.content}
-          autoFocus
-          placeholder="Task content here"
-          onBlur={toggleEditMode}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && e.shiftKey) {
-              toggleEditMode();
-            }
-          }}
-          onChange={(e) => updateTask(task.id, e.target.value)}
-        />
-      </div>
-    );
-  }
 
   return (
     <div
@@ -87,29 +54,10 @@ function TaskCard({ task, deleteTask, updateTask }: Props) {
       style={style}
       {...attributes}
       {...listeners}
-      onClick={toggleEditMode}
-      className="bg-mainBackgroundColor p-2.5 h-[100px] min-h-[100px] items-center flex text-left rounded-xl hover:ring-2 hover:ring-inset hover:ring-rose-500 cursor-grab relative task"
-      onMouseEnter={() => {
-        setMouseIsOver(true);
-      }}
-      onMouseLeave={() => {
-        setMouseIsOver(false);
-      }}
+      className={` border-[2px]  p-2.5 h-[100px] min-h-[100px] w-[100%] items-center bg-pink-500 flex text-left rounded-xl hover:ring-2 hover:ring-inset hover:ring-rose-500 cursor-grab relative task`}
     >
-      <p className="my-auto h-[90%] w-full overflow-y-auto overflow-x-hidden whitespace-pre-wrap">
-        {task.content}
-      </p>
-
-      {mouseIsOver && (
-        <button
-          onClick={() => {
-            deleteTask(task.id);
-          }}
-          className="stroke-white absolute right-4 top-1/2 -translate-y-1/2 bg-columnBackgroundColor p-2 rounded opacity-60 hover:opacity-100"
-        >
-
-        </button>
-      )}
+  
+    
     </div>
   );
 }
