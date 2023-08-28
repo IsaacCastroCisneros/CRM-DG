@@ -1,79 +1,65 @@
-import { SortableContext, useSortable } from "@dnd-kit/sortable";
-import { Column, Id, Task } from "./types";
-import { CSS } from "@dnd-kit/utilities";
-import { Dispatch, SetStateAction, useContext, useMemo, useState } from "react";
-import TaskCard from "./TaskCard";
-import sessionWithIdDeCabecera from "./ClientContent/interfaces/sessionWithIdDeCabecera";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
-import Option from "@/components/Option/Option";
-import appContext from "@/context/appContext";
-import RegularPopup from "@/components/RegularPopup/RegularPopup";
-import DeleteAlert from "@/components/DeleteAlert/DeleteAlert";
+"use client"
 
-interface Props {
-  column: Column;
-  tasks: sessionWithIdDeCabecera[];
+import React, { Dispatch, SetStateAction, useContext, useEffect, useMemo, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import Session from '../Session'
+import appContext from '@/context/appContext'
+import DeleteAlert from '@/components/DeleteAlert/DeleteAlert'
+import RegularPopup from '@/components/RegularPopup/RegularPopup'
+import Option from '@/components/Option/Option'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown, faGripVertical, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { SortableContext, useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
+import session from '../../interfaces/session'
+import CreateTitulo from '../CreateTitulo'
+import cabecera from '../../interfaces/cabecera'
+import MyButton from '@/app/(main-ui)/dashboard/pagos/detalle/[id]/components/EditForm/components/MyButton/MyButton'
+import { MyLink } from '@/components/MyLink/MyLink'
+import Sesssion from '../test/Sesssion'
+
+interface props
+{
+  sessions:Array<session>
+  cabecera:cabecera
 }
 
-function ColumnContainer({
-  column,
-  tasks,
-}: Props) {
-  
-  const [editMode, setEditMode] = useState(false);
+export default function Cabecera({sessions,cabecera}:props)
+{
+  const{title,id}=cabecera
+  const path =usePathname()||''
   const{setShowPopup}=useContext(appContext)
-  const items = useMemo(() => {
-    return tasks.map((task) => task.id);
-  }, [tasks]);
+
+  const items = useMemo(()=>sessions.map(session=>session.id),[sessions])
+
 
   const {
-    setNodeRef,
     attributes,
     listeners,
+    setNodeRef,
     transform,
     transition,
     isDragging,
   } = useSortable({
-    id: column.id,
+    id,
+    animateLayoutChanges:()=>false,
     data: {
-      type: "Column",
-      column,
+      type: "cabecera",
+      column: cabecera,
     },
-    disabled: editMode,
   });
 
-  const style = {
-    transition,
-    transform: CSS.Transform.toString(transform),
-  };
-
-  if (isDragging) {
-    return (
-      <div
-        ref={setNodeRef}
-        style={style}
-        className="
-      bg-columnBackgroundColor
-      opacity-40
-      border-2
-      border-pink-500
-      w-[350px]
-      h-[500px]
-      max-h-[500px]
-      rounded-md
-      flex
-      flex-col
-      "
-      ></div>
-    );
-  }
+    const style=
+    {
+      transform:CSS.Transform.toString(transform),
+      transition
+    }
 
   return (
     <div
       ref={setNodeRef}
       style={style}
-      className={`flex flex-col items-end gap-[1rem] h-[32rem] w-[325px] bg-white my-shadow ${
+      className={`flex flex-col items-end gap-[1rem] h-[32rem] w-[370px] bg-white my-shadow ${
         isDragging
           ? "border-[3px] border-primary opacity-[.5] overflow-hidden rounded-[.5rem]"
           : ""
@@ -105,7 +91,7 @@ function ColumnContainer({
           <Option
             label="Editar Cabecera"
             type="edit"
-        /*     onClick={() =>
+            onClick={() =>
               setShowPopup({
                 show: true,
                 popup: (
@@ -115,15 +101,15 @@ function ColumnContainer({
                   />
                 ),
               })
-            } */
+            }
           />
         </div>
       </div>
       <div className='px-[1rem] py-[1.3rem] flex-1 w-[100%] flex flex-col justify-between'>
-        <ul className={`flex flex-col max-w-[25rem] gap-[.5rem] overflow-y-auto`}>
+        <ul className={`flex flex-col w-[100%] gap-[.5rem] overflow-y-auto max-h-[316px]`}>
           <SortableContext items={items}>
-            {tasks.map((session, pos) => (
-              <Session key={pos} {...session} />
+            {sessions.map((session, pos) => (
+              <Sesssion {...session} key={session.id} />
             ))}
           </SortableContext>
         </ul>
@@ -135,4 +121,3 @@ function ColumnContainer({
   );
 }
 
-export default ColumnContainer;

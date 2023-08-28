@@ -1,7 +1,7 @@
 import React from 'react'
 import MyBlock from '@/components/MyBlock/MyBlock'
 import ClientContent from './components/ClientContent/ClientContent';
-import KanbanBoard from './components/KanbanBoard';
+import KanbanBoard from './components/KanbanBoard/KanbanBoard';
 
 export default function page() 
 {

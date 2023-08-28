@@ -6,11 +6,9 @@ import sessionWithIdDeCabecera from "./ClientContent/interfaces/sessionWithIdDeC
 
 interface Props {
   task: sessionWithIdDeCabecera;
-  deleteTask: (id: Id) => void;
-  updateTask: (id: Id, content: string) => void;
 }
 
-function TaskCard({ task, deleteTask}: Props) 
+function TaskCard({ task}: Props) 
 {
 
   const {
