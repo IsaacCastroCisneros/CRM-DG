@@ -1,7 +1,7 @@
 "use client"
 import { MyForm } from '@/components/MyForm/MyForm'
 import React, { useEffect, useState } from 'react'
-import session from '../interfaces/session'
+import session from './KanbanBoard/interfaces/session'
 import { MyFormInput } from '@/components/MyFormInput/MyFormInput';
 import MyFlexContainer from '@/components/MyFlexContainer/MyFlexContainer';
 import validatingRequired from '@/helpers/validateRequired';

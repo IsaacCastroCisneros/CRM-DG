@@ -12,11 +12,11 @@ import {
 } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import { createPortal } from "react-dom";
-import sessionWithIdDeCabecera from "../ClientContent/interfaces/sessionWithIdDeCabecera";
-import cabecera from "../ClientContent/interfaces/cabecera";
+import sessionWithIdDeCabecera from "./interfaces/sessionWithIdDeCabecera";
+import cabecera from "./interfaces/cabecera";
 import { defaultCabeceras, defaultSessions } from "./util/data";
-import Cabecera from "./components/Cabecera/Cabecera";
-import Sesssion from "./components/test/Sesssion";
+import Cabecera from "./components/Cabecera";
+import Sesssion from "./components/Sesssion";
 import { MyButton } from "@/components/MyButton/MyButton";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import appContext from "@/context/appContext";
@@ -24,10 +24,8 @@ import RegularPopup from "@/components/RegularPopup/RegularPopup";
 import CreateTitulo from "./components/CreateTitulo";
 
 
-
 function KanbanBoard() 
 {
- 
   const [cabeceras, setCabeceras] = useState<Array<cabecera>>(defaultCabeceras);
   const items = useMemo(() => cabeceras.map((cabecera) => cabecera.id), [cabeceras]);
   const [sessions, setSessions] = useState<Array<sessionWithIdDeCabecera>>(defaultSessions);
@@ -48,40 +46,38 @@ function KanbanBoard()
 
   return (
     <>
-      <div className="">
-        <DndContext
-          sensors={sensors}
-          onDragStart={onDragStart}
-          onDragEnd={onDragEnd}
-          onDragOver={onDragOver}
-        >
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(22rem,1fr))] gap-[2rem]">
-            <SortableContext items={items}>
-              {cabeceras.map((cab) => (
-                <Cabecera
-                  key={cab.id}
-                  cabecera={cab}
-                  sessions={sessions.filter((ses) => ses.idCabecera === cab.id)}
-                />
-              ))}
-            </SortableContext>
-          </div>
-          {createPortal(
-            <DragOverlay>
-              {activeCabecera && (
-                <Cabecera
-                  cabecera={activeCabecera}
-                  sessions={sessions.filter(
-                    (ses) => ses.idCabecera === activeCabecera.id
-                  )}
-                />
-              )}
-              {activeSession && <Sesssion {...activeSession} />}
-            </DragOverlay>,
-            document.body
-          )}
-        </DndContext>
-      </div>
+      <DndContext
+        sensors={sensors}
+        onDragStart={onDragStart}
+        onDragEnd={onDragEnd}
+        onDragOver={onDragOver}
+      >
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(22rem,1fr))] gap-[2rem]">
+          <SortableContext items={items}>
+            {cabeceras.map((cab) => (
+              <Cabecera
+                key={cab.id}
+                cabecera={cab}
+                sessions={sessions.filter((ses) => ses.idCabecera === cab.id)}
+              />
+            ))}
+          </SortableContext>
+        </div>
+        {createPortal(
+          <DragOverlay>
+            {activeCabecera && (
+              <Cabecera
+                cabecera={activeCabecera}
+                sessions={sessions.filter(
+                  (ses) => ses.idCabecera === activeCabecera.id
+                )}
+              />
+            )}
+            {activeSession && <Sesssion {...activeSession} />}
+          </DragOverlay>,
+          document.body
+        )}
+      </DndContext>
       <MyButton
         icon={faPlusCircle}
         className="w-auto fixed bottom-[5rem] left-[5rem] z-[999]"

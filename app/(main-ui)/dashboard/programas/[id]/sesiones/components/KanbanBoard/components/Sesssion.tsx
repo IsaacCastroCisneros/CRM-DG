@@ -1,6 +1,6 @@
 import { useSortable } from '@dnd-kit/sortable'
 import React, { useContext } from 'react'
-import session from '../../interfaces/session'
+import session from '../interfaces/session'
 import { CSS } from '@dnd-kit/utilities'
 import { twMerge } from 'tailwind-merge'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

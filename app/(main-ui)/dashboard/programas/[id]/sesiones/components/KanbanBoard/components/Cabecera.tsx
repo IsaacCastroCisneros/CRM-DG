@@ -2,7 +2,6 @@
 
 import React, { Dispatch, SetStateAction, useContext, useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import Session from '../Session'
 import appContext from '@/context/appContext'
 import DeleteAlert from '@/components/DeleteAlert/DeleteAlert'
 import RegularPopup from '@/components/RegularPopup/RegularPopup'
@@ -11,12 +10,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faGripVertical, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { SortableContext, useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import session from '../../interfaces/session'
-import CreateTitulo from '../CreateTitulo'
-import cabecera from '../../interfaces/cabecera'
+import session from '../interfaces/session'
+import CreateTitulo from './CreateTitulo'
+import cabecera from '../interfaces/cabecera'
 import MyButton from '@/app/(main-ui)/dashboard/pagos/detalle/[id]/components/EditForm/components/MyButton/MyButton'
 import { MyLink } from '@/components/MyLink/MyLink'
-import Sesssion from '../test/Sesssion'
+import Sesssion from './Sesssion'
 
 interface props
 {
