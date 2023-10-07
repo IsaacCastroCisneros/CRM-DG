@@ -1,6 +1,6 @@
 "use client"
 
-import React, { Dispatch, ReactNode, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import StepSwitchButton  from '@/components/StepSwitchButton/StepSwitchButton'
 import program from '../../interfaces/program'
 import { Info } from './components/Info'

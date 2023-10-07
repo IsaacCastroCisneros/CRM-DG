@@ -9,6 +9,21 @@ import date from '@/interfaces/date'
 import DatePickers from '@/components/DatePickers/DatePickers'
 import useMyFilter from '@/hooks/useMyFilter'
 
+interface program
+{
+  img: string,
+  type: "curso"|"diplomado"|"diploma",
+  titulo: string,
+  mode: "virtual"|"dual"|"presecial",
+  sessions: number,
+  status: boolean,
+  students: number,
+  price: number,
+  destacado: boolean,
+  created: string,
+}
+
+
 const data = [
   {
     img: "/img/cer.webp",

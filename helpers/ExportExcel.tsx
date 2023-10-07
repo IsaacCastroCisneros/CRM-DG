@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 
 export function ExportExcel(data: any)
 {
-
     const link = document.createElement('a');
     let csv = convertArrayOfObjectsToCSV(data);
     if (csv == null) return;

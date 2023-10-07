@@ -8,8 +8,7 @@ import '@flaticon/flaticon-uicons/css/all/all.css'
 import Head from './head';
 import MyMainContent from './components/MyMainContent/MyMainContent';
 
-
-
+/* random comment */
 
 export default async function RootLayout({
     children,

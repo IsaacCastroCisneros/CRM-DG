@@ -2,6 +2,7 @@
 
 import ExcelUploader from '@/components/ExcelUploader/ExcelUploader';
 import MyBlock from '@/components/MyBlock/MyBlock'
+import Link from 'next/link';
 import React from 'react'
 
 export default function Page() {
@@ -15,9 +16,9 @@ export default function Page() {
               y pegandolos desde un archivo.
             </p>
             <div className="flex justify-between mt-10 gap-9 flex-wrap">
-              <button
+              <Link
                 className="w-full text-black mx-auto xl:w-[48%] lg:w-[48%] border-dashed border-2 border-gray-600 rounded-lg flex justify-center items-center py-40 hover:bg-blue-400 hover:text-white"
-                onClick={() => null}
+                href="/dashboard/certificados/massive/copiar_pegar"
               >
                 <div className="mx-3">
                   <i className="fa-solid fa-file-import fa-3x text-center w-full"></i>
@@ -26,7 +27,7 @@ export default function Page() {
                     Copie y pegue los contactos desde su archivo Excel (.xls)
                   </p>
                 </div>
-              </button>
+              </Link>
               <ExcelUploader />
             </div>
           </div>

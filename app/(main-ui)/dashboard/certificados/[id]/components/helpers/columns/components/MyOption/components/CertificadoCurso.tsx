@@ -50,7 +50,7 @@ export const CertificadoCurso = ({ data, nombre, tipo }: any) => {
                 <h5 style={{ fontFamily: "Open Sans" }} className="paddingArr textCentrado">{nombre}</h5>
                 <p className="paddingArr textCentrado">En reconocimiento por haber cumplido con los requisitos académicos exigidos  y por haber aprobado satisfactoriamente el Curso Especializado, Denominado: </p>
                 <h5 style={{ fontFamily: "Open Sans" }} className="paddingArr textCentrado">{data.name}</h5>
-                <p className="paddingArr textCentrado">Realizado desde el 15/02/2023 al 25/02/2023, con una duración total de 60 horas lectivas. Dado y firmado en la ciudad de Lima, a los 25 días de febrero del año 2023. </p>
+                <p className="paddingArr textCentrado">Realizado desde el 15/02/2023 al 25/02/2023, con una duración total de 60 horas lectivas. Dado y firmado en la ciudad de Lima, a los 25 días de febrero del año 2023.</p>
             </div>
         </div>
 
